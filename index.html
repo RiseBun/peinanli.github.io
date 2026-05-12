@@ -133,6 +133,37 @@
         color: var(--muted);
       }
 
+      .highlights {
+        display: grid;
+        gap: 12px;
+        margin: 24px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .highlights li {
+        position: relative;
+        padding: 14px 16px 14px 42px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.52);
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .highlights li::before {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        width: 10px;
+        height: 10px;
+        content: "";
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 5px rgba(154, 47, 63, 0.1);
+      }
+
       .actions {
         display: flex;
         flex-wrap: wrap;
@@ -549,9 +580,21 @@
           <p class="summary">
             I am an undergraduate student in Mechatronics Engineering
             at the School of Mechanical Engineering and Robotics, Tongji University.
-            My interests include robotics, intelligent manufacturing, autonomous driving,
-            embodied AI, control, and optimization.
           </p>
+          <ul class="highlights">
+            <li>
+              My main research interests include robotics, embodied AI, autonomous
+              driving, and multimodal large models.
+            </li>
+            <li>
+              I am a full-stack development engineer across software and hardware, with
+              experience in mechanics, electronics, algorithms, and AI.
+            </li>
+            <li>
+              I am a young entrepreneur who is willing to challenge conventions and build
+              new possibilities.
+            </li>
+          </ul>
           <div class="actions">
             <a class="button primary" href="mailto:2351827@tongji.edu.cn">Contact Me</a>
             <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
@@ -626,16 +669,16 @@
             </figure>
           </article>
           <article class="timeline-item">
-            <div class="timeline-logo company" aria-label="Hello Inc.">HELLO</div>
+            <div class="timeline-logo company" aria-label="Hello">HELLO</div>
             <div class="timeline-content">
               <span class="timeline-time">2026.02 - 2026.05</span>
-              <h3>End-to-End Algorithm Engineer Intern, Hello Inc.</h3>
+              <h3>End-to-End Algorithm Engineer Intern, Hello</h3>
               <p>
-                Worked on end-to-end algorithm engineering during an internship at Hello Inc.
+                Worked on end-to-end algorithm engineering during an internship at Hello.
               </p>
             </div>
             <figure class="timeline-media">
-              <img src="哈啰.jpeg" alt="Hello Inc." />
+              <img src="哈啰.jpeg" alt="Hello" />
             </figure>
           </article>
           <article class="timeline-item">
