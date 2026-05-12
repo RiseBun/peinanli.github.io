@@ -81,6 +81,35 @@
         color: var(--accent);
       }
 
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+
+      .language-toggle {
+        min-height: 36px;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.58);
+        color: var(--text);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .language-toggle:hover {
+        transform: translateY(-2px);
+        border-color: rgba(154, 47, 63, 0.35);
+        box-shadow: 0 10px 24px rgba(154, 47, 63, 0.12);
+      }
+
       .hero {
         display: grid;
         grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
@@ -174,13 +203,18 @@
 
       .hero-contact {
         color: var(--muted);
-        font-size: 15px;
-        line-height: 1.7;
+        font-size: 17px;
+        line-height: 1.8;
       }
 
       .hero-contact a {
         color: var(--accent-dark);
         font-weight: 700;
+      }
+
+      .wechat-handle {
+        color: var(--blue);
+        font-weight: 800;
       }
 
       .button {
@@ -338,6 +372,43 @@
       }
 
       .research-item p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .showcase-card {
+        display: grid;
+        gap: 16px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .showcase-media {
+        display: grid;
+        min-height: 180px;
+        place-items: center;
+        border: 1px dashed rgba(31, 78, 121, 0.2);
+        border-radius: 18px;
+        background: rgba(31, 78, 121, 0.05);
+        color: var(--muted);
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .showcase-card h3 {
+        margin-bottom: 8px;
+        font-size: 18px;
+      }
+
+      .showcase-card p {
         color: var(--muted);
         line-height: 1.7;
       }
@@ -514,6 +585,10 @@
         gap: 10px;
       }
 
+      .hero-tags {
+        margin-top: 24px;
+      }
+
       .tag {
         padding: 10px 14px;
         border: 1px solid rgba(31, 78, 121, 0.16);
@@ -521,6 +596,22 @@
         background: rgba(31, 78, 121, 0.07);
         color: var(--blue);
         font-weight: 700;
+      }
+
+      .portfolio-card {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background:
+          linear-gradient(135deg, rgba(154, 47, 63, 0.08), rgba(31, 78, 121, 0.08)),
+          rgba(255, 255, 255, 0.55);
+      }
+
+      .portfolio-card p {
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.8;
       }
 
       .contact {
@@ -556,6 +647,11 @@
           margin-bottom: 28px;
         }
 
+        .nav-actions {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
         .hero {
           grid-template-columns: 1fr;
         }
@@ -568,6 +664,10 @@
         }
 
         .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .showcase-grid {
           grid-template-columns: 1fr;
         }
 
@@ -612,46 +712,59 @@
     <main class="page">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="#">Peinan Li</a>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#timeline">Timeline</a>
-          <a href="#research">Research</a>
-          <a href="#selected">Selected</a>
-          <a href="#basic">Profile</a>
-          <a href="#focus">Interests</a>
-          <a href="#contact">Contact</a>
+        <div class="nav-actions">
+          <div class="nav-links">
+            <a href="#about" data-i18n="nav.about">About</a>
+            <a href="#timeline" data-i18n="nav.timeline">Timeline</a>
+            <a href="#research" data-i18n="nav.research">Research</a>
+            <a href="#awards" data-i18n="nav.awards">Awards</a>
+            <a href="#patents" data-i18n="nav.patents">Patents</a>
+            <a href="#selected" data-i18n="nav.selected">Selected</a>
+            <a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+          </div>
+          <button class="language-toggle" type="button" data-language-toggle>中文</button>
         </div>
       </nav>
 
       <section class="hero" id="about">
         <div class="hero-card">
           <h1>Peinan Li</h1>
-          <p class="summary">
+          <p class="summary" data-i18n="hero.summary">
             I am an undergraduate student in Mechatronics Engineering
             at the School of Mechanical Engineering and Robotics, Tongji University.
           </p>
           <ul class="highlights">
-            <li>
+            <li data-i18n="hero.highlight.research">
               My main research interests include robotics, embodied AI, autonomous
               driving, and multimodal large models.
             </li>
-            <li>
+            <li data-i18n="hero.highlight.engineering">
               I am a full-stack development engineer across software and hardware, with
               experience in mechanics, electronics, algorithms, and AI.
             </li>
-            <li>
+            <li data-i18n="hero.highlight.entrepreneur">
               I am a young entrepreneur who is willing to challenge conventions and build
               new possibilities.
             </li>
           </ul>
+          <div class="tags hero-tags" aria-label="Research interest tags">
+            <span class="tag" data-i18n="interests.robotics">Robotics</span>
+            <span class="tag" data-i18n="interests.manufacturing">Intelligent Manufacturing</span>
+            <span class="tag" data-i18n="interests.driving">Autonomous Driving</span>
+            <span class="tag" data-i18n="interests.embodied">Embodied AI</span>
+            <span class="tag" data-i18n="interests.control">Control & Optimization</span>
+            <span class="tag" data-i18n="interests.entrepreneurship">Entrepreneurship</span>
+          </div>
           <div class="actions">
             <p class="hero-contact">
-              Email:
+              <span data-i18n="contact.emailLabel">Email:</span>
               <a href="mailto:peinan_li@163.com">peinan_li@163.com</a>
               <br />
-              WeChat: RiseBun
+              <span data-i18n="contact.wechatLabel">WeChat:</span>
+              <span class="wechat-handle">RiseBun</span>
             </p>
             <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="button primary" href="#portfolio" data-i18n="hero.portfolioButton">Portfolio</a>
           </div>
         </div>
 
@@ -659,7 +772,7 @@
           <div class="profile-photo">
             <img src="portrait.jpg" alt="Portrait of Peinan Li" />
           </div>
-          <p class="photo-caption">
+          <p class="photo-caption" data-i18n="hero.caption">
             Mechanical Engineering & Robotics student exploring how intelligent systems move, sense,
             and make decisions in the physical world.
           </p>
@@ -668,16 +781,16 @@
 
       <section class="section" id="timeline">
         <div class="section-head">
-          <h2>Timeline</h2>
-          <p class="section-note">At a Glance</p>
+          <h2 data-i18n="timeline.title">Timeline</h2>
+          <p class="section-note" data-i18n="timeline.note">At a Glance</p>
         </div>
         <div class="timeline">
           <article class="timeline-item">
             <div class="timeline-logo tongji" aria-label="Tongji University">TJ</div>
             <div class="timeline-content">
               <span class="timeline-time">2023.09 - 2027.07</span>
-              <h3>B.Eng. Student at Tongji University</h3>
-              <p>
+              <h3 data-i18n="timeline.tongji.title">B.Eng. Student at Tongji University</h3>
+              <p data-i18n="timeline.tongji.description">
                 Undergraduate student in Mechatronics Engineering at the School of
                 Mechanical Engineering and Robotics, Tongji University.
               </p>
@@ -689,9 +802,9 @@
           <article class="timeline-item">
             <div class="timeline-logo robocon" aria-label="Robocon">ROBO<br />CON</div>
             <div class="timeline-content">
-              <span class="timeline-time">2024.03 - Present</span>
-              <h3>10+ Competitions and Captain of the Tongji University Robocon Robotics Team</h3>
-              <p>
+              <span class="timeline-time" data-i18n="timeline.robocon.time">2024.03 - Present</span>
+              <h3 data-i18n="timeline.robocon.title">10+ Competitions and Captain of the Tongji University Robocon Robotics Team</h3>
+              <p data-i18n="timeline.robocon.description">
                 Participated in more than ten professional competitions and received
                 2 national awards and 11 provincial awards across algorithm, mechanical,
                 innovation and entrepreneurship, and electronics categories. Rebuilt the
@@ -710,10 +823,12 @@
             <div class="timeline-content">
               <span class="timeline-time">2025.08 - 2026.01</span>
               <h3>
-                Algorithm Engineer, Chongqing Shiwei Data Technology Co., Ltd. ·
-                Collaboration with the National University of Singapore
+                <span data-i18n="timeline.shiwei.title">
+                  Algorithm Engineer, Chongqing Shiwei Data Technology Co., Ltd. ·
+                  Collaboration with the National University of Singapore
+                </span>
               </h3>
-              <p>
+              <p data-i18n="timeline.shiwei.description">
                 Led the development of the DP180 multi-camera loop-closure localization
                 algorithm and the long-range, long-duration LiDAR 3D mapping algorithm.
               </p>
@@ -726,8 +841,8 @@
             <div class="timeline-logo company" aria-label="Hello">HELLO</div>
             <div class="timeline-content">
               <span class="timeline-time">2026.02 - 2026.05</span>
-              <h3>End-to-End Algorithm Engineer Intern, Hello</h3>
-              <p>
+              <h3 data-i18n="timeline.hello.title">End-to-End Algorithm Engineer Intern, Hello</h3>
+              <p data-i18n="timeline.hello.description">
                 Worked on end-to-end algorithm engineering during an internship at Hello.
               </p>
             </div>
@@ -738,9 +853,9 @@
           <article class="timeline-item">
             <div class="timeline-logo lab" aria-label="AutoLab">AUTO<br />LAB</div>
             <div class="timeline-content">
-              <span class="timeline-time">2026.01 - Present</span>
-              <h3>Research Assistant, AutoLab, School of AI, Shanghai Jiao Tong University</h3>
-              <p>
+              <span class="timeline-time" data-i18n="timeline.autolab.time">2026.01 - Present</span>
+              <h3 data-i18n="timeline.autolab.title">Research Assistant, AutoLab, School of AI, Shanghai Jiao Tong University</h3>
+              <p data-i18n="timeline.autolab.description">
                 Conducting research assistance work in AutoLab, focusing on intelligent
                 systems and AI-related engineering research.
               </p>
@@ -754,95 +869,131 @@
 
       <section class="section" id="research">
         <div class="section-head">
-          <h2>Research Experience</h2>
-          <p class="section-note">Publications & Manuscripts</p>
+          <h2 data-i18n="research.title">Research Experience</h2>
+          <p class="section-note" data-i18n="research.note">Publications & Manuscripts</p>
         </div>
         <div class="research-list">
           <article class="research-item">
-            <span class="research-meta">Research Assistant · 2026.01 - Present</span>
-            <h3>AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University</h3>
-            <p>
+            <span class="research-meta" data-i18n="research.autolab.meta">Research Assistant · 2026.01 - Present</span>
+            <h3 data-i18n="research.autolab.title">AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University</h3>
+            <p data-i18n="research.autolab.description">
               Serving as a research assistant at AutoLab, working on research related to
               autonomous driving, embodied intelligence, multimodal reasoning, and
               interpretable AI systems.
             </p>
           </article>
           <article class="research-item">
-            <span class="research-meta">Accepted · IEEE ICME 2026 Oral</span>
+            <span class="research-meta" data-i18n="research.icme.meta">Accepted · IEEE ICME 2026 Oral</span>
             <h3>
               Neuro-Causal Drive: A Neuro-Symbolic Framework for Long-Horizon and
               Interpretable Traffic Accident Analysis
             </h3>
-            <p>
+            <p data-i18n="research.icme.description">
               Independently written as first author and accepted as an Oral presentation
               at IEEE ICME 2026.
             </p>
           </article>
           <article class="research-item">
-            <span class="research-meta">Submitted · IROS 2026</span>
+            <span class="research-meta" data-i18n="research.iros.meta">Submitted · IROS 2026</span>
             <h3>
               Evidential-LIO: Uncertainty-Aware Resource Allocation and
               Information-Theoretic Mapping for Dynamic Environments
             </h3>
-            <p>Manuscript submitted to IROS 2026.</p>
+            <p data-i18n="research.iros.description">Manuscript submitted to IROS 2026.</p>
           </article>
           <article class="research-item">
-            <span class="research-meta">Submitted · ACM MM 2026</span>
+            <span class="research-meta" data-i18n="research.acmmm.meta">Submitted · ACM MM 2026</span>
             <h3>
               DriveNarrate: Shared Intervenable Decision Bottlenecks for Faithful
               Vision-Language-Action Driving
             </h3>
-            <p>Manuscript submitted to ACM MM 2026.</p>
+            <p data-i18n="research.acmmm.description">Manuscript submitted to ACM MM 2026.</p>
           </article>
           <article class="research-item">
-            <span class="research-meta">Submitted · ACM MM 2026</span>
+            <span class="research-meta" data-i18n="research.defect.meta">Submitted · ACM MM 2026</span>
             <h3>
               Multimodal Consistency Learning for Controlled Grounded Industrial Defect
               Explanation
             </h3>
-            <p>Manuscript submitted to ACM MM 2026.</p>
+            <p data-i18n="research.defect.description">Manuscript submitted to ACM MM 2026.</p>
           </article>
           <article class="research-item">
-            <span class="research-meta">Submitted · COLM 2026</span>
+            <span class="research-meta" data-i18n="research.colm.meta">Submitted · COLM 2026</span>
             <h3>
               Beyond Context Length: Utility-Aware Context Paging for Long-Horizon LLM Agents
             </h3>
-            <p>Manuscript submitted to COLM 2026.</p>
+            <p data-i18n="research.colm.description">Manuscript submitted to COLM 2026.</p>
           </article>
           <article class="research-item">
-            <span class="research-meta">Submitted · NeurIPS 2026</span>
+            <span class="research-meta" data-i18n="research.neurips.meta">Submitted · NeurIPS 2026</span>
             <h3>
               FlexPlanner: Adaptive Planner Selection with Temporal Reward Decomposition
               for Autonomous Driving
             </h3>
-            <p>Manuscript submitted to NeurIPS 2026.</p>
+            <p data-i18n="research.neurips.description">Manuscript submitted to NeurIPS 2026.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="awards">
+        <div class="section-head">
+          <h2 data-i18n="awards.title">Competition Awards</h2>
+          <p class="section-note" data-i18n="awards.note">Competitions & Honors</p>
+        </div>
+        <div class="showcase-grid">
+          <article class="showcase-card">
+            <div class="showcase-media" data-i18n="awards.placeholder.media">
+              Award image will be added here.
+            </div>
+            <div>
+              <h3 data-i18n="awards.placeholder.title">Competition award name to be added</h3>
+              <p data-i18n="awards.placeholder.description">
+                Send me the competition name, award level, date, and image file name, and I can add the award card here.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="patents">
+        <div class="section-head">
+          <h2 data-i18n="patents.title">Patents</h2>
+          <p class="section-note" data-i18n="patents.note">Intellectual Property</p>
+        </div>
+        <div class="research-list">
+          <article class="research-item">
+            <span class="research-meta" data-i18n="patents.placeholder.meta">Patent information to be added</span>
+            <h3 data-i18n="patents.placeholder.title">Patent title to be added</h3>
+            <p data-i18n="patents.placeholder.description">
+              Send me the patent title, status, inventors, application number, and date, and I can fill this section.
+            </p>
           </article>
         </div>
       </section>
 
       <section class="section" id="selected">
         <div class="section-head">
-          <h2>Selected Personal Experiences</h2>
-          <p class="section-note">Highlights</p>
+          <h2 data-i18n="selected.title">Selected Personal Experiences</h2>
+          <p class="section-note" data-i18n="selected.note">Highlights</p>
         </div>
         <div class="grid">
           <article class="tile">
-            <h3>Competition Leadership</h3>
-            <p>
+            <h3 data-i18n="selected.competition.title">Competition Leadership</h3>
+            <p data-i18n="selected.competition.description">
               Led competition planning and team rebuilding for the Tongji Robocon Robotics
               Team, while participating in 10+ professional competitions.
             </p>
           </article>
           <article class="tile">
-            <h3>Industry Algorithm Engineering</h3>
-            <p>
+            <h3 data-i18n="selected.industry.title">Industry Algorithm Engineering</h3>
+            <p data-i18n="selected.industry.description">
               Worked on algorithm engineering in industry contexts, including multi-camera
               localization, LiDAR mapping, and end-to-end autonomous driving algorithms.
             </p>
           </article>
           <article class="tile">
-            <h3>Research and Entrepreneurship</h3>
-            <p>
+            <h3 data-i18n="selected.research.title">Research and Entrepreneurship</h3>
+            <p data-i18n="selected.research.description">
               Exploring research-driven innovation across robotics, embodied AI,
               autonomous driving, multimodal models, and practical engineering products.
             </p>
@@ -850,57 +1001,205 @@
         </div>
       </section>
 
-      <section class="section" id="basic">
+      <section class="section" id="portfolio">
         <div class="section-head">
-          <h2>Profile</h2>
-          <p class="section-note">Profile</p>
+          <h2 data-i18n="portfolio.title">Portfolio</h2>
+          <p class="section-note" data-i18n="portfolio.note">Selected Works</p>
         </div>
-        <div class="info-grid">
-          <div class="info-item">
-            <span>Name</span>
-            <strong>Peinan Li</strong>
-          </div>
-          <div class="info-item">
-            <span>University</span>
-            <strong>Tongji University</strong>
-          </div>
-          <div class="info-item">
-            <span>School</span>
-            <strong>School of Mechanical Engineering and Robotics</strong>
-          </div>
-          <div class="info-item">
-            <span>Program</span>
-            <strong>Mechatronics Engineering, Class of 2023</strong>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="focus">
-        <div class="section-head">
-          <h2>Interests</h2>
-          <p class="section-note">Research Interests</p>
-        </div>
-        <div class="tags" aria-label="Research interest tags">
-          <span class="tag">Robotics</span>
-          <span class="tag">Intelligent Manufacturing</span>
-          <span class="tag">Autonomous Driving</span>
-          <span class="tag">Embodied AI</span>
-          <span class="tag">Control & Optimization</span>
-        </div>
-      </section>
-
-      <section class="section contact" id="contact">
-        <div>
-          <h2>Contact</h2>
-          <p>
-            I am open to conversations about robotics, intelligent manufacturing,
-            control, engineering projects, and research opportunities.
+        <div class="portfolio-card">
+          <p data-i18n="portfolio.description">
+            Portfolio projects will be added here, including robotics, algorithms,
+            intelligent manufacturing, entrepreneurship, and engineering products.
           </p>
         </div>
-        <a class="button primary" href="mailto:peinan_li@163.com">peinan_li@163.com</a>
       </section>
 
-      <footer>© 2026 Peinan Li. Built for peinanli.github.io.</footer>
+      <footer data-i18n="footer">© 2026 Peinan Li. Built for peinanli.github.io.</footer>
     </main>
+    <script>
+      const translations = {
+        en: {
+          "nav.about": "About",
+          "nav.timeline": "Timeline",
+          "nav.research": "Research",
+          "nav.awards": "Awards",
+          "nav.patents": "Patents",
+          "nav.selected": "Selected",
+          "nav.portfolio": "Portfolio",
+          "hero.summary": "I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University.",
+          "hero.highlight.research": "My main research interests include robotics, embodied AI, autonomous driving, and multimodal large models.",
+          "hero.highlight.engineering": "I am a full-stack development engineer across software and hardware, with experience in mechanics, electronics, algorithms, and AI.",
+          "hero.highlight.entrepreneur": "I am a young entrepreneur who is willing to challenge conventions and build new possibilities.",
+          "hero.portfolioButton": "Portfolio",
+          "contact.emailLabel": "Email:",
+          "contact.wechatLabel": "WeChat:",
+          "hero.caption": "Mechanical Engineering & Robotics student exploring how intelligent systems move, sense, and make decisions in the physical world.",
+          "timeline.title": "Timeline",
+          "timeline.note": "At a Glance",
+          "timeline.tongji.title": "B.Eng. Student at Tongji University",
+          "timeline.tongji.description": "Undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University.",
+          "timeline.robocon.time": "2024.03 - Present",
+          "timeline.robocon.title": "10+ Competitions and Captain of the Tongji University Robocon Robotics Team",
+          "timeline.robocon.description": "Participated in more than ten professional competitions and received 2 national awards and 11 provincial awards across algorithm, mechanical, innovation and entrepreneurship, and electronics categories. Rebuilt the Tongji University Robocon Robotics Team, organized and wrote technical materials for mechanical design, electrical control, and algorithms, developed competition strategies and technical plans, and trained multiple core team members.",
+          "timeline.shiwei.title": "Algorithm Engineer, Chongqing Shiwei Data Technology Co., Ltd. · Collaboration with the National University of Singapore",
+          "timeline.shiwei.description": "Led the development of the DP180 multi-camera loop-closure localization algorithm and the long-range, long-duration LiDAR 3D mapping algorithm.",
+          "timeline.hello.title": "End-to-End Algorithm Engineer Intern, Hello",
+          "timeline.hello.description": "Worked on end-to-end algorithm engineering during an internship at Hello.",
+          "timeline.autolab.time": "2026.01 - Present",
+          "timeline.autolab.title": "Research Assistant, AutoLab, School of AI, Shanghai Jiao Tong University",
+          "timeline.autolab.description": "Conducting research assistance work in AutoLab, focusing on intelligent systems and AI-related engineering research.",
+          "research.title": "Research Experience",
+          "research.note": "Publications & Manuscripts",
+          "research.autolab.meta": "Research Assistant · 2026.01 - Present",
+          "research.autolab.title": "AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University",
+          "research.autolab.description": "Serving as a research assistant at AutoLab, working on research related to autonomous driving, embodied intelligence, multimodal reasoning, and interpretable AI systems.",
+          "research.icme.meta": "Accepted · IEEE ICME 2026 Oral",
+          "research.icme.description": "Independently written as first author and accepted as an Oral presentation at IEEE ICME 2026.",
+          "research.iros.meta": "Submitted · IROS 2026",
+          "research.iros.description": "Manuscript submitted to IROS 2026.",
+          "research.acmmm.meta": "Submitted · ACM MM 2026",
+          "research.acmmm.description": "Manuscript submitted to ACM MM 2026.",
+          "research.defect.meta": "Submitted · ACM MM 2026",
+          "research.defect.description": "Manuscript submitted to ACM MM 2026.",
+          "research.colm.meta": "Submitted · COLM 2026",
+          "research.colm.description": "Manuscript submitted to COLM 2026.",
+          "research.neurips.meta": "Submitted · NeurIPS 2026",
+          "research.neurips.description": "Manuscript submitted to NeurIPS 2026.",
+          "awards.title": "Competition Awards",
+          "awards.note": "Competitions & Honors",
+          "awards.placeholder.media": "Award image will be added here.",
+          "awards.placeholder.title": "Competition award name to be added",
+          "awards.placeholder.description": "Send me the competition name, award level, date, and image file name, and I can add the award card here.",
+          "patents.title": "Patents",
+          "patents.note": "Intellectual Property",
+          "patents.placeholder.meta": "Patent information to be added",
+          "patents.placeholder.title": "Patent title to be added",
+          "patents.placeholder.description": "Send me the patent title, status, inventors, application number, and date, and I can fill this section.",
+          "selected.title": "Selected Personal Experiences",
+          "selected.note": "Highlights",
+          "selected.competition.title": "Competition Leadership",
+          "selected.competition.description": "Led competition planning and team rebuilding for the Tongji Robocon Robotics Team, while participating in 10+ professional competitions.",
+          "selected.industry.title": "Industry Algorithm Engineering",
+          "selected.industry.description": "Worked on algorithm engineering in industry contexts, including multi-camera localization, LiDAR mapping, and end-to-end autonomous driving algorithms.",
+          "selected.research.title": "Research and Entrepreneurship",
+          "selected.research.description": "Exploring research-driven innovation across robotics, embodied AI, autonomous driving, multimodal models, and practical engineering products.",
+          "interests.robotics": "Robotics",
+          "interests.manufacturing": "Intelligent Manufacturing",
+          "interests.driving": "Autonomous Driving",
+          "interests.embodied": "Embodied AI",
+          "interests.control": "Control & Optimization",
+          "interests.entrepreneurship": "Entrepreneurship",
+          "portfolio.title": "Portfolio",
+          "portfolio.note": "Selected Works",
+          "portfolio.description": "Portfolio projects will be added here, including robotics, algorithms, intelligent manufacturing, entrepreneurship, and engineering products.",
+          "footer": "© 2026 Peinan Li. Built for peinanli.github.io."
+        },
+        zh: {
+          "nav.about": "关于",
+          "nav.timeline": "经历",
+          "nav.research": "科研",
+          "nav.awards": "竞赛获奖",
+          "nav.patents": "专利",
+          "nav.selected": "亮点",
+          "nav.portfolio": "作品集",
+          "hero.summary": "我是同济大学机械与能源工程学院机械电子工程专业本科生。",
+          "hero.highlight.research": "我的主要研究兴趣包括机器人、具身智能、自动驾驶和多模态大模型。",
+          "hero.highlight.engineering": "我是软硬件全栈开发工程师，具备机械、电子、算法和 AI 相关经验。",
+          "hero.highlight.entrepreneur": "我也是一名愿意挑战常规、创造新可能的年轻创业者。",
+          "hero.portfolioButton": "作品集",
+          "contact.emailLabel": "邮箱：",
+          "contact.wechatLabel": "微信：",
+          "hero.caption": "机械工程与机器人方向学生，探索智能系统如何在物理世界中运动、感知和决策。",
+          "timeline.title": "时间线",
+          "timeline.note": "经历概览",
+          "timeline.tongji.title": "同济大学工学本科生",
+          "timeline.tongji.description": "就读于同济大学机械与能源工程学院机械电子工程专业。",
+          "timeline.robocon.time": "2024.03 至今",
+          "timeline.robocon.title": "参与 10+ 项竞赛，并担任同济大学 Robocon 机器人队队长",
+          "timeline.robocon.description": "参加十余项专业竞赛，获得 2 项国家级奖项和 11 项省级奖项，覆盖算法、机械、创新创业和电子等方向。重建同济大学 Robocon 机器人队，组织并撰写机械设计、电控和算法技术资料，制定竞赛策略与技术方案，并培养多名核心队员。",
+          "timeline.shiwei.title": "重庆视维数据科技有限公司算法工程师 · 与新加坡国立大学合作",
+          "timeline.shiwei.description": "主导 DP180 多相机回环定位算法和长距离、长时程 LiDAR 三维建图算法开发。",
+          "timeline.hello.title": "哈啰端到端算法工程师实习生",
+          "timeline.hello.description": "在哈啰从事端到端算法工程相关实习工作。",
+          "timeline.autolab.time": "2026.01 至今",
+          "timeline.autolab.title": "上海交通大学人工智能学院 AutoLab 科研助理",
+          "timeline.autolab.description": "在 AutoLab 开展科研助理工作，关注智能系统和 AI 相关工程研究。",
+          "research.title": "科研经历",
+          "research.note": "论文与手稿",
+          "research.autolab.meta": "科研助理 · 2026.01 至今",
+          "research.autolab.title": "上海交通大学人工智能学院 AutoLab",
+          "research.autolab.description": "担任 AutoLab 科研助理，研究方向包括自动驾驶、具身智能、多模态推理和可解释 AI 系统。",
+          "research.icme.meta": "已接收 · IEEE ICME 2026 Oral",
+          "research.icme.description": "以第一作者独立撰写，并被 IEEE ICME 2026 接收为 Oral 报告。",
+          "research.iros.meta": "已投稿 · IROS 2026",
+          "research.iros.description": "手稿已投稿至 IROS 2026。",
+          "research.acmmm.meta": "已投稿 · ACM MM 2026",
+          "research.acmmm.description": "手稿已投稿至 ACM MM 2026。",
+          "research.defect.meta": "已投稿 · ACM MM 2026",
+          "research.defect.description": "手稿已投稿至 ACM MM 2026。",
+          "research.colm.meta": "已投稿 · COLM 2026",
+          "research.colm.description": "手稿已投稿至 COLM 2026。",
+          "research.neurips.meta": "已投稿 · NeurIPS 2026",
+          "research.neurips.description": "手稿已投稿至 NeurIPS 2026。",
+          "awards.title": "竞赛获奖",
+          "awards.note": "竞赛与荣誉",
+          "awards.placeholder.media": "奖项图片将在这里展示。",
+          "awards.placeholder.title": "待添加竞赛获奖名称",
+          "awards.placeholder.description": "把竞赛名称、获奖等级、时间和图片文件名发给我后，我可以继续补充这里的奖项卡片。",
+          "patents.title": "专利",
+          "patents.note": "知识产权",
+          "patents.placeholder.meta": "待添加专利信息",
+          "patents.placeholder.title": "待添加专利标题",
+          "patents.placeholder.description": "把专利名称、状态、发明人、申请号和日期发给我后，我可以继续完善这个板块。",
+          "selected.title": "精选个人经历",
+          "selected.note": "亮点",
+          "selected.competition.title": "竞赛组织与团队领导",
+          "selected.competition.description": "参与 10+ 项专业竞赛，并负责同济 Robocon 机器人队的竞赛规划和队伍重建。",
+          "selected.industry.title": "工业算法工程",
+          "selected.industry.description": "在产业场景中从事算法工程工作，包括多相机定位、LiDAR 建图和端到端自动驾驶算法。",
+          "selected.research.title": "科研与创业",
+          "selected.research.description": "围绕机器人、具身智能、自动驾驶、多模态模型和实际工程产品探索研究驱动的创新。",
+          "interests.robotics": "机器人",
+          "interests.manufacturing": "智能制造",
+          "interests.driving": "自动驾驶",
+          "interests.embodied": "具身智能",
+          "interests.control": "控制与优化",
+          "interests.entrepreneurship": "创业",
+          "portfolio.title": "作品集",
+          "portfolio.note": "精选作品",
+          "portfolio.description": "这里将展示机器人、算法、智能制造、创业和工程产品等方向的作品集项目。",
+          "footer": "© 2026 李培楠。Built for peinanli.github.io."
+        }
+      };
+
+      const languageToggle = document.querySelector("[data-language-toggle]");
+      let currentLanguage = "en";
+
+      function setLanguage(language) {
+        currentLanguage = language;
+        document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+        document.title = language === "zh" ? "李培楠" : "Peinan Li";
+
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.dataset.i18n;
+          const text = translations[language][key];
+          if (text) {
+            element.textContent = text;
+          }
+        });
+
+        languageToggle.textContent = language === "zh" ? "English" : "中文";
+        languageToggle.setAttribute(
+          "aria-label",
+          language === "zh" ? "Switch to English" : "切换到中文"
+        );
+      }
+
+      languageToggle.addEventListener("click", () => {
+        setLanguage(currentLanguage === "en" ? "zh" : "en");
+      });
+
+      setLanguage("en");
+    </script>
   </body>
 </html>
