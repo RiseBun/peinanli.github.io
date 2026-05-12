@@ -166,9 +166,21 @@
 
       .actions {
         display: flex;
+        align-items: center;
         flex-wrap: wrap;
         gap: 12px;
         margin-top: 34px;
+      }
+
+      .hero-contact {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .hero-contact a {
+        color: var(--accent-dark);
+        font-weight: 700;
       }
 
       .button {
@@ -292,6 +304,42 @@
         font-size: 16px;
         line-height: 1.6;
         color: var(--muted);
+      }
+
+      .research-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .research-item {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .research-meta {
+        display: inline-flex;
+        margin-bottom: 10px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(154, 47, 63, 0.1);
+        color: var(--accent-dark);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      .research-item h3 {
+        margin-bottom: 8px;
+        font-size: 18px;
+        line-height: 1.45;
+      }
+
+      .research-item p {
+        color: var(--muted);
+        line-height: 1.7;
       }
 
       .info-grid {
@@ -567,9 +615,10 @@
         <div class="nav-links">
           <a href="#about">About</a>
           <a href="#timeline">Timeline</a>
+          <a href="#research">Research</a>
+          <a href="#selected">Selected</a>
           <a href="#basic">Profile</a>
           <a href="#focus">Interests</a>
-          <a href="#experiences">Experiences</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
@@ -596,7 +645,12 @@
             </li>
           </ul>
           <div class="actions">
-            <a class="button primary" href="mailto:2351827@tongji.edu.cn">Contact Me</a>
+            <p class="hero-contact">
+              Email:
+              <a href="mailto:19829058377@163.com">19829058377@163.com</a>
+              <br />
+              Phone: 19829058377 (WeChat same number)
+            </p>
             <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
@@ -698,6 +752,104 @@
         </div>
       </section>
 
+      <section class="section" id="research">
+        <div class="section-head">
+          <h2>Research Experience</h2>
+          <p class="section-note">Publications & Manuscripts</p>
+        </div>
+        <div class="research-list">
+          <article class="research-item">
+            <span class="research-meta">Research Assistant · 2026.01 - Present</span>
+            <h3>AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University</h3>
+            <p>
+              Serving as a research assistant at AutoLab, working on research related to
+              autonomous driving, embodied intelligence, multimodal reasoning, and
+              interpretable AI systems.
+            </p>
+          </article>
+          <article class="research-item">
+            <span class="research-meta">Accepted · IEEE ICME 2026 Oral</span>
+            <h3>
+              Neuro-Causal Drive: A Neuro-Symbolic Framework for Long-Horizon and
+              Interpretable Traffic Accident Analysis
+            </h3>
+            <p>
+              Independently written as first author and accepted as an Oral presentation
+              at IEEE ICME 2026.
+            </p>
+          </article>
+          <article class="research-item">
+            <span class="research-meta">Submitted · IROS 2026</span>
+            <h3>
+              Evidential-LIO: Uncertainty-Aware Resource Allocation and
+              Information-Theoretic Mapping for Dynamic Environments
+            </h3>
+            <p>Manuscript submitted to IROS 2026.</p>
+          </article>
+          <article class="research-item">
+            <span class="research-meta">Submitted · ACM MM 2026</span>
+            <h3>
+              DriveNarrate: Shared Intervenable Decision Bottlenecks for Faithful
+              Vision-Language-Action Driving
+            </h3>
+            <p>Manuscript submitted to ACM MM 2026.</p>
+          </article>
+          <article class="research-item">
+            <span class="research-meta">Submitted · ACM MM 2026</span>
+            <h3>
+              Multimodal Consistency Learning for Controlled Grounded Industrial Defect
+              Explanation
+            </h3>
+            <p>Manuscript submitted to ACM MM 2026.</p>
+          </article>
+          <article class="research-item">
+            <span class="research-meta">Submitted · COLM 2026</span>
+            <h3>
+              Beyond Context Length: Utility-Aware Context Paging for Long-Horizon LLM Agents
+            </h3>
+            <p>Manuscript submitted to COLM 2026.</p>
+          </article>
+          <article class="research-item">
+            <span class="research-meta">Submitted · NeurIPS 2026</span>
+            <h3>
+              FlexPlanner: Adaptive Planner Selection with Temporal Reward Decomposition
+              for Autonomous Driving
+            </h3>
+            <p>Manuscript submitted to NeurIPS 2026.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="selected">
+        <div class="section-head">
+          <h2>Selected Personal Experiences</h2>
+          <p class="section-note">Highlights</p>
+        </div>
+        <div class="grid">
+          <article class="tile">
+            <h3>Competition Leadership</h3>
+            <p>
+              Led competition planning and team rebuilding for the Tongji Robocon Robotics
+              Team, while participating in 10+ professional competitions.
+            </p>
+          </article>
+          <article class="tile">
+            <h3>Industry Algorithm Engineering</h3>
+            <p>
+              Worked on algorithm engineering in industry contexts, including multi-camera
+              localization, LiDAR mapping, and end-to-end autonomous driving algorithms.
+            </p>
+          </article>
+          <article class="tile">
+            <h3>Research and Entrepreneurship</h3>
+            <p>
+              Exploring research-driven innovation across robotics, embodied AI,
+              autonomous driving, multimodal models, and practical engineering products.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section class="section" id="basic">
         <div class="section-head">
           <h2>Profile</h2>
@@ -737,36 +889,6 @@
         </div>
       </section>
 
-      <section class="section" id="experiences">
-        <div class="section-head">
-          <h2>Experiences</h2>
-          <p class="section-note">Experiences</p>
-        </div>
-        <div class="grid">
-          <article class="tile">
-            <h3>Undergraduate Study</h3>
-            <p>
-              Learning mechanical engineering, manufacturing technology, automatic control,
-              programming, and robotics-related coursework.
-            </p>
-          </article>
-          <article class="tile">
-            <h3>Engineering Practice</h3>
-            <p>
-              Interested in cross-disciplinary engineering problems involving robotics,
-              intelligent manufacturing, and autonomous systems.
-            </p>
-          </article>
-          <article class="tile">
-            <h3>Tools and Skills</h3>
-            <p>
-              Working with Python, C/C++, MATLAB, CAD/CAE tools, Git, and simulation
-              workflows for coursework and personal exploration.
-            </p>
-          </article>
-        </div>
-      </section>
-
       <section class="section contact" id="contact">
         <div>
           <h2>Contact</h2>
@@ -775,7 +897,7 @@
             control, engineering projects, and research opportunities.
           </p>
         </div>
-        <a class="button primary" href="mailto:2351827@tongji.edu.cn">2351827@tongji.edu.cn</a>
+        <a class="button primary" href="mailto:19829058377@163.com">19829058377@163.com</a>
       </section>
 
       <footer>© 2026 Peinan Li. Built for peinanli.github.io.</footer>
