@@ -308,6 +308,10 @@
 
       .timeline-item {
         position: relative;
+        display: grid;
+        grid-template-columns: 74px minmax(0, 1fr) 148px;
+        gap: 18px;
+        align-items: center;
         padding: 18px 20px;
         border: 1px solid var(--line);
         border-radius: 20px;
@@ -332,6 +336,75 @@
         color: var(--accent);
         font-size: 13px;
         font-weight: 800;
+      }
+
+      .timeline-logo {
+        display: grid;
+        width: 74px;
+        height: 74px;
+        place-items: center;
+        border: 1px solid rgba(154, 47, 63, 0.18);
+        border-radius: 22px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.56)),
+          radial-gradient(circle at top left, rgba(154, 47, 63, 0.2), transparent 68%);
+        color: var(--accent-dark);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        text-align: center;
+        line-height: 1.08;
+        box-shadow: 0 10px 28px rgba(42, 33, 25, 0.08);
+      }
+
+      .timeline-logo.tongji {
+        border-radius: 999px;
+        background:
+          radial-gradient(circle, rgba(154, 47, 63, 0.12) 0 42%, transparent 43%),
+          conic-gradient(from 0deg, rgba(154, 47, 63, 0.24), rgba(31, 78, 121, 0.18), rgba(154, 47, 63, 0.24)),
+          #fff;
+        color: var(--accent-dark);
+        font-size: 18px;
+      }
+
+      .timeline-logo.robocon {
+        background:
+          linear-gradient(135deg, rgba(31, 78, 121, 0.95), rgba(154, 47, 63, 0.88)),
+          #1f4e79;
+        color: #fff;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+      }
+
+      .timeline-logo.company {
+        color: var(--blue);
+        border-color: rgba(31, 78, 121, 0.2);
+      }
+
+      .timeline-logo.lab {
+        background:
+          linear-gradient(135deg, rgba(31, 78, 121, 0.13), rgba(154, 47, 63, 0.13)),
+          #fff;
+        color: var(--blue);
+      }
+
+      .timeline-content {
+        min-width: 0;
+      }
+
+      .timeline-media {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid rgba(29, 29, 31, 0.08);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.62);
+        box-shadow: 0 12px 30px rgba(42, 33, 25, 0.08);
+      }
+
+      .timeline-media img {
+        width: 100%;
+        height: 96px;
+        object-fit: cover;
       }
 
       .timeline-item h3 {
@@ -415,6 +488,31 @@
           align-items: flex-start;
           flex-direction: column;
         }
+
+        .timeline-item {
+          grid-template-columns: 56px minmax(0, 1fr);
+          gap: 14px;
+          padding: 16px;
+        }
+
+        .timeline-logo {
+          width: 56px;
+          height: 56px;
+          border-radius: 16px;
+          font-size: 11px;
+        }
+
+        .timeline-logo.tongji {
+          font-size: 15px;
+        }
+
+        .timeline-media {
+          grid-column: 1 / -1;
+        }
+
+        .timeline-media img {
+          height: 150px;
+        }
       }
     </style>
   </head>
@@ -465,43 +563,74 @@
         </div>
         <div class="timeline">
           <article class="timeline-item">
-            <span class="timeline-time">2023.09 - 2027.07</span>
-            <h3>B.Eng. Student at Tongji University</h3>
-            <p>
-              Undergraduate student in Mechatronics Engineering at the School of
-              Mechanical Engineering and Robotics, Tongji University.
-            </p>
+            <div class="timeline-logo tongji" aria-label="Tongji University">TJ</div>
+            <div class="timeline-content">
+              <span class="timeline-time">2023.09 - 2027.07</span>
+              <h3>B.Eng. Student at Tongji University</h3>
+              <p>
+                Undergraduate student in Mechatronics Engineering at the School of
+                Mechanical Engineering and Robotics, Tongji University.
+              </p>
+            </div>
+            <figure class="timeline-media">
+              <img src="同济.jpeg" alt="Tongji University" />
+            </figure>
           </article>
           <article class="timeline-item">
-            <span class="timeline-time">2024.03 - Present</span>
-            <h3>Robocon and Engineering Competitions</h3>
-            <p>
-              Participated in Robocon and more than ten engineering, robotics, and
-              innovation competitions.
-            </p>
+            <div class="timeline-logo robocon" aria-label="Robocon">ROBO<br />CON</div>
+            <div class="timeline-content">
+              <span class="timeline-time">2024.03 - Present</span>
+              <h3>Robocon and Engineering Competitions</h3>
+              <p>
+                Participated in Robocon and more than ten engineering, robotics, and
+                innovation competitions.
+              </p>
+            </div>
+            <figure class="timeline-media">
+              <img src="robocon.jpg" alt="Robocon competition" />
+            </figure>
           </article>
           <article class="timeline-item">
-            <span class="timeline-time">2025.08 - 2025.12</span>
-            <h3>Algorithm Engineer Intern, Chongqing Shiwei Data Co., Ltd.</h3>
-            <p>
-              Worked as an algorithm engineer intern, gaining industry experience in
-              data-driven engineering and algorithm development.
-            </p>
+            <div class="timeline-logo company" aria-label="Shiwei Data">SW<br />DATA</div>
+            <div class="timeline-content">
+              <span class="timeline-time">2025.08 - 2026.01</span>
+              <h3>Algorithm Engineer Intern, Chongqing Shiwei Data Co., Ltd.</h3>
+              <p>
+                Collaborated with the National University of Singapore and led the
+                development of the DP180 multi-camera loop-closure localization algorithm
+                and long-range, long-duration LiDAR 3D mapping algorithm.
+              </p>
+            </div>
+            <figure class="timeline-media">
+              <img src="新国立.jpeg" alt="National University of Singapore collaboration" />
+            </figure>
           </article>
           <article class="timeline-item">
-            <span class="timeline-time">2026.01 - Present</span>
-            <h3>Research Assistant, AutoLab, School of AI, Shanghai Jiao Tong University</h3>
-            <p>
-              Conducting research assistance work in AutoLab, focusing on intelligent
-              systems and AI-related engineering research.
-            </p>
+            <div class="timeline-logo lab" aria-label="AutoLab">AUTO<br />LAB</div>
+            <div class="timeline-content">
+              <span class="timeline-time">2026.01 - Present</span>
+              <h3>Research Assistant, AutoLab, School of AI, Shanghai Jiao Tong University</h3>
+              <p>
+                Conducting research assistance work in AutoLab, focusing on intelligent
+                systems and AI-related engineering research.
+              </p>
+            </div>
+            <figure class="timeline-media">
+              <img src="上海交大.jpg" alt="Shanghai Jiao Tong University" />
+            </figure>
           </article>
           <article class="timeline-item">
-            <span class="timeline-time">2026.02 - 2026.05</span>
-            <h3>End-to-End Algorithm Engineer Intern, Hello Inc.</h3>
-            <p>
-              Worked on end-to-end algorithm engineering during an internship at Hello Inc.
-            </p>
+            <div class="timeline-logo company" aria-label="Hello Inc.">HELLO</div>
+            <div class="timeline-content">
+              <span class="timeline-time">2026.02 - 2026.05</span>
+              <h3>End-to-End Algorithm Engineer Intern, Hello Inc.</h3>
+              <p>
+                Worked on end-to-end algorithm engineering during an internship at Hello Inc.
+              </p>
+            </div>
+            <figure class="timeline-media">
+              <img src="哈啰.jpeg" alt="Hello Inc." />
+            </figure>
           </article>
         </div>
       </section>
