@@ -193,6 +193,18 @@
         box-shadow: 0 0 0 5px rgba(154, 47, 63, 0.1);
       }
 
+      .keyword-mark {
+        display: inline-flex;
+        margin-left: 8px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(154, 47, 63, 0.08);
+        color: var(--accent-dark);
+        font-size: 12px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
       .actions {
         display: flex;
         align-items: center;
@@ -215,6 +227,13 @@
       .wechat-handle {
         color: var(--blue);
         font-weight: 800;
+      }
+
+      .hero-buttons {
+        display: inline-flex;
+        gap: 12px;
+        margin-left: 18px;
+        flex-wrap: wrap;
       }
 
       .button {
@@ -585,10 +604,6 @@
         gap: 10px;
       }
 
-      .hero-tags {
-        margin-top: 24px;
-      }
-
       .tag {
         padding: 10px 14px;
         border: 1px solid rgba(31, 78, 121, 0.16);
@@ -734,27 +749,28 @@
             at the School of Mechanical Engineering and Robotics, Tongji University.
           </p>
           <ul class="highlights">
-            <li data-i18n="hero.highlight.research">
-              My main research interests include robotics, embodied AI, autonomous
-              driving, and multimodal large models.
+            <li>
+              <span data-i18n="hero.highlight.research">
+                I focus on intelligent systems where robotics, embodied AI, autonomous driving,
+                and multimodal models meet.
+              </span>
+              <span class="keyword-mark" data-i18n="hero.keyword.research">Robotics · Embodied AI</span>
             </li>
-            <li data-i18n="hero.highlight.engineering">
-              I am a full-stack development engineer across software and hardware, with
-              experience in mechanics, electronics, algorithms, and AI.
+            <li>
+              <span data-i18n="hero.highlight.engineering">
+                I build across software and hardware, connecting intelligent manufacturing,
+                control, algorithms, electronics, and AI.
+              </span>
+              <span class="keyword-mark" data-i18n="hero.keyword.engineering">Control · Intelligent Manufacturing</span>
             </li>
-            <li data-i18n="hero.highlight.entrepreneur">
-              I am a young entrepreneur who is willing to challenge conventions and build
-              new possibilities.
+            <li>
+              <span data-i18n="hero.highlight.entrepreneur">
+                I am also a young entrepreneur who is willing to challenge conventions and turn
+                engineering ideas into new possibilities.
+              </span>
+              <span class="keyword-mark" data-i18n="hero.keyword.entrepreneur">Entrepreneurship</span>
             </li>
           </ul>
-          <div class="tags hero-tags" aria-label="Research interest tags">
-            <span class="tag" data-i18n="interests.robotics">Robotics</span>
-            <span class="tag" data-i18n="interests.manufacturing">Intelligent Manufacturing</span>
-            <span class="tag" data-i18n="interests.driving">Autonomous Driving</span>
-            <span class="tag" data-i18n="interests.embodied">Embodied AI</span>
-            <span class="tag" data-i18n="interests.control">Control & Optimization</span>
-            <span class="tag" data-i18n="interests.entrepreneurship">Entrepreneurship</span>
-          </div>
           <div class="actions">
             <p class="hero-contact">
               <span data-i18n="contact.emailLabel">Email:</span>
@@ -763,8 +779,10 @@
               <span data-i18n="contact.wechatLabel">WeChat:</span>
               <span class="wechat-handle">RiseBun</span>
             </p>
-            <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="button primary" href="#portfolio" data-i18n="hero.portfolioButton">Portfolio</a>
+            <div class="hero-buttons">
+              <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="button primary" href="#portfolio" data-i18n="hero.portfolioButton">Portfolio</a>
+            </div>
           </div>
         </div>
 
@@ -1027,9 +1045,12 @@
           "nav.selected": "Selected",
           "nav.portfolio": "Portfolio",
           "hero.summary": "I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University.",
-          "hero.highlight.research": "My main research interests include robotics, embodied AI, autonomous driving, and multimodal large models.",
-          "hero.highlight.engineering": "I am a full-stack development engineer across software and hardware, with experience in mechanics, electronics, algorithms, and AI.",
-          "hero.highlight.entrepreneur": "I am a young entrepreneur who is willing to challenge conventions and build new possibilities.",
+          "hero.highlight.research": "I focus on intelligent systems where robotics, embodied AI, autonomous driving, and multimodal models meet.",
+          "hero.keyword.research": "Robotics · Embodied AI",
+          "hero.highlight.engineering": "I build across software and hardware, connecting intelligent manufacturing, control, algorithms, electronics, and AI.",
+          "hero.keyword.engineering": "Control · Intelligent Manufacturing",
+          "hero.highlight.entrepreneur": "I am also a young entrepreneur who is willing to challenge conventions and turn engineering ideas into new possibilities.",
+          "hero.keyword.entrepreneur": "Entrepreneurship",
           "hero.portfolioButton": "Portfolio",
           "contact.emailLabel": "Email:",
           "contact.wechatLabel": "WeChat:",
@@ -1083,12 +1104,6 @@
           "selected.industry.description": "Worked on algorithm engineering in industry contexts, including multi-camera localization, LiDAR mapping, and end-to-end autonomous driving algorithms.",
           "selected.research.title": "Research and Entrepreneurship",
           "selected.research.description": "Exploring research-driven innovation across robotics, embodied AI, autonomous driving, multimodal models, and practical engineering products.",
-          "interests.robotics": "Robotics",
-          "interests.manufacturing": "Intelligent Manufacturing",
-          "interests.driving": "Autonomous Driving",
-          "interests.embodied": "Embodied AI",
-          "interests.control": "Control & Optimization",
-          "interests.entrepreneurship": "Entrepreneurship",
           "portfolio.title": "Portfolio",
           "portfolio.note": "Selected Works",
           "portfolio.description": "Portfolio projects will be added here, including robotics, algorithms, intelligent manufacturing, entrepreneurship, and engineering products.",
@@ -1103,9 +1118,12 @@
           "nav.selected": "亮点",
           "nav.portfolio": "作品集",
           "hero.summary": "我是同济大学机械与能源工程学院机械电子工程专业本科生。",
-          "hero.highlight.research": "我的主要研究兴趣包括机器人、具身智能、自动驾驶和多模态大模型。",
-          "hero.highlight.engineering": "我是软硬件全栈开发工程师，具备机械、电子、算法和 AI 相关经验。",
-          "hero.highlight.entrepreneur": "我也是一名愿意挑战常规、创造新可能的年轻创业者。",
+          "hero.highlight.research": "我关注机器人、具身智能、自动驾驶与多模态模型交汇处的智能系统。",
+          "hero.keyword.research": "机器人 · 具身智能",
+          "hero.highlight.engineering": "我在软硬件之间构建系统，连接智能制造、控制、算法、电子与 AI。",
+          "hero.keyword.engineering": "控制 · 智能制造",
+          "hero.highlight.entrepreneur": "我也是一名年轻创业者，愿意挑战常规，把工程想法转化为新的可能。",
+          "hero.keyword.entrepreneur": "创业",
           "hero.portfolioButton": "作品集",
           "contact.emailLabel": "邮箱：",
           "contact.wechatLabel": "微信：",
@@ -1159,12 +1177,6 @@
           "selected.industry.description": "在产业场景中从事算法工程工作，包括多相机定位、LiDAR 建图和端到端自动驾驶算法。",
           "selected.research.title": "科研与创业",
           "selected.research.description": "围绕机器人、具身智能、自动驾驶、多模态模型和实际工程产品探索研究驱动的创新。",
-          "interests.robotics": "机器人",
-          "interests.manufacturing": "智能制造",
-          "interests.driving": "自动驾驶",
-          "interests.embodied": "具身智能",
-          "interests.control": "控制与优化",
-          "interests.entrepreneurship": "创业",
           "portfolio.title": "作品集",
           "portfolio.note": "精选作品",
           "portfolio.description": "这里将展示机器人、算法、智能制造、创业和工程产品等方向的作品集项目。",
