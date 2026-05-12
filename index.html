@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="李培楠的个人主页。同济大学机械工程与机器人学院机械制造及其自动化本科生。"
+      content="Personal homepage of Peinan Li, an undergraduate student at Tongji University."
     />
-    <title>李培楠 | Peinan Li</title>
+    <title>Peinan Li</title>
     <style>
       :root {
         color-scheme: light;
@@ -177,7 +177,6 @@
 
       .profile-photo {
         width: 100%;
-        aspect-ratio: 4 / 5;
         overflow: hidden;
         border-radius: 24px;
         background: #eee7df;
@@ -185,8 +184,7 @@
 
       .profile-photo img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
       }
 
       .photo-caption {
@@ -422,35 +420,36 @@
   </head>
   <body>
     <main class="page">
-      <nav class="nav" aria-label="主导航">
+      <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="#">Peinan Li</a>
         <div class="nav-links">
-          <a href="#about">关于</a>
-          <a href="#basic">基本信息</a>
-          <a href="#focus">方向</a>
-          <a href="#experiences">经历</a>
-          <a href="#timeline">时间线</a>
-          <a href="#contact">联系</a>
+          <a href="#about">About</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#basic">Profile</a>
+          <a href="#focus">Interests</a>
+          <a href="#experiences">Experiences</a>
+          <a href="#contact">Contact</a>
         </div>
       </nav>
 
       <section class="hero" id="about">
         <div class="hero-card">
-          <p class="eyebrow">Tongji University · Mechanical Engineering</p>
-          <h1>李培楠<br />Peinan Li</h1>
+          <h1>Peinan Li</h1>
           <p class="summary">
-            同济大学机械工程与机器人学院机械制造及其自动化 2023 级本科生。
-            关注机器人、智能制造、自动驾驶、具身智能，以及控制与优化等方向。
+            I am an undergraduate student in Mechatronics Engineering
+            at the School of Mechanical Engineering and Robotics, Tongji University.
+            My interests include robotics, intelligent manufacturing, autonomous driving,
+            embodied AI, control, and optimization.
           </p>
           <div class="actions">
-            <a class="button primary" href="mailto:2351827@tongji.edu.cn">联系我</a>
+            <a class="button primary" href="mailto:2351827@tongji.edu.cn">Contact Me</a>
             <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
 
-        <aside class="info-card" aria-label="个人信息">
+        <aside class="info-card" aria-label="Profile photo">
           <div class="profile-photo">
-            <img src="证件照.jpg" alt="李培楠的个人照片" />
+            <img src="portrait.jpg" alt="Portrait of Peinan Li" />
           </div>
           <p class="photo-caption">
             Mechanical Engineering & Robotics student exploring how intelligent systems move, sense,
@@ -459,37 +458,85 @@
         </aside>
       </section>
 
+      <section class="section" id="timeline">
+        <div class="section-head">
+          <h2>Timeline</h2>
+          <p class="section-note">At a Glance</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <span class="timeline-time">2023.09 - 2027.07</span>
+            <h3>B.Eng. Student at Tongji University</h3>
+            <p>
+              Undergraduate student in Mechatronics Engineering at the School of
+              Mechanical Engineering and Robotics, Tongji University.
+            </p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-time">2024.03 - Present</span>
+            <h3>Robocon and Engineering Competitions</h3>
+            <p>
+              Participated in Robocon and more than ten engineering, robotics, and
+              innovation competitions.
+            </p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-time">2025.08 - 2025.12</span>
+            <h3>Algorithm Engineer Intern, Chongqing Shiwei Data Co., Ltd.</h3>
+            <p>
+              Worked as an algorithm engineer intern, gaining industry experience in
+              data-driven engineering and algorithm development.
+            </p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-time">2026.01 - Present</span>
+            <h3>Research Assistant, AutoLab, School of AI, Shanghai Jiao Tong University</h3>
+            <p>
+              Conducting research assistance work in AutoLab, focusing on intelligent
+              systems and AI-related engineering research.
+            </p>
+          </article>
+          <article class="timeline-item">
+            <span class="timeline-time">2026.02 - 2026.05</span>
+            <h3>End-to-End Algorithm Engineer Intern, Hello Inc.</h3>
+            <p>
+              Worked on end-to-end algorithm engineering during an internship at Hello Inc.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section class="section" id="basic">
         <div class="section-head">
-          <h2>基本信息</h2>
+          <h2>Profile</h2>
           <p class="section-note">Profile</p>
         </div>
         <div class="info-grid">
           <div class="info-item">
-            <span>姓名</span>
-            <strong>李培楠 / Peinan Li</strong>
+            <span>Name</span>
+            <strong>Peinan Li</strong>
           </div>
           <div class="info-item">
-            <span>学校</span>
-            <strong>同济大学</strong>
+            <span>University</span>
+            <strong>Tongji University</strong>
           </div>
           <div class="info-item">
-            <span>学院</span>
-            <strong>机械工程与机器人学院</strong>
+            <span>School</span>
+            <strong>School of Mechanical Engineering and Robotics</strong>
           </div>
           <div class="info-item">
-            <span>专业年级</span>
-            <strong>机械制造及其自动化，2023 级本科生</strong>
+            <span>Program</span>
+            <strong>Mechatronics Engineering, Class of 2023</strong>
           </div>
         </div>
       </section>
 
       <section class="section" id="focus">
         <div class="section-head">
-          <h2>关注方向</h2>
+          <h2>Interests</h2>
           <p class="section-note">Research Interests</p>
         </div>
-        <div class="tags" aria-label="研究方向标签">
+        <div class="tags" aria-label="Research interest tags">
           <span class="tag">Robotics</span>
           <span class="tag">Intelligent Manufacturing</span>
           <span class="tag">Autonomous Driving</span>
@@ -500,54 +547,40 @@
 
       <section class="section" id="experiences">
         <div class="section-head">
-          <h2>个人经历</h2>
+          <h2>Experiences</h2>
           <p class="section-note">Experiences</p>
         </div>
         <div class="grid">
           <article class="tile">
-            <h3>本科阶段学习</h3>
-            <p>系统学习机械工程、制造技术、自动控制、程序设计与机器人相关课程，建立工程分析和系统建模基础。</p>
+            <h3>Undergraduate Study</h3>
+            <p>
+              Learning mechanical engineering, manufacturing technology, automatic control,
+              programming, and robotics-related coursework.
+            </p>
           </article>
           <article class="tile">
-            <h3>工程与实践兴趣</h3>
-            <p>关注机器人系统、智能制造和自动驾驶等交叉方向，持续积累机械设计、仿真分析和算法实现能力。</p>
+            <h3>Engineering Practice</h3>
+            <p>
+              Interested in cross-disciplinary engineering problems involving robotics,
+              intelligent manufacturing, and autonomous systems.
+            </p>
           </article>
           <article class="tile">
-            <h3>工具与技术</h3>
-            <p>持续使用 Python、C/C++、MATLAB、CAD/CAE、Git 等工具完成课程、项目和个人探索。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="timeline">
-        <div class="section-head">
-          <h2>时间线</h2>
-          <p class="section-note">Timeline</p>
-        </div>
-        <div class="timeline">
-          <article class="timeline-item">
-            <span class="timeline-time">2023.09 - 至今</span>
-            <h3>同济大学本科阶段</h3>
-            <p>就读于机械工程与机器人学院机械制造及其自动化专业，持续探索机械工程与智能系统的结合。</p>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-time">2024 - 2025</span>
-            <h3>工程基础与专业能力积累</h3>
-            <p>围绕机械设计、工程力学、控制基础、程序设计和仿真工具，逐步形成从问题建模到实现验证的学习路径。</p>
-          </article>
-          <article class="timeline-item">
-            <span class="timeline-time">Next</span>
-            <h3>项目与研究经历补充</h3>
-            <p>后续可将课程设计、竞赛、实验室经历、个人项目或论文成果加入这里，形成更完整的个人成长轨迹。</p>
+            <h3>Tools and Skills</h3>
+            <p>
+              Working with Python, C/C++, MATLAB, CAD/CAE tools, Git, and simulation
+              workflows for coursework and personal exploration.
+            </p>
           </article>
         </div>
       </section>
 
       <section class="section contact" id="contact">
         <div>
-          <h2>联系</h2>
+          <h2>Contact</h2>
           <p>
-            欢迎就机器人、智能制造、控制算法、工程项目或研究机会交流。
+            I am open to conversations about robotics, intelligent manufacturing,
+            control, engineering projects, and research opportunities.
           </p>
         </div>
         <a class="button primary" href="mailto:2351827@tongji.edu.cn">2351827@tongji.edu.cn</a>
