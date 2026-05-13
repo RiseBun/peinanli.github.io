@@ -134,21 +134,16 @@
 
       .greeting-panel {
         display: grid;
-        width: min(360px, 100%);
-        min-height: 160px;
         place-items: center;
-        padding: clamp(28px, 5vw, 42px);
-        border: 1px solid rgba(29, 29, 31, 0.12);
-        border-radius: 24px;
-        background: rgba(255, 255, 255, 0.84);
-        box-shadow: 0 30px 90px rgba(42, 33, 25, 0.18);
       }
 
       .greeting-word {
-        color: var(--text);
-        font-size: clamp(42px, 7vw, 72px);
+        color: rgba(255, 250, 240, 0.92);
+        font-size: clamp(54px, 9vw, 108px);
+        font-style: italic;
         font-weight: 800;
-        letter-spacing: -0.05em;
+        letter-spacing: -0.06em;
+        text-shadow: 0 18px 48px rgba(42, 33, 25, 0.24);
       }
 
       .app {
@@ -958,7 +953,7 @@
     <div class="cursor-light" aria-hidden="true"></div>
     <div class="greeting" aria-label="Welcome">
       <div class="greeting-panel">
-        <div class="greeting-word">Welcome</div>
+        <div class="greeting-word">Welcome!</div>
       </div>
     </div>
     <main class="app">
