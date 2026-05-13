@@ -165,7 +165,7 @@
 
       .sidebar {
         position: sticky;
-        top: max(28px, calc((100vh - var(--stage-height)) / 2));
+        top: 28px;
         display: flex;
         height: var(--stage-height);
         flex-direction: column;
@@ -790,16 +790,6 @@
         letter-spacing: -0.02em;
       }
 
-      footer {
-        position: relative;
-        z-index: 2;
-        margin-top: auto;
-        padding: 0 16px 16px;
-        color: var(--muted);
-        font-size: 13px;
-        text-align: center;
-      }
-
       @media (min-width: 1180px) {
         .grid.two {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1260,10 +1250,6 @@
 
       </div>
     </main>
-
-    <footer data-en="© 2026 Peinan Li. Built for peinanli.github.io." data-zh="© 2026 李培楠。Built for peinanli.github.io.">
-      © 2026 Peinan Li. Built for peinanli.github.io.
-    </footer>
 
     <script>
       const panelButtons = document.querySelectorAll("[data-panel-target]");
