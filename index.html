@@ -364,6 +364,17 @@
         gap: 14px;
       }
 
+      .research-subsection + .research-subsection {
+        margin-top: 24px;
+      }
+
+      .research-subtitle {
+        margin-bottom: 14px;
+        color: var(--text);
+        font-size: 20px;
+        letter-spacing: -0.02em;
+      }
+
       .research-item {
         padding: 20px;
         border: 1px solid var(--line);
@@ -420,6 +431,13 @@
         color: var(--muted);
         font-size: 14px;
         text-align: center;
+      }
+
+      .showcase-media img {
+        width: 100%;
+        height: 100%;
+        max-height: 220px;
+        object-fit: contain;
       }
 
       .showcase-card h3 {
@@ -732,6 +750,7 @@
             <a href="#about" data-i18n="nav.about">About</a>
             <a href="#timeline" data-i18n="nav.timeline">Timeline</a>
             <a href="#research" data-i18n="nav.research">Research</a>
+            <a href="#internships" data-i18n="nav.internships">Internships</a>
             <a href="#awards" data-i18n="nav.awards">Awards</a>
             <a href="#patents" data-i18n="nav.patents">Patents</a>
             <a href="#selected" data-i18n="nav.selected">Selected</a>
@@ -892,67 +911,112 @@
       <section class="section" id="research">
         <div class="section-head">
           <h2 data-i18n="research.title">Research Experience</h2>
-          <p class="section-note" data-i18n="research.note">Publications & Manuscripts</p>
+          <p class="section-note" data-i18n="research.note">Research Work & Papers</p>
         </div>
-        <div class="research-list">
-          <article class="research-item">
-            <span class="research-meta" data-i18n="research.autolab.meta">Research Assistant · 2026.01 - Present</span>
-            <h3 data-i18n="research.autolab.title">AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University</h3>
-            <p data-i18n="research.autolab.description">
-              Serving as a research assistant at AutoLab, working on research related to
-              autonomous driving, embodied intelligence, multimodal reasoning, and
-              interpretable AI systems.
-            </p>
+        <div class="research-subsection">
+          <h3 class="research-subtitle" data-i18n="research.experience.subtitle">Research Experience</h3>
+          <div class="research-list">
+            <article class="research-item">
+              <span class="research-meta" data-i18n="research.autolab.meta">Research Assistant · 2026.01 - Present</span>
+              <h3 data-i18n="research.autolab.title">AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University</h3>
+              <p data-i18n="research.autolab.description">
+                Serving as a research assistant at AutoLab, working on research related to
+                autonomous driving, embodied intelligence, multimodal reasoning, and
+                interpretable AI systems.
+              </p>
+            </article>
+          </div>
+        </div>
+        <div class="research-subsection">
+          <h3 class="research-subtitle" data-i18n="research.papers.subtitle">Published & Submitted Papers</h3>
+          <div class="research-list">
+            <article class="research-item">
+              <span class="research-meta" data-i18n="research.icme.meta">Accepted · IEEE ICME 2026 Oral</span>
+              <h3>
+                Neuro-Causal Drive: A Neuro-Symbolic Framework for Long-Horizon and
+                Interpretable Traffic Accident Analysis
+              </h3>
+              <p data-i18n="research.icme.description">
+                Independently written as first author and accepted as an Oral presentation
+                at IEEE ICME 2026.
+              </p>
+            </article>
+            <article class="research-item">
+              <span class="research-meta" data-i18n="research.iros.meta">Submitted · IROS 2026</span>
+              <h3>
+                Evidential-LIO: Uncertainty-Aware Resource Allocation and
+                Information-Theoretic Mapping for Dynamic Environments
+              </h3>
+              <p data-i18n="research.iros.description">Manuscript submitted to IROS 2026.</p>
+            </article>
+            <article class="research-item">
+              <span class="research-meta" data-i18n="research.acmmm.meta">Submitted · ACM MM 2026</span>
+              <h3>
+                DriveNarrate: Shared Intervenable Decision Bottlenecks for Faithful
+                Vision-Language-Action Driving
+              </h3>
+              <p data-i18n="research.acmmm.description">Manuscript submitted to ACM MM 2026.</p>
+            </article>
+            <article class="research-item">
+              <span class="research-meta" data-i18n="research.defect.meta">Submitted · ACM MM 2026</span>
+              <h3>
+                Multimodal Consistency Learning for Controlled Grounded Industrial Defect
+                Explanation
+              </h3>
+              <p data-i18n="research.defect.description">Manuscript submitted to ACM MM 2026.</p>
+            </article>
+            <article class="research-item">
+              <span class="research-meta" data-i18n="research.colm.meta">Submitted · COLM 2026</span>
+              <h3>
+                Beyond Context Length: Utility-Aware Context Paging for Long-Horizon LLM Agents
+              </h3>
+              <p data-i18n="research.colm.description">Manuscript submitted to COLM 2026.</p>
+            </article>
+            <article class="research-item">
+              <span class="research-meta" data-i18n="research.neurips.meta">Submitted · NeurIPS 2026</span>
+              <h3>
+                FlexPlanner: Adaptive Planner Selection with Temporal Reward Decomposition
+                for Autonomous Driving
+              </h3>
+              <p data-i18n="research.neurips.description">Manuscript submitted to NeurIPS 2026.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="internships">
+        <div class="section-head">
+          <h2 data-i18n="internships.title">Internships</h2>
+          <p class="section-note" data-i18n="internships.note">Industry Practice</p>
+        </div>
+        <div class="showcase-grid">
+          <article class="showcase-card">
+            <figure class="showcase-media">
+              <img src="新国立.jpeg" alt="National University of Singapore collaboration" />
+            </figure>
+            <div>
+              <span class="research-meta">2025.08 - 2026.01</span>
+              <h3 data-i18n="internships.shiwei.title">
+                Algorithm Engineer, Chongqing Shiwei Data Technology Co., Ltd. ·
+                Collaboration with the National University of Singapore
+              </h3>
+              <p data-i18n="internships.shiwei.description">
+                Led the development of the DP180 multi-camera loop-closure localization
+                algorithm and the long-range, long-duration LiDAR 3D mapping algorithm.
+              </p>
+            </div>
           </article>
-          <article class="research-item">
-            <span class="research-meta" data-i18n="research.icme.meta">Accepted · IEEE ICME 2026 Oral</span>
-            <h3>
-              Neuro-Causal Drive: A Neuro-Symbolic Framework for Long-Horizon and
-              Interpretable Traffic Accident Analysis
-            </h3>
-            <p data-i18n="research.icme.description">
-              Independently written as first author and accepted as an Oral presentation
-              at IEEE ICME 2026.
-            </p>
-          </article>
-          <article class="research-item">
-            <span class="research-meta" data-i18n="research.iros.meta">Submitted · IROS 2026</span>
-            <h3>
-              Evidential-LIO: Uncertainty-Aware Resource Allocation and
-              Information-Theoretic Mapping for Dynamic Environments
-            </h3>
-            <p data-i18n="research.iros.description">Manuscript submitted to IROS 2026.</p>
-          </article>
-          <article class="research-item">
-            <span class="research-meta" data-i18n="research.acmmm.meta">Submitted · ACM MM 2026</span>
-            <h3>
-              DriveNarrate: Shared Intervenable Decision Bottlenecks for Faithful
-              Vision-Language-Action Driving
-            </h3>
-            <p data-i18n="research.acmmm.description">Manuscript submitted to ACM MM 2026.</p>
-          </article>
-          <article class="research-item">
-            <span class="research-meta" data-i18n="research.defect.meta">Submitted · ACM MM 2026</span>
-            <h3>
-              Multimodal Consistency Learning for Controlled Grounded Industrial Defect
-              Explanation
-            </h3>
-            <p data-i18n="research.defect.description">Manuscript submitted to ACM MM 2026.</p>
-          </article>
-          <article class="research-item">
-            <span class="research-meta" data-i18n="research.colm.meta">Submitted · COLM 2026</span>
-            <h3>
-              Beyond Context Length: Utility-Aware Context Paging for Long-Horizon LLM Agents
-            </h3>
-            <p data-i18n="research.colm.description">Manuscript submitted to COLM 2026.</p>
-          </article>
-          <article class="research-item">
-            <span class="research-meta" data-i18n="research.neurips.meta">Submitted · NeurIPS 2026</span>
-            <h3>
-              FlexPlanner: Adaptive Planner Selection with Temporal Reward Decomposition
-              for Autonomous Driving
-            </h3>
-            <p data-i18n="research.neurips.description">Manuscript submitted to NeurIPS 2026.</p>
+          <article class="showcase-card">
+            <figure class="showcase-media">
+              <img src="哈啰.jpeg" alt="Hello internship" />
+            </figure>
+            <div>
+              <span class="research-meta">2026.02 - 2026.05</span>
+              <h3 data-i18n="internships.hello.title">End-to-End Algorithm Engineer Intern, Hello</h3>
+              <p data-i18n="internships.hello.description">
+                Worked on end-to-end algorithm engineering during an internship at Hello.
+              </p>
+            </div>
           </article>
         </div>
       </section>
@@ -1044,6 +1108,7 @@
           "nav.about": "About",
           "nav.timeline": "Timeline",
           "nav.research": "Research",
+          "nav.internships": "Internships",
           "nav.awards": "Awards",
           "nav.patents": "Patents",
           "nav.selected": "Selected",
@@ -1083,7 +1148,9 @@
           "timeline.autolab.title": "Research Assistant, AutoLab, School of AI, Shanghai Jiao Tong University",
           "timeline.autolab.description": "Conducting research assistance work in AutoLab, focusing on intelligent systems and AI-related engineering research.",
           "research.title": "Research Experience",
-          "research.note": "Publications & Manuscripts",
+          "research.note": "Research Work & Papers",
+          "research.experience.subtitle": "Research Experience",
+          "research.papers.subtitle": "Published & Submitted Papers",
           "research.autolab.meta": "Research Assistant · 2026.01 - Present",
           "research.autolab.title": "AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University",
           "research.autolab.description": "Serving as a research assistant at AutoLab, working on research related to autonomous driving, embodied intelligence, multimodal reasoning, and interpretable AI systems.",
@@ -1099,6 +1166,12 @@
           "research.colm.description": "Manuscript submitted to COLM 2026.",
           "research.neurips.meta": "Submitted · NeurIPS 2026",
           "research.neurips.description": "Manuscript submitted to NeurIPS 2026.",
+          "internships.title": "Internships",
+          "internships.note": "Industry Practice",
+          "internships.shiwei.title": "Algorithm Engineer, Chongqing Shiwei Data Technology Co., Ltd. · Collaboration with the National University of Singapore",
+          "internships.shiwei.description": "Led the development of the DP180 multi-camera loop-closure localization algorithm and the long-range, long-duration LiDAR 3D mapping algorithm.",
+          "internships.hello.title": "End-to-End Algorithm Engineer Intern, Hello",
+          "internships.hello.description": "Worked on end-to-end algorithm engineering during an internship at Hello.",
           "awards.title": "Competition Awards",
           "awards.note": "Competitions & Honors",
           "awards.placeholder.media": "Award image will be added here.",
@@ -1126,6 +1199,7 @@
           "nav.about": "关于",
           "nav.timeline": "经历",
           "nav.research": "科研",
+          "nav.internships": "实习",
           "nav.awards": "竞赛获奖",
           "nav.patents": "专利",
           "nav.selected": "亮点",
@@ -1165,7 +1239,9 @@
           "timeline.autolab.title": "上海交通大学人工智能学院 AutoLab 科研助理",
           "timeline.autolab.description": "在 AutoLab 开展科研助理工作，关注智能系统和 AI 相关工程研究。",
           "research.title": "科研经历",
-          "research.note": "论文与手稿",
+          "research.note": "科研工作与论文",
+          "research.experience.subtitle": "科研经历",
+          "research.papers.subtitle": "发表与在投论文",
           "research.autolab.meta": "科研助理 · 2026.01 至今",
           "research.autolab.title": "上海交通大学人工智能学院 AutoLab",
           "research.autolab.description": "担任 AutoLab 科研助理，研究方向包括自动驾驶、具身智能、多模态推理和可解释 AI 系统。",
@@ -1181,6 +1257,12 @@
           "research.colm.description": "手稿已投稿至 COLM 2026。",
           "research.neurips.meta": "已投稿 · NeurIPS 2026",
           "research.neurips.description": "手稿已投稿至 NeurIPS 2026。",
+          "internships.title": "实习经历",
+          "internships.note": "产业实践",
+          "internships.shiwei.title": "重庆视维数据科技有限公司算法工程师 · 与新加坡国立大学合作",
+          "internships.shiwei.description": "主导 DP180 多相机回环定位算法和长距离、长时程 LiDAR 三维建图算法开发。",
+          "internships.hello.title": "端到端算法工程师实习生，哈啰",
+          "internships.hello.description": "在哈啰从事端到端算法工程相关实习工作。",
           "awards.title": "竞赛获奖",
           "awards.note": "竞赛与荣誉",
           "awards.placeholder.media": "奖项图片将在这里展示。",
