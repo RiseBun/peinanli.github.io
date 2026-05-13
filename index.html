@@ -489,8 +489,9 @@
 
       .hero-buttons {
         display: inline-flex;
+        align-items: center;
         gap: 12px;
-        margin-left: 18px;
+        margin-left: auto;
         flex-wrap: wrap;
       }
 
@@ -499,15 +500,6 @@
         overflow: hidden;
         border-radius: 14px;
         background: #eee7df;
-      }
-
-      .profile-photo::after {
-        position: absolute;
-        inset: auto 14px 14px;
-        height: 2px;
-        content: "";
-        background: linear-gradient(90deg, var(--accent), var(--blue), transparent);
-        opacity: 0.76;
       }
 
       .profile-photo img {
