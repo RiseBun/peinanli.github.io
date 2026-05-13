@@ -92,7 +92,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        z-index: -1;
+        z-index: 1;
         width: 260px;
         height: 260px;
         border-radius: 999px;
@@ -127,74 +127,40 @@
       }
 
       .greeting-panel {
-        position: relative;
         display: grid;
-        width: min(640px, 100%);
-        gap: 18px;
-        padding: clamp(28px, 5vw, 48px);
+        width: min(360px, 100%);
+        min-height: 160px;
+        place-items: center;
+        padding: clamp(28px, 5vw, 42px);
         border: 1px solid rgba(29, 29, 31, 0.12);
         border-radius: 24px;
         background: rgba(255, 255, 255, 0.84);
         box-shadow: 0 30px 90px rgba(42, 33, 25, 0.18);
       }
 
-      .greeting-close {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        display: grid;
-        width: 34px;
-        height: 34px;
-        place-items: center;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.68);
-        color: var(--muted);
-        cursor: pointer;
-      }
-
-      .greeting-kicker {
-        color: var(--accent);
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .greeting h2 {
-        max-width: 540px;
-        font-size: clamp(38px, 7vw, 66px);
-      }
-
-      .greeting p {
-        max-width: 520px;
-        color: var(--muted);
-        font-size: 17px;
-        line-height: 1.75;
-      }
-
-      .greeting-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 6px;
+      .greeting-word {
+        color: var(--text);
+        font-size: clamp(42px, 7vw, 72px);
+        font-weight: 800;
+        letter-spacing: -0.05em;
       }
 
       .app {
+        position: relative;
+        z-index: 2;
         display: grid;
         width: min(1180px, calc(100% - clamp(40px, 8vw, 128px)));
         min-height: 100vh;
         margin: 0 auto;
-        grid-template-columns: 152px minmax(0, 1fr);
-        gap: 20px;
-        padding: 28px 0;
+        align-items: center;
+        grid-template-columns: 148px minmax(0, 1fr);
+        gap: 24px;
+        padding: 42px 0;
       }
 
       .sidebar {
-        position: sticky;
-        top: 32px;
         display: flex;
-        height: calc(100vh - 64px);
+        min-height: min(680px, calc(100vh - 84px));
         flex-direction: column;
         padding: 14px;
         border: 1px solid var(--line);
@@ -314,12 +280,13 @@
       .content {
         min-width: 0;
         display: flex;
-        justify-content: stretch;
+        align-items: center;
+        justify-content: center;
       }
 
       .panel {
         display: none;
-        width: 100%;
+        width: min(100%, 940px);
       }
 
       .panel.is-active {
@@ -341,8 +308,8 @@
 
       .hero {
         display: grid;
-        min-height: calc(100vh - 56px);
-        grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.82fr);
+        min-height: min(680px, calc(100vh - 84px));
+        grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.7fr);
         gap: 20px;
         align-items: stretch;
       }
@@ -471,72 +438,6 @@
         display: none;
       }
 
-      .topic-board {
-        position: relative;
-        min-height: 132px;
-        margin-top: 30px;
-        border-top: 1px solid var(--line);
-      }
-
-      .topic-board::before {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        left: 0;
-        height: 1px;
-        content: "";
-        background: linear-gradient(90deg, transparent, rgba(154, 47, 63, 0.34), rgba(31, 78, 121, 0.26), transparent);
-      }
-
-      .topic-button {
-        position: absolute;
-        display: inline-grid;
-        min-width: 86px;
-        min-height: 42px;
-        place-items: center;
-        padding: 0 12px;
-        border: 1px solid rgba(154, 47, 63, 0.18);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.72);
-        color: var(--accent-dark);
-        cursor: pointer;
-        font-size: 12px;
-        font-weight: 900;
-        box-shadow: 0 10px 24px rgba(42, 33, 25, 0.08);
-        transition:
-          transform 180ms ease,
-          border-color 180ms ease,
-          background 180ms ease;
-      }
-
-      .topic-button:hover,
-      .topic-button:focus-visible {
-        transform: translateY(-5px) scale(1.03);
-        border-color: rgba(31, 78, 121, 0.28);
-        background: #fff;
-        outline: none;
-      }
-
-      .topic-button:nth-child(1) {
-        top: 20px;
-        left: 0;
-      }
-
-      .topic-button:nth-child(2) {
-        top: 76px;
-        left: 24%;
-      }
-
-      .topic-button:nth-child(3) {
-        top: 16px;
-        left: 52%;
-      }
-
-      .topic-button:nth-child(4) {
-        top: 78px;
-        right: 0;
-      }
-
       .keyword-mark {
         display: inline-flex;
         margin: 0 3px;
@@ -547,23 +448,6 @@
         font-size: 12px;
         font-weight: 900;
         white-space: nowrap;
-      }
-
-      button.keyword-mark {
-        border: 0;
-        cursor: pointer;
-        transition:
-          transform 160ms ease,
-          background 160ms ease,
-          color 160ms ease;
-      }
-
-      button.keyword-mark:hover,
-      button.keyword-mark:focus-visible {
-        transform: translateY(-1px);
-        background: var(--accent);
-        color: #fff;
-        outline: none;
       }
 
       .actions {
@@ -880,17 +764,17 @@
         line-height: 1.7;
       }
 
-      .portfolio-node:nth-of-type(2) {
+      .portfolio-node:nth-of-type(1) {
         top: 24px;
         left: 0;
       }
 
-      .portfolio-node:nth-of-type(3) {
+      .portfolio-node:nth-of-type(2) {
         top: 34px;
         right: 0;
       }
 
-      .portfolio-node:nth-of-type(4) {
+      .portfolio-node:nth-of-type(3) {
         right: 18%;
         bottom: 22px;
       }
@@ -959,22 +843,6 @@
         .hero {
           min-height: auto;
           grid-template-columns: 1fr;
-        }
-
-        .topic-board {
-          min-height: auto;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
-          padding-top: 18px;
-        }
-
-        .topic-board::before {
-          display: none;
-        }
-
-        .topic-button {
-          position: static;
         }
 
         .card,
@@ -1049,10 +917,6 @@
           width: 100%;
         }
 
-        .greeting-actions .button {
-          width: 100%;
-        }
-
         .journey {
           padding-left: 18px;
         }
@@ -1070,24 +934,9 @@
   <body class="greeting-open">
     <div class="progress" aria-hidden="true"></div>
     <div class="cursor-light" aria-hidden="true"></div>
-    <div class="greeting" role="dialog" aria-modal="true" aria-labelledby="greeting-title">
+    <div class="greeting" aria-label="Welcome">
       <div class="greeting-panel">
-        <button class="greeting-close" type="button" aria-label="Close greeting" data-greeting-close>×</button>
-        <p class="greeting-kicker" data-en="Hello, welcome in" data-zh="你好，欢迎来到这里">Hello, welcome in</p>
-        <h2 id="greeting-title" data-en="I am Peinan. Pick a path to start." data-zh="我是李培楠。选一条路径开始吧。">
-          I am Peinan. Pick a path to start.
-        </h2>
-        <p
-          data-en="This homepage is a compact map of my work in robotics, embodied AI, autonomous driving, and engineering practice."
-          data-zh="这个主页是一张紧凑的个人地图，串起我在机器人、具身智能、自动驾驶和工程实践中的经历。"
-        >
-          This homepage is a compact map of my work in robotics, embodied AI, autonomous driving, and engineering practice.
-        </p>
-        <div class="greeting-actions">
-          <button class="button primary" type="button" data-greeting-enter data-panel-target="home" data-en="Enter Homepage" data-zh="进入主页">Enter Homepage</button>
-          <button class="button" type="button" data-greeting-enter data-panel-target="research" data-en="View Research" data-zh="查看科研">View Research</button>
-          <button class="button" type="button" data-greeting-enter data-panel-target="portfolio" data-en="See Portfolio" data-zh="看作品集">See Portfolio</button>
-        </div>
+        <div class="greeting-word">Welcome</div>
       </div>
     </div>
     <main class="app">
@@ -1122,18 +971,18 @@
               <ul class="highlights">
                 <li>
                   <span data-en="My research centers on" data-zh="我的研究围绕">My research centers on</span>
-                  <button class="keyword-mark" type="button" data-panel-target="portfolio" data-en="robotics" data-zh="机器人">robotics</button>
+                  <span class="keyword-mark" data-en="robotics" data-zh="机器人">robotics</span>
                   <span data-en="and" data-zh="与">and</span>
-                  <button class="keyword-mark" type="button" data-panel-target="research" data-en="embodied AI" data-zh="具身智能">embodied AI</button>
+                  <span class="keyword-mark" data-en="embodied AI" data-zh="具身智能">embodied AI</span>
                   <span data-en="with extensions to" data-zh="展开，并延伸到">with extensions to</span>
-                  <button class="keyword-mark" type="button" data-panel-target="research" data-en="autonomous driving" data-zh="自动驾驶">autonomous driving</button>
+                  <span class="keyword-mark" data-en="autonomous driving" data-zh="自动驾驶">autonomous driving</span>
                   <span data-en="and" data-zh="和">and</span>
-                  <button class="keyword-mark" type="button" data-panel-target="research" data-en="multimodal large models" data-zh="多模态大模型">multimodal large models</button>
+                  <span class="keyword-mark" data-en="multimodal large models" data-zh="多模态大模型">multimodal large models</span>
                   <span data-en="." data-zh="。">.</span>
                 </li>
                 <li>
                   <span data-en="I work as a" data-zh="我是一名贯穿软硬件的">I work as a</span>
-                  <button class="keyword-mark" type="button" data-panel-target="portfolio" data-en="full-stack developer" data-zh="全栈开发">full-stack developer</button>
+                  <span class="keyword-mark" data-en="full-stack developer" data-zh="全栈开发">full-stack developer</span>
                   <span
                     data-en="across software and hardware, connecting mechanics, electronics, algorithms, and AI."
                     data-zh="工程实践者，连接机械、电子、算法与 AI。"
@@ -1143,7 +992,7 @@
                 </li>
                 <li>
                   <span data-en="As a" data-zh="作为">As a</span>
-                  <button class="keyword-mark" type="button" data-panel-target="portfolio" data-en="young entrepreneur" data-zh="青年创业者">young entrepreneur</button>
+                  <span class="keyword-mark" data-en="young entrepreneur" data-zh="青年创业者">young entrepreneur</span>
                   <span
                     data-en="I like turning unconventional engineering ideas into practical new possibilities."
                     data-zh="我希望把不循常规的工程想法转化为新的现实可能。"
@@ -1152,12 +1001,6 @@
                   </span>
                 </li>
               </ul>
-              <div class="topic-board" aria-label="Explore topics">
-                <button class="topic-button" type="button" data-panel-target="portfolio" data-en="Robotics" data-zh="机器人">Robotics</button>
-                <button class="topic-button" type="button" data-panel-target="research" data-en="Embodied AI" data-zh="具身智能">Embodied AI</button>
-                <button class="topic-button" type="button" data-panel-target="research" data-en="Driving" data-zh="自动驾驶">Driving</button>
-                <button class="topic-button" type="button" data-panel-target="timeline" data-en="Journey" data-zh="经历轨迹">Journey</button>
-              </div>
               <div class="actions">
                 <p class="hero-contact">
                   <span data-en="Email:" data-zh="邮箱：">Email:</span>
@@ -1409,8 +1252,6 @@
       const languageToggle = document.querySelector("[data-language-toggle]");
       const progress = document.querySelector(".progress");
       const greeting = document.querySelector(".greeting");
-      const greetingClose = document.querySelector("[data-greeting-close]");
-      const greetingEnterButtons = document.querySelectorAll("[data-greeting-enter]");
       const cursorLight = document.querySelector(".cursor-light");
       let currentLanguage = "en";
 
@@ -1470,25 +1311,9 @@
         cursorLight.style.top = `${event.clientY}px`;
       });
 
-      greetingClose.addEventListener("click", closeGreeting);
-      greeting.addEventListener("click", (event) => {
-        if (event.target === greeting) {
-          closeGreeting();
-        }
-      });
-      greetingEnterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          closeGreeting();
-        });
-      });
-      window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && !greeting.classList.contains("is-hidden")) {
-          closeGreeting();
-        }
-      });
-
       setLanguage("en");
       updateProgress();
+      window.setTimeout(closeGreeting, 1000);
     </script>
   </body>
 </html>
