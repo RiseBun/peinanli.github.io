@@ -164,6 +164,8 @@
       }
 
       .sidebar {
+        position: sticky;
+        top: max(28px, calc((100vh - var(--stage-height)) / 2));
         display: flex;
         height: var(--stage-height);
         flex-direction: column;
