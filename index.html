@@ -40,6 +40,8 @@
       }
 
       body {
+        display: flex;
+        flex-direction: column;
         margin: 0;
         min-height: 100vh;
         overflow-x: hidden;
@@ -157,18 +159,18 @@
           calc(var(--sidebar-width) + var(--layout-gap) + var(--page-width)),
           calc(100% - clamp(32px, 7vw, 112px))
         );
-        min-height: 100vh;
+        min-height: calc(100vh - 48px);
         margin: 0 auto;
         align-content: center;
-        align-items: center;
+        align-items: start;
         grid-template-columns: var(--sidebar-width) minmax(0, var(--page-width));
         gap: var(--layout-gap);
-        padding: 42px 0;
+        padding: 28px 0 20px;
       }
 
       .sidebar {
         display: flex;
-        min-height: var(--stage-height);
+        height: var(--stage-height);
         flex-direction: column;
         padding: 14px;
         border: 1px solid var(--line);
@@ -296,6 +298,7 @@
       .panel {
         display: none;
         width: 100%;
+        min-height: var(--stage-height);
       }
 
       .panel.is-active {
@@ -799,7 +802,10 @@
       }
 
       footer {
-        margin-top: 28px;
+        position: relative;
+        z-index: 2;
+        margin-top: auto;
+        padding: 0 16px 16px;
         color: var(--muted);
         font-size: 13px;
         text-align: center;
@@ -828,6 +834,10 @@
           position: static;
           min-height: auto;
           height: auto;
+        }
+
+        .panel {
+          min-height: auto;
         }
 
         .brand {
@@ -1259,11 +1269,12 @@
           </div>
         </section>
 
-        <footer data-en="© 2026 Peinan Li. Built for peinanli.github.io." data-zh="© 2026 李培楠。Built for peinanli.github.io.">
-          © 2026 Peinan Li. Built for peinanli.github.io.
-        </footer>
       </div>
     </main>
+
+    <footer data-en="© 2026 Peinan Li. Built for peinanli.github.io." data-zh="© 2026 李培楠。Built for peinanli.github.io.">
+      © 2026 Peinan Li. Built for peinanli.github.io.
+    </footer>
 
     <script>
       const panelButtons = document.querySelectorAll("[data-panel-target]");
