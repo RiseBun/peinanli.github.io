@@ -71,6 +71,10 @@
         font: inherit;
       }
 
+      body.greeting-open {
+        overflow: hidden;
+      }
+
       .progress {
         position: fixed;
         top: 0;
@@ -84,14 +88,106 @@
         pointer-events: none;
       }
 
+      .cursor-light {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 260px;
+        height: 260px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(154, 47, 63, 0.16), transparent 68%);
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: opacity 180ms ease;
+        pointer-events: none;
+      }
+
+      .greeting {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at 28% 20%, rgba(154, 47, 63, 0.18), transparent 25rem),
+          radial-gradient(circle at 78% 70%, rgba(31, 78, 121, 0.16), transparent 24rem),
+          rgba(247, 244, 239, 0.82);
+        backdrop-filter: blur(18px);
+        transition:
+          opacity 240ms ease,
+          visibility 240ms ease;
+      }
+
+      .greeting.is-hidden {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .greeting-panel {
+        position: relative;
+        display: grid;
+        width: min(640px, 100%);
+        gap: 18px;
+        padding: clamp(28px, 5vw, 48px);
+        border: 1px solid rgba(29, 29, 31, 0.12);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.84);
+        box-shadow: 0 30px 90px rgba(42, 33, 25, 0.18);
+      }
+
+      .greeting-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.68);
+        color: var(--muted);
+        cursor: pointer;
+      }
+
+      .greeting-kicker {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .greeting h2 {
+        max-width: 540px;
+        font-size: clamp(38px, 7vw, 66px);
+      }
+
+      .greeting p {
+        max-width: 520px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.75;
+      }
+
+      .greeting-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 6px;
+      }
+
       .app {
         display: grid;
-        width: min(1440px, calc(100% - 32px));
+        width: min(1180px, calc(100% - clamp(40px, 8vw, 128px)));
         min-height: 100vh;
         margin: 0 auto;
         grid-template-columns: 152px minmax(0, 1fr);
-        gap: 18px;
-        padding: 22px 0;
+        gap: 20px;
+        padding: 28px 0;
       }
 
       .sidebar {
@@ -245,9 +341,9 @@
 
       .hero {
         display: grid;
-        min-height: calc(100vh - 44px);
-        grid-template-columns: minmax(0, 1.15fr) minmax(310px, 0.85fr);
-        gap: 18px;
+        min-height: calc(100vh - 56px);
+        grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.82fr);
+        gap: 20px;
         align-items: stretch;
       }
 
@@ -271,7 +367,7 @@
       .profile-card {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         gap: 16px;
         padding: 16px;
       }
@@ -318,64 +414,14 @@
         line-height: 1.8;
       }
 
-      .quick-stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 28px;
-      }
-
-      .stat-button {
-        min-height: 88px;
-        padding: 14px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.58);
-        color: var(--text);
-        cursor: pointer;
-        text-align: left;
-        transition:
-          transform 160ms ease,
-          border-color 160ms ease,
-          box-shadow 160ms ease,
-          background 160ms ease;
-      }
-
-      .stat-button:hover,
-      .stat-button:focus-visible {
-        transform: translateY(-3px);
-        border-color: rgba(154, 47, 63, 0.28);
-        background: #fff;
-        box-shadow: var(--soft-shadow);
-        outline: none;
-      }
-
-      .stat-number {
-        display: block;
-        color: var(--accent-dark);
-        font-size: 26px;
-        font-weight: 900;
-        line-height: 1;
-      }
-
-      .stat-label {
-        display: block;
-        margin-top: 10px;
-        color: var(--muted);
-        font-size: 12px;
-        font-weight: 800;
-        line-height: 1.35;
-      }
-
       .highlights {
         display: grid;
-        gap: 12px;
-        margin: 26px 0 0;
+        gap: 14px;
+        margin: 30px 0 0;
         padding: 0;
         list-style: none;
       }
 
-      .highlights li,
       .item,
       .tile {
         border: 1px solid var(--line);
@@ -385,7 +431,7 @@
 
       .highlights li {
         position: relative;
-        padding: 15px 16px 15px 42px;
+        padding: 5px 0 5px 34px;
         color: var(--muted);
         font-size: 16px;
         line-height: 1.7;
@@ -397,20 +443,98 @@
 
       .highlights li:hover {
         transform: translateX(4px);
-        border-color: rgba(154, 47, 63, 0.22);
-        background: #fff;
       }
 
       .highlights li::before {
         position: absolute;
-        top: 20px;
-        left: 18px;
-        width: 9px;
-        height: 9px;
+        top: 15px;
+        left: 4px;
+        width: 10px;
+        height: 10px;
         content: "";
         border-radius: 999px;
         background: var(--accent);
         box-shadow: 0 0 0 5px rgba(154, 47, 63, 0.1);
+      }
+
+      .highlights li::after {
+        position: absolute;
+        top: 29px;
+        bottom: -16px;
+        left: 8px;
+        width: 1px;
+        content: "";
+        background: linear-gradient(var(--line), transparent);
+      }
+
+      .highlights li:last-child::after {
+        display: none;
+      }
+
+      .topic-board {
+        position: relative;
+        min-height: 132px;
+        margin-top: 30px;
+        border-top: 1px solid var(--line);
+      }
+
+      .topic-board::before {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        left: 0;
+        height: 1px;
+        content: "";
+        background: linear-gradient(90deg, transparent, rgba(154, 47, 63, 0.34), rgba(31, 78, 121, 0.26), transparent);
+      }
+
+      .topic-button {
+        position: absolute;
+        display: inline-grid;
+        min-width: 86px;
+        min-height: 42px;
+        place-items: center;
+        padding: 0 12px;
+        border: 1px solid rgba(154, 47, 63, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--accent-dark);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 900;
+        box-shadow: 0 10px 24px rgba(42, 33, 25, 0.08);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease;
+      }
+
+      .topic-button:hover,
+      .topic-button:focus-visible {
+        transform: translateY(-5px) scale(1.03);
+        border-color: rgba(31, 78, 121, 0.28);
+        background: #fff;
+        outline: none;
+      }
+
+      .topic-button:nth-child(1) {
+        top: 20px;
+        left: 0;
+      }
+
+      .topic-button:nth-child(2) {
+        top: 76px;
+        left: 24%;
+      }
+
+      .topic-button:nth-child(3) {
+        top: 16px;
+        left: 52%;
+      }
+
+      .topic-button:nth-child(4) {
+        top: 78px;
+        right: 0;
       }
 
       .keyword-mark {
@@ -498,6 +622,25 @@
       }
 
       .photo-caption {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .profile-intro {
+        display: grid;
+        gap: 10px;
+        padding: 6px 2px 2px;
+      }
+
+      .profile-summary {
+        color: var(--text);
+        font-size: 17px;
+        font-weight: 760;
+        line-height: 1.55;
+      }
+
+      .profile-tagline {
         color: var(--muted);
         font-size: 14px;
         line-height: 1.7;
@@ -605,6 +748,153 @@
         object-fit: contain;
       }
 
+      .journey {
+        position: relative;
+        display: grid;
+        gap: 22px;
+        padding-left: 22px;
+      }
+
+      .journey::before {
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        left: 6px;
+        width: 2px;
+        content: "";
+        background: linear-gradient(var(--accent), var(--blue), transparent);
+      }
+
+      .journey-step {
+        position: relative;
+        display: grid;
+        grid-template-columns: 126px minmax(0, 1fr);
+        gap: 18px;
+        align-items: center;
+        padding: 2px 0;
+      }
+
+      .journey-step::before {
+        position: absolute;
+        top: 50%;
+        left: -21px;
+        width: 12px;
+        height: 12px;
+        content: "";
+        transform: translateY(-50%);
+        border: 3px solid var(--surface-strong);
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 5px rgba(154, 47, 63, 0.1);
+      }
+
+      .journey-image {
+        overflow: hidden;
+        aspect-ratio: 4 / 3;
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .journey-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .journey-copy {
+        padding: 8px 0;
+      }
+
+      .journey-copy p {
+        margin-top: 8px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .portfolio-map {
+        position: relative;
+        display: grid;
+        min-height: 430px;
+        place-items: center;
+      }
+
+      .portfolio-map::before {
+        position: absolute;
+        inset: 16%;
+        content: "";
+        border: 1px solid rgba(154, 47, 63, 0.18);
+        border-radius: 999px;
+      }
+
+      .portfolio-map::after {
+        position: absolute;
+        width: 52%;
+        height: 1px;
+        content: "";
+        background: linear-gradient(90deg, transparent, rgba(31, 78, 121, 0.34), transparent);
+      }
+
+      .portfolio-core {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        width: 150px;
+        height: 150px;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 900;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(154, 47, 63, 0.22);
+      }
+
+      .portfolio-node {
+        position: absolute;
+        z-index: 2;
+        width: min(260px, 42%);
+        padding: 20px;
+        border-left: 3px solid var(--accent);
+        background: rgba(255, 255, 255, 0.68);
+        box-shadow: var(--soft-shadow);
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .portfolio-node:hover {
+        transform: translateY(-5px);
+        border-color: var(--blue);
+        background: #fff;
+      }
+
+      .portfolio-node h3 {
+        color: var(--accent-dark);
+      }
+
+      .portfolio-node p {
+        margin-top: 8px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .portfolio-node:nth-of-type(2) {
+        top: 24px;
+        left: 0;
+      }
+
+      .portfolio-node:nth-of-type(3) {
+        top: 34px;
+        right: 0;
+      }
+
+      .portfolio-node:nth-of-type(4) {
+        right: 18%;
+        bottom: 22px;
+      }
+
       .subsection + .subsection {
         margin-top: 26px;
       }
@@ -671,8 +961,20 @@
           grid-template-columns: 1fr;
         }
 
-        .quick-stats {
-          grid-template-columns: 1fr;
+        .topic-board {
+          min-height: auto;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding-top: 18px;
+        }
+
+        .topic-board::before {
+          display: none;
+        }
+
+        .topic-button {
+          position: static;
         }
 
         .card,
@@ -694,6 +996,27 @@
 
         .hero-buttons {
           margin-left: 0;
+        }
+
+        .journey-step {
+          grid-template-columns: 92px minmax(0, 1fr);
+        }
+
+        .portfolio-map {
+          min-height: auto;
+          place-items: stretch;
+          gap: 14px;
+        }
+
+        .portfolio-map::before,
+        .portfolio-map::after,
+        .portfolio-core {
+          display: none;
+        }
+
+        .portfolio-node {
+          position: static;
+          width: 100%;
         }
       }
 
@@ -725,11 +1048,48 @@
         .button {
           width: 100%;
         }
+
+        .greeting-actions .button {
+          width: 100%;
+        }
+
+        .journey {
+          padding-left: 18px;
+        }
+
+        .journey-step {
+          grid-template-columns: 1fr;
+        }
+
+        .journey-image {
+          max-width: 180px;
+        }
       }
     </style>
   </head>
-  <body>
+  <body class="greeting-open">
     <div class="progress" aria-hidden="true"></div>
+    <div class="cursor-light" aria-hidden="true"></div>
+    <div class="greeting" role="dialog" aria-modal="true" aria-labelledby="greeting-title">
+      <div class="greeting-panel">
+        <button class="greeting-close" type="button" aria-label="Close greeting" data-greeting-close>×</button>
+        <p class="greeting-kicker" data-en="Hello, welcome in" data-zh="你好，欢迎来到这里">Hello, welcome in</p>
+        <h2 id="greeting-title" data-en="I am Peinan. Pick a path to start." data-zh="我是李培楠。选一条路径开始吧。">
+          I am Peinan. Pick a path to start.
+        </h2>
+        <p
+          data-en="This homepage is a compact map of my work in robotics, embodied AI, autonomous driving, and engineering practice."
+          data-zh="这个主页是一张紧凑的个人地图，串起我在机器人、具身智能、自动驾驶和工程实践中的经历。"
+        >
+          This homepage is a compact map of my work in robotics, embodied AI, autonomous driving, and engineering practice.
+        </p>
+        <div class="greeting-actions">
+          <button class="button primary" type="button" data-greeting-enter data-panel-target="home" data-en="Enter Homepage" data-zh="进入主页">Enter Homepage</button>
+          <button class="button" type="button" data-greeting-enter data-panel-target="research" data-en="View Research" data-zh="查看科研">View Research</button>
+          <button class="button" type="button" data-greeting-enter data-panel-target="portfolio" data-en="See Portfolio" data-zh="看作品集">See Portfolio</button>
+        </div>
+      </div>
+    </div>
     <main class="app">
       <aside class="sidebar" aria-label="Primary navigation">
         <div class="brand">
@@ -759,27 +1119,6 @@
             <div class="card">
               <p class="eyebrow" data-en="Personal Homepage" data-zh="个人主页">Personal Homepage</p>
               <h1>Peinan Li</h1>
-              <p
-                class="summary"
-                data-en="I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University."
-                data-zh="我是同济大学机械与能源工程学院机械电子工程专业本科生。"
-              >
-                I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University.
-              </p>
-              <div class="quick-stats" aria-label="Quick navigation">
-                <button class="stat-button" type="button" data-panel-target="research">
-                  <span class="stat-number">6</span>
-                  <span class="stat-label" data-en="papers accepted or submitted" data-zh="篇已接收或在投论文">papers accepted or submitted</span>
-                </button>
-                <button class="stat-button" type="button" data-panel-target="timeline">
-                  <span class="stat-number">4</span>
-                  <span class="stat-label" data-en="research and engineering stages" data-zh="段科研与工程经历">research and engineering stages</span>
-                </button>
-                <button class="stat-button" type="button" data-panel-target="portfolio">
-                  <span class="stat-number">3</span>
-                  <span class="stat-label" data-en="portfolio directions" data-zh="个作品集方向">portfolio directions</span>
-                </button>
-              </div>
               <ul class="highlights">
                 <li>
                   <span data-en="My research centers on" data-zh="我的研究围绕">My research centers on</span>
@@ -813,6 +1152,12 @@
                   </span>
                 </li>
               </ul>
+              <div class="topic-board" aria-label="Explore topics">
+                <button class="topic-button" type="button" data-panel-target="portfolio" data-en="Robotics" data-zh="机器人">Robotics</button>
+                <button class="topic-button" type="button" data-panel-target="research" data-en="Embodied AI" data-zh="具身智能">Embodied AI</button>
+                <button class="topic-button" type="button" data-panel-target="research" data-en="Driving" data-zh="自动驾驶">Driving</button>
+                <button class="topic-button" type="button" data-panel-target="timeline" data-en="Journey" data-zh="经历轨迹">Journey</button>
+              </div>
               <div class="actions">
                 <p class="hero-contact">
                   <span data-en="Email:" data-zh="邮箱：">Email:</span>
@@ -831,13 +1176,22 @@
               <div class="profile-photo">
                 <img src="portrait.jpg" alt="Portrait of Peinan Li" />
               </div>
-              <p
-                class="photo-caption"
-                data-en="Mechanical Engineering & Robotics student exploring how intelligent systems move, sense, and make decisions in the physical world."
-                data-zh="机械工程与机器人方向学生，探索智能系统如何在物理世界中运动、感知和决策。"
-              >
-                Mechanical Engineering & Robotics student exploring how intelligent systems move, sense, and make decisions in the physical world.
-              </p>
+              <div class="profile-intro">
+                <p
+                  class="profile-summary"
+                  data-en="I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University."
+                  data-zh="我是同济大学机械与能源工程学院机械电子工程专业本科生。"
+                >
+                  I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University.
+                </p>
+                <p
+                  class="profile-tagline"
+                  data-en="Exploring how intelligent systems move, sense, and make decisions in the physical world."
+                  data-zh="探索智能系统如何在物理世界中运动、感知和决策。"
+                >
+                  Exploring how intelligent systems move, sense, and make decisions in the physical world.
+                </p>
+              </div>
             </aside>
           </div>
         </section>
@@ -848,10 +1202,10 @@
               <h2 data-en="Timeline" data-zh="时间线">Timeline</h2>
               <p class="section-note" data-en="A concise overview" data-zh="简要经历概览">A concise overview</p>
             </div>
-            <div class="grid two">
-              <article class="media-card">
-                <figure class="media"><img src="同济.jpeg" alt="Tongji University" /></figure>
-                <div>
+            <div class="journey">
+              <article class="journey-step">
+                <figure class="journey-image"><img src="同济.jpeg" alt="Tongji University" /></figure>
+                <div class="journey-copy">
                   <span class="meta">2023.09 - 2027.07</span>
                   <h3 data-en="B.Eng. Student at Tongji University" data-zh="同济大学工学本科生">B.Eng. Student at Tongji University</h3>
                   <p data-en="Undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics." data-zh="就读于同济大学机械与能源工程学院机械电子工程专业。">
@@ -859,9 +1213,9 @@
                   </p>
                 </div>
               </article>
-              <article class="media-card">
-                <figure class="media"><img src="robocon.jpg" alt="Robocon competition" /></figure>
-                <div>
+              <article class="journey-step">
+                <figure class="journey-image"><img src="robocon.jpg" alt="Robocon competition" /></figure>
+                <div class="journey-copy">
                   <span class="meta" data-en="2024.03 - Present" data-zh="2024.03 至今">2024.03 - Present</span>
                   <h3 data-en="Captain of Tongji University Robocon Robotics Team" data-zh="同济大学 Robocon 机器人队队长">Captain of Tongji University Robocon Robotics Team</h3>
                   <p data-en="Rebuilt the team, organized technical materials, developed competition strategies, and trained core members." data-zh="重建队伍，组织技术资料，制定竞赛策略与技术方案，并培养核心队员。">
@@ -869,9 +1223,9 @@
                   </p>
                 </div>
               </article>
-              <article class="media-card">
-                <figure class="media"><img src="新国立.jpeg" alt="National University of Singapore collaboration" /></figure>
-                <div>
+              <article class="journey-step">
+                <figure class="journey-image"><img src="新国立.jpeg" alt="National University of Singapore collaboration" /></figure>
+                <div class="journey-copy">
                   <span class="meta">2025.08 - 2026.01</span>
                   <h3 data-en="Algorithm Engineer, Shiwei Data · NUS Collaboration" data-zh="视维数据算法工程师 · 与新加坡国立大学合作">Algorithm Engineer, Shiwei Data · NUS Collaboration</h3>
                   <p data-en="Led multi-camera loop-closure localization and long-range LiDAR 3D mapping algorithm work." data-zh="主导多相机回环定位和长距离 LiDAR 三维建图算法开发。">
@@ -879,9 +1233,9 @@
                   </p>
                 </div>
               </article>
-              <article class="media-card">
-                <figure class="media"><img src="上海交大.jpg" alt="Shanghai Jiao Tong University" /></figure>
-                <div>
+              <article class="journey-step">
+                <figure class="journey-image"><img src="上海交大.jpg" alt="Shanghai Jiao Tong University" /></figure>
+                <div class="journey-copy">
                   <span class="meta" data-en="2026.01 - Present" data-zh="2026.01 至今">2026.01 - Present</span>
                   <h3 data-en="Research Assistant, AutoLab, Shanghai Jiao Tong University" data-zh="上海交通大学 AutoLab 科研助理">Research Assistant, AutoLab, Shanghai Jiao Tong University</h3>
                   <p data-en="Working on intelligent systems and AI-related engineering research." data-zh="开展智能系统和 AI 相关工程研究。">
@@ -1018,20 +1372,21 @@
               <h2 data-en="Portfolio" data-zh="作品集">Portfolio</h2>
               <p class="section-note" data-en="Selected works" data-zh="精选作品">Selected works</p>
             </div>
-            <div class="grid three">
-              <article class="tile">
+            <div class="portfolio-map">
+              <div class="portfolio-core" data-en="Selected Works" data-zh="精选作品">Selected Works</div>
+              <article class="portfolio-node">
                 <h3 data-en="Robotics" data-zh="机器人">Robotics</h3>
                 <p data-en="Robocon team rebuilding, mechanical design, electrical control, algorithms, and competition strategy." data-zh="Robocon 队伍重建、机械设计、电控、算法与竞赛策略。">
                   Robocon team rebuilding, mechanical design, electrical control, algorithms, and competition strategy.
                 </p>
               </article>
-              <article class="tile">
+              <article class="portfolio-node">
                 <h3 data-en="Algorithms" data-zh="算法">Algorithms</h3>
                 <p data-en="Localization, mapping, autonomous driving, multimodal reasoning, and long-horizon agents." data-zh="定位、建图、自动驾驶、多模态推理与长时程智能体。">
                   Localization, mapping, autonomous driving, multimodal reasoning, and long-horizon agents.
                 </p>
               </article>
-              <article class="tile">
+              <article class="portfolio-node">
                 <h3 data-en="Entrepreneurship" data-zh="创业">Entrepreneurship</h3>
                 <p data-en="Research-driven engineering products across robotics, intelligent manufacturing, and AI." data-zh="围绕机器人、智能制造与 AI 的研究驱动型工程产品。">
                   Research-driven engineering products across robotics, intelligent manufacturing, and AI.
@@ -1053,6 +1408,10 @@
       const panels = document.querySelectorAll("[data-panel]");
       const languageToggle = document.querySelector("[data-language-toggle]");
       const progress = document.querySelector(".progress");
+      const greeting = document.querySelector(".greeting");
+      const greetingClose = document.querySelector("[data-greeting-close]");
+      const greetingEnterButtons = document.querySelectorAll("[data-greeting-enter]");
+      const cursorLight = document.querySelector(".cursor-light");
       let currentLanguage = "en";
 
       function showPanel(panelName) {
@@ -1069,6 +1428,11 @@
         const scrollable = document.documentElement.scrollHeight - window.innerHeight;
         const progressValue = scrollable > 0 ? window.scrollY / scrollable : 0;
         progress.style.transform = `scaleX(${Math.min(Math.max(progressValue, 0), 1)})`;
+      }
+
+      function closeGreeting() {
+        greeting.classList.add("is-hidden");
+        document.body.classList.remove("greeting-open");
       }
 
       function setLanguage(language) {
@@ -1100,6 +1464,28 @@
       });
 
       window.addEventListener("scroll", updateProgress, { passive: true });
+      window.addEventListener("pointermove", (event) => {
+        cursorLight.style.opacity = "1";
+        cursorLight.style.left = `${event.clientX}px`;
+        cursorLight.style.top = `${event.clientY}px`;
+      });
+
+      greetingClose.addEventListener("click", closeGreeting);
+      greeting.addEventListener("click", (event) => {
+        if (event.target === greeting) {
+          closeGreeting();
+        }
+      });
+      greetingEnterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          closeGreeting();
+        });
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !greeting.classList.contains("is-hidden")) {
+          closeGreeting();
+        }
+      });
 
       setLanguage("en");
       updateProgress();
