@@ -61,11 +61,11 @@
 
       .app {
         display: grid;
-        width: min(1220px, calc(100% - 40px));
+        width: min(1280px, calc(100% - 40px));
         min-height: 100vh;
         margin: 0 auto;
-        grid-template-columns: 260px minmax(0, 1fr);
-        gap: 28px;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 22px;
         padding: 32px 0;
       }
 
@@ -75,7 +75,7 @@
         display: flex;
         height: calc(100vh - 64px);
         flex-direction: column;
-        padding: 24px;
+        padding: 18px;
         border: 1px solid var(--line);
         border-radius: var(--radius);
         background: var(--surface);
@@ -84,13 +84,13 @@
       }
 
       .brand {
-        margin-bottom: 28px;
+        margin-bottom: 22px;
       }
 
       .brand-name {
         margin: 0;
         color: var(--text);
-        font-size: 22px;
+        font-size: 19px;
         font-weight: 800;
         letter-spacing: -0.04em;
       }
@@ -98,7 +98,7 @@
       .brand-note {
         margin: 8px 0 0;
         color: var(--muted);
-        font-size: 13px;
+        font-size: 12px;
         line-height: 1.6;
       }
 
@@ -112,7 +112,7 @@
         width: 100%;
         align-items: center;
         justify-content: space-between;
-        padding: 12px 14px;
+        padding: 10px 12px;
         border: 1px solid transparent;
         border-radius: 16px;
         background: transparent;
@@ -174,10 +174,13 @@
 
       .content {
         min-width: 0;
+        display: flex;
+        justify-content: center;
       }
 
       .panel {
         display: none;
+        width: min(100%, 980px);
       }
 
       .panel.is-active {
@@ -352,35 +355,6 @@
         line-height: 1.7;
       }
 
-      .quick-stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        margin-top: 24px;
-      }
-
-      .stat {
-        padding: 18px;
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.55);
-      }
-
-      .stat strong {
-        display: block;
-        color: var(--accent-dark);
-        font-size: 26px;
-        line-height: 1;
-      }
-
-      .stat span {
-        display: block;
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 13px;
-        line-height: 1.5;
-      }
-
       .section-card {
         padding: 34px;
       }
@@ -513,8 +487,7 @@
         }
 
         .grid.two,
-        .grid.three,
-        .quick-stats {
+        .grid.three {
           grid-template-columns: 1fr;
         }
 
@@ -610,20 +583,6 @@
                 <div class="hero-buttons">
                   <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
                   <button class="button primary" type="button" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
-                </div>
-              </div>
-              <div class="quick-stats">
-                <div class="stat">
-                  <strong>10+</strong>
-                  <span data-en="professional competitions" data-zh="专业竞赛经历">professional competitions</span>
-                </div>
-                <div class="stat">
-                  <strong>2 + 11</strong>
-                  <span data-en="national and provincial awards" data-zh="国家级与省级奖项">national and provincial awards</span>
-                </div>
-                <div class="stat">
-                  <strong>6</strong>
-                  <span data-en="accepted or submitted papers" data-zh="已接收或在投论文">accepted or submitted papers</span>
                 </div>
               </div>
             </div>
