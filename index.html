@@ -10,26 +10,18 @@
     <title>Peinan Li</title>
     <style>
       :root {
-        color-scheme: dark;
-        --bg: #070809;
-        --panel: rgba(18, 21, 23, 0.82);
-        --panel-strong: rgba(235, 238, 233, 0.94);
-        --ink: #f5f1e8;
-        --ink-dark: #141615;
-        --muted: #a7aea8;
-        --muted-dark: #4c5550;
-        --line: rgba(245, 241, 232, 0.14);
-        --line-dark: rgba(20, 22, 21, 0.16);
-        --coral: #ff5d3d;
-        --cyan: #36d6c8;
-        --gold: #f0c95a;
-        --green: #80d977;
-        --violet: #a386ff;
-        --blue: #4ca7ff;
-        --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
-        --glow: 0 0 36px rgba(54, 214, 200, 0.18), 0 0 70px rgba(255, 93, 61, 0.1);
-        --radius: 8px;
-        --max: 1180px;
+        color-scheme: light;
+        --bg: #f6f3ee;
+        --surface: rgba(255, 255, 255, 0.78);
+        --surface-strong: #ffffff;
+        --text: #1d1d1f;
+        --muted: #666a73;
+        --line: rgba(29, 29, 31, 0.11);
+        --accent: #9a2f3f;
+        --accent-dark: #6f1e2c;
+        --blue: #1f4e79;
+        --shadow: 0 24px 70px rgba(42, 33, 25, 0.12);
+        --radius: 26px;
       }
 
       * {
@@ -43,65 +35,14 @@
       body {
         margin: 0;
         min-height: 100vh;
-        overflow-x: hidden;
         background:
-          linear-gradient(90deg, rgba(255, 93, 61, 0.07) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(54, 214, 200, 0.06) 1px, transparent 1px),
-          linear-gradient(140deg, #070809 0%, #101211 38%, #17120f 76%, #070809 100%);
-        background-size:
-          64px 64px,
-          64px 64px,
-          auto;
-        color: var(--ink);
+          radial-gradient(circle at 0 0, rgba(154, 47, 63, 0.12), transparent 34rem),
+          radial-gradient(circle at 100% 0, rgba(31, 78, 121, 0.12), transparent 32rem),
+          var(--bg);
+        color: var(--text);
         font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          "PingFang SC", "Microsoft YaHei", sans-serif;
-      }
-
-      body::before {
-        position: fixed;
-        inset: 0;
-        z-index: -2;
-        content: "";
-        background:
-          radial-gradient(circle at 18% 18%, rgba(255, 93, 61, 0.18), transparent 24rem),
-          radial-gradient(circle at 82% 22%, rgba(54, 214, 200, 0.15), transparent 25rem),
-          linear-gradient(115deg, transparent 0 31%, rgba(255, 93, 61, 0.16) 31.15% 31.5%, transparent 31.65%),
-          linear-gradient(154deg, transparent 0 58%, rgba(54, 214, 200, 0.13) 58.15% 58.48%, transparent 58.7%),
-          linear-gradient(22deg, transparent 0 72%, rgba(240, 201, 90, 0.12) 72.2% 72.48%, transparent 72.8%);
-        pointer-events: none;
-      }
-
-      body::after {
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        content: "";
-        background:
-          repeating-linear-gradient(
-            0deg,
-            rgba(255, 255, 255, 0.035) 0,
-            rgba(255, 255, 255, 0.035) 1px,
-            transparent 1px,
-            transparent 5px
-          );
-        mix-blend-mode: overlay;
-        opacity: 0.28;
-        pointer-events: none;
-      }
-
-      .progress-bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 80;
-        width: 100%;
-        height: 2px;
-        transform: scaleX(0);
-        transform-origin: left;
-        background: linear-gradient(90deg, var(--coral), var(--cyan), var(--gold));
-        box-shadow: 0 0 20px rgba(54, 214, 200, 0.45);
-        pointer-events: none;
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+          "Microsoft YaHei", sans-serif;
       }
 
       a {
@@ -118,212 +59,158 @@
         font: inherit;
       }
 
-      .skip-link {
-        position: fixed;
-        top: 14px;
-        left: 14px;
-        z-index: 100;
-        padding: 10px 12px;
-        transform: translateY(-160%);
+      .app {
+        display: grid;
+        width: min(1220px, calc(100% - 40px));
+        min-height: 100vh;
+        margin: 0 auto;
+        grid-template-columns: 260px minmax(0, 1fr);
+        gap: 28px;
+        padding: 32px 0;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 32px;
+        display: flex;
+        height: calc(100vh - 64px);
+        flex-direction: column;
+        padding: 24px;
         border: 1px solid var(--line);
         border-radius: var(--radius);
-        background: var(--panel-strong);
-        color: var(--ink-dark);
-        transition: transform 160ms ease;
-      }
-
-      .skip-link:focus {
-        transform: translateY(0);
-      }
-
-      .shell {
-        width: min(var(--max), calc(100% - 40px));
-        margin: 0 auto;
-      }
-
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        border-bottom: 1px solid rgba(245, 241, 232, 0.09);
-        background:
-          linear-gradient(90deg, rgba(255, 93, 61, 0.08), transparent 22%, rgba(54, 214, 200, 0.07)),
-          rgba(7, 8, 9, 0.78);
+        background: var(--surface);
+        box-shadow: var(--shadow);
         backdrop-filter: blur(18px);
       }
 
-      .topbar-inner {
-        display: flex;
-        width: min(var(--max), calc(100% - 40px));
-        min-height: 72px;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-        margin: 0 auto;
+      .brand {
+        margin-bottom: 28px;
       }
 
-      .brand-lockup {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        min-width: max-content;
-        font-weight: 900;
-        letter-spacing: 0;
+      .brand-name {
+        margin: 0;
+        color: var(--text);
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.04em;
       }
 
-      .brand-mark {
-        display: grid;
-        width: 38px;
-        height: 38px;
-        place-items: center;
-        border: 1px solid rgba(255, 93, 61, 0.34);
-        border-radius: var(--radius);
-        background:
-          linear-gradient(135deg, rgba(255, 93, 61, 0.24), transparent 55%),
-          rgba(255, 255, 255, 0.06);
-        color: var(--coral);
-        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), var(--glow);
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 8px;
+      .brand-note {
+        margin: 8px 0 0;
         color: var(--muted);
         font-size: 13px;
+        line-height: 1.6;
       }
 
-      .nav a,
-      .icon-button,
-      .text-button {
-        min-height: 38px;
-        border: 1px solid transparent;
-        border-radius: var(--radius);
-      }
-
-      .nav a {
-        display: inline-flex;
-        align-items: center;
-        padding: 0 10px;
-        transition:
-          border-color 160ms ease,
-          color 160ms ease,
-          background 160ms ease;
-      }
-
-      .nav a:hover,
-      .nav a:focus-visible {
-        border-color: var(--line);
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--ink);
-        outline: none;
-      }
-
-      .toolbar {
-        display: flex;
-        align-items: center;
+      .side-nav {
+        display: grid;
         gap: 8px;
       }
 
-      .icon-button,
-      .text-button {
+      .nav-item {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 14px;
+        border: 1px solid transparent;
+        border-radius: 16px;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        text-align: left;
+        transition:
+          background 160ms ease,
+          border-color 160ms ease,
+          color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .nav-item:hover,
+      .nav-item.is-active {
+        border-color: rgba(154, 47, 63, 0.18);
+        background: rgba(154, 47, 63, 0.08);
+        color: var(--accent-dark);
+        transform: translateX(2px);
+      }
+
+      .sidebar-footer {
+        display: grid;
+        gap: 12px;
+        margin-top: auto;
+      }
+
+      .language-toggle,
+      .button {
         display: inline-flex;
+        min-height: 42px;
         align-items: center;
         justify-content: center;
+        padding: 0 16px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.58);
+        color: var(--text);
+        font-weight: 800;
         cursor: pointer;
         transition:
           transform 160ms ease,
           border-color 160ms ease,
-          background 160ms ease;
+          box-shadow 160ms ease;
       }
 
-      .icon-button {
-        width: 38px;
-        padding: 0;
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--ink);
+      .language-toggle:hover,
+      .button:hover {
+        transform: translateY(-2px);
+        border-color: rgba(154, 47, 63, 0.35);
+        box-shadow: 0 12px 30px rgba(154, 47, 63, 0.12);
       }
 
-      .text-button {
-        padding: 0 12px;
-        background: rgba(245, 241, 232, 0.1);
-        color: var(--ink);
-        font-weight: 800;
+      .button.primary {
+        border-color: transparent;
+        background: var(--accent);
+        color: #fff;
       }
 
-      .icon-button:hover,
-      .text-button:hover,
-      .icon-button:focus-visible,
-      .text-button:focus-visible {
-        transform: translateY(-1px);
-        border-color: rgba(54, 214, 200, 0.5);
-        background: rgba(54, 214, 200, 0.12);
-        outline: none;
+      .content {
+        min-width: 0;
+      }
+
+      .panel {
+        display: none;
+      }
+
+      .panel.is-active {
+        display: block;
       }
 
       .hero {
-        position: relative;
         display: grid;
-        min-height: calc(100vh - 72px);
-        grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+        grid-template-columns: minmax(0, 1fr) 330px;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .card,
+      .section-card,
+      .profile-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .card {
+        padding: 38px;
+      }
+
+      .profile-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         gap: 22px;
-        align-items: center;
-        padding: 46px 0 52px;
-      }
-
-      .hero::before,
-      .hero::after,
-      .section-head::before,
-      .contact-panel::before {
-        position: absolute;
-        width: 72px;
-        height: 72px;
-        content: "";
-        pointer-events: none;
-      }
-
-      .hero::before {
-        top: 34px;
-        left: 0;
-        border-top: 1px solid rgba(54, 214, 200, 0.42);
-        border-left: 1px solid rgba(54, 214, 200, 0.42);
-      }
-
-      .hero::after {
-        right: 0;
-        bottom: 44px;
-        border-right: 1px solid rgba(255, 93, 61, 0.44);
-        border-bottom: 1px solid rgba(255, 93, 61, 0.44);
-      }
-
-      .signal-field {
-        position: absolute;
-        inset: 8px 0 auto;
-        z-index: -1;
-        width: 100%;
-        height: min(70vh, 620px);
-        opacity: 0.8;
-      }
-
-      .kicker {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin: 0 0 20px;
-        color: var(--cyan);
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0;
-        text-transform: uppercase;
-      }
-
-      .kicker::before {
-        display: inline-block;
-        width: 38px;
-        height: 2px;
-        content: "";
-        background: var(--cyan);
+        padding: 22px;
       }
 
       h1,
@@ -334,2043 +221,676 @@
       }
 
       h1 {
-        max-width: 780px;
-        font-size: 112px;
-        line-height: 0.88;
-        letter-spacing: 0;
-        text-shadow: 0 0 48px rgba(245, 241, 232, 0.12);
+        max-width: 720px;
+        font-size: clamp(48px, 8vw, 86px);
+        line-height: 0.96;
+        letter-spacing: -0.065em;
       }
 
-      .hero-name-line {
-        display: block;
+      h2 {
+        font-size: clamp(30px, 5vw, 52px);
+        line-height: 1;
+        letter-spacing: -0.055em;
       }
 
-      .hero-name-line:nth-child(2) {
-        color: transparent;
-        -webkit-text-stroke: 1px rgba(245, 241, 232, 0.86);
-        text-stroke: 1px rgba(245, 241, 232, 0.86);
+      h3 {
+        font-size: 18px;
+        line-height: 1.45;
       }
 
-      .hero-summary {
-        max-width: 680px;
-        margin-top: 24px;
-        color: #d5d9d1;
-        font-size: 20px;
-        line-height: 1.72;
-      }
-
-      .hero-summary strong {
-        color: var(--gold);
+      .eyebrow {
+        margin-bottom: 16px;
+        color: var(--accent);
+        font-size: 13px;
         font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
       }
 
-      .identity-rack {
-        display: grid;
-        max-width: 700px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
-        margin-top: 24px;
-      }
-
-      .identity-chip {
-        position: relative;
-        min-height: 74px;
-        overflow: hidden;
-        padding: 12px;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background:
-          linear-gradient(135deg, rgba(245, 241, 232, 0.09), rgba(245, 241, 232, 0.03)),
-          rgba(7, 8, 9, 0.38);
-      }
-
-      .identity-chip::after {
-        position: absolute;
-        right: -18px;
-        bottom: -28px;
-        width: 78px;
-        height: 78px;
-        content: "";
-        border: 1px solid currentColor;
-        border-radius: 999px;
-        color: rgba(54, 214, 200, 0.16);
-      }
-
-      .identity-chip span {
-        display: block;
+      .summary {
+        max-width: 680px;
+        margin-top: 26px;
         color: var(--muted);
-        font-size: 11px;
-        font-weight: 850;
+        font-size: 18px;
+        line-height: 1.8;
       }
 
-      .identity-chip strong {
-        display: block;
-        margin-top: 9px;
-        color: var(--ink);
-        font-size: 14px;
-        line-height: 1.25;
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 30px;
-      }
-
-      .cta {
-        display: inline-flex;
-        min-height: 48px;
-        align-items: center;
-        gap: 10px;
-        padding: 0 16px;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--ink);
-        font-weight: 850;
-        transition:
-          transform 170ms ease,
-          border-color 170ms ease,
-          background 170ms ease;
-      }
-
-      .cta.primary {
-        border-color: transparent;
-        background: var(--panel-strong);
-        color: var(--ink-dark);
-      }
-
-      .cta:hover,
-      .cta:focus-visible {
-        transform: translateY(-2px);
-        border-color: rgba(255, 93, 61, 0.5);
-        background: rgba(255, 93, 61, 0.14);
-        outline: none;
-      }
-
-      .cta.primary:hover,
-      .cta.primary:focus-visible {
-        background: #ffffff;
-      }
-
-      .hero-console {
+      .highlights {
         display: grid;
-        gap: 14px;
-        align-self: stretch;
+        gap: 12px;
+        margin: 26px 0 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .portrait-console {
-        position: relative;
-        min-height: 510px;
-        overflow: hidden;
+      .highlights li,
+      .item,
+      .tile {
         border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background:
-          linear-gradient(135deg, rgba(54, 214, 200, 0.13), transparent 36%),
-          linear-gradient(180deg, rgba(245, 241, 232, 0.08), rgba(245, 241, 232, 0.02)),
-          #111413;
-        box-shadow: var(--shadow), var(--glow);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.55);
       }
 
-      .portrait-console::before {
+      .highlights li {
+        position: relative;
+        padding: 15px 16px 15px 42px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .highlights li::before {
         position: absolute;
-        inset: 18px;
-        z-index: 2;
+        top: 20px;
+        left: 18px;
+        width: 9px;
+        height: 9px;
         content: "";
-        border: 1px solid rgba(54, 214, 200, 0.34);
-        border-radius: 4px;
-        pointer-events: none;
-      }
-
-      .portrait-console::after {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-        height: 46%;
-        content: "";
-        background: linear-gradient(180deg, transparent, rgba(7, 8, 9, 0.92));
-        pointer-events: none;
-      }
-
-      .portrait-console img {
-        width: 100%;
-        height: 100%;
-        min-height: 510px;
-        object-fit: cover;
-        object-position: center 18%;
-        filter: saturate(0.9) contrast(1.04);
-      }
-
-      .portrait-status {
-        position: absolute;
-        top: 28px;
-        right: 28px;
-        z-index: 4;
-        display: inline-flex;
-        min-height: 32px;
-        align-items: center;
-        gap: 8px;
-        padding: 0 10px;
-        border: 1px solid rgba(128, 217, 119, 0.42);
         border-radius: 999px;
-        background: rgba(7, 8, 9, 0.62);
-        color: #c7f6c1;
+        background: var(--accent);
+        box-shadow: 0 0 0 5px rgba(154, 47, 63, 0.1);
+      }
+
+      .keyword-mark {
+        display: inline-flex;
+        margin: 0 3px;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(154, 47, 63, 0.08);
+        color: var(--accent-dark);
         font-size: 12px;
         font-weight: 900;
-        backdrop-filter: blur(12px);
+        white-space: nowrap;
       }
 
-      .portrait-status::before {
-        width: 7px;
-        height: 7px;
-        content: "";
-        border-radius: 999px;
-        background: var(--green);
-        box-shadow: 0 0 14px var(--green);
+      .actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 34px;
       }
 
-      .scanline {
-        position: absolute;
-        inset: 0;
-        z-index: 3;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(54, 214, 200, 0.16) 48%,
-          transparent 52%,
-          transparent 100%
-        );
-        transform: translateY(-100%);
-        animation: scan 5.5s linear infinite;
-        pointer-events: none;
+      .hero-contact {
+        min-width: 250px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.8;
       }
 
-      .motion-paused .scanline {
-        animation-play-state: paused;
+      .hero-contact a {
+        color: var(--accent-dark);
+        font-weight: 800;
       }
 
-      @keyframes scan {
-        to {
-          transform: translateY(100%);
-        }
+      .wechat-handle {
+        color: var(--blue);
+        font-weight: 900;
       }
 
-      .console-caption {
-        position: absolute;
-        right: 24px;
-        bottom: 24px;
-        left: 24px;
-        z-index: 4;
-        display: grid;
-        gap: 10px;
+      .hero-buttons {
+        display: inline-flex;
+        gap: 12px;
+        margin-left: 18px;
+        flex-wrap: wrap;
       }
 
-      .console-caption h2 {
-        font-size: 18px;
+      .profile-photo {
+        overflow: hidden;
+        border-radius: 22px;
+        background: #eee7df;
       }
 
-      .console-caption p {
+      .profile-photo img {
+        width: 100%;
+        height: auto;
+      }
+
+      .photo-caption {
         color: var(--muted);
         font-size: 14px;
-        line-height: 1.65;
+        line-height: 1.7;
       }
 
-      .stats-strip {
+      .quick-stats {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 24px;
       }
 
       .stat {
-        position: relative;
-        min-height: 104px;
-        overflow: hidden;
-        padding: 14px;
+        padding: 18px;
         border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background:
-          linear-gradient(135deg, rgba(245, 241, 232, 0.1), rgba(245, 241, 232, 0.035)),
-          rgba(245, 241, 232, 0.06);
-      }
-
-      .stat::after {
-        position: absolute;
-        right: 12px;
-        bottom: 12px;
-        width: 32px;
-        height: 2px;
-        content: "";
-        background: linear-gradient(90deg, transparent, var(--cyan));
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.55);
       }
 
       .stat strong {
         display: block;
-        color: var(--ink);
-        font-size: 30px;
+        color: var(--accent-dark);
+        font-size: 26px;
         line-height: 1;
       }
 
       .stat span {
         display: block;
-        margin-top: 10px;
+        margin-top: 8px;
         color: var(--muted);
-        font-size: 12px;
-        line-height: 1.35;
+        font-size: 13px;
+        line-height: 1.5;
       }
 
-      .section {
-        padding: 72px 0;
-      }
-
-      .section.light {
-        color: var(--ink-dark);
-      }
-
-      .section.light::before {
-        position: absolute;
-        left: 50%;
-        z-index: -1;
-        width: 100vw;
-        height: 100%;
-        transform: translateX(-50%);
-        content: "";
-        background:
-          linear-gradient(90deg, rgba(20, 22, 21, 0.05) 1px, transparent 1px),
-          linear-gradient(180deg, rgba(20, 22, 21, 0.05) 1px, transparent 1px),
-          #f3efe4;
-        background-size: 48px 48px;
-      }
-
-      .section.light {
-        position: relative;
-        z-index: 0;
+      .section-card {
+        padding: 34px;
       }
 
       .section-head {
-        position: relative;
-        display: grid;
-        grid-template-columns: minmax(0, 0.78fr) minmax(260px, 0.42fr);
-        gap: 24px;
+        display: flex;
         align-items: end;
-        margin-bottom: 26px;
-        padding-top: 4px;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 24px;
       }
 
-      .section-head::before {
-        top: -10px;
-        left: -18px;
-        width: 44px;
-        height: 44px;
-        border-top: 1px solid rgba(255, 93, 61, 0.34);
-        border-left: 1px solid rgba(255, 93, 61, 0.34);
+      .section-note {
+        color: var(--muted);
+        font-size: 14px;
       }
 
-      .section-label {
-        display: block;
-        margin-bottom: 12px;
-        color: var(--coral);
+      .list,
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .item,
+      .tile {
+        padding: 20px;
+      }
+
+      .meta {
+        display: inline-flex;
+        margin-bottom: 10px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(154, 47, 63, 0.1);
+        color: var(--accent-dark);
         font-size: 12px;
         font-weight: 900;
-        letter-spacing: 0;
+        letter-spacing: 0.03em;
         text-transform: uppercase;
       }
 
-      .section.light .section-label {
-        color: #b53e2b;
-      }
-
-      h2 {
-        font-size: 60px;
-        line-height: 0.98;
-        letter-spacing: 0;
-      }
-
-      .section-copy {
+      .item p,
+      .tile p {
+        margin-top: 8px;
         color: var(--muted);
-        line-height: 1.75;
+        line-height: 1.7;
       }
 
-      .section.light .section-copy {
-        color: var(--muted-dark);
-      }
-
-      .domain-grid {
+      .media-card {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .domain-card,
-      .paper-card,
-      .experience-panel,
-      .focus-panel,
-      .project-card,
-      .contact-panel,
-      .open-card {
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: var(--panel);
-        box-shadow: var(--shadow);
-      }
-
-      .domain-card,
-      .paper-card,
-      .project-card,
-      .open-card {
-        backdrop-filter: blur(18px);
-      }
-
-      .domain-card {
-        position: relative;
-        min-height: 230px;
-        overflow: hidden;
-        padding: 20px;
-        isolation: isolate;
-        transition:
-          transform 180ms ease,
-          border-color 180ms ease,
-          background 180ms ease;
-      }
-
-      .domain-card::before {
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        content: "";
-        background: linear-gradient(135deg, var(--accent), transparent 62%);
-        opacity: 0.18;
-      }
-
-      .domain-card::after {
-        position: absolute;
-        right: 18px;
-        bottom: 16px;
-        color: rgba(245, 241, 232, 0.13);
-        content: attr(data-index);
-        font-size: 76px;
-        font-weight: 950;
-        line-height: 1;
-      }
-
-      .domain-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent);
-        background: rgba(24, 28, 29, 0.9);
-      }
-
-      .domain-card h3 {
-        margin-top: 34px;
-        font-size: 22px;
-        line-height: 1.1;
-      }
-
-      .domain-card p {
-        margin-top: 16px;
-        color: var(--muted);
-        line-height: 1.65;
-      }
-
-      .domain-icon {
-        display: inline-grid;
-        width: 42px;
-        height: 42px;
-        place-items: center;
-        border: 1px solid rgba(245, 241, 232, 0.14);
-        border-radius: var(--radius);
-        color: var(--accent);
-        font-weight: 950;
-      }
-
-      .experience-stage {
-        display: grid;
-        grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
-        gap: 14px;
-      }
-
-      .timeline-rail {
-        display: grid;
-        gap: 10px;
-        align-content: start;
-      }
-
-      .timeline-button {
-        display: grid;
-        width: 100%;
-        grid-template-columns: 42px minmax(0, 1fr);
-        gap: 12px;
-        align-items: center;
-        padding: 12px;
-        border: 1px solid var(--line-dark);
-        border-radius: var(--radius);
-        background: rgba(255, 255, 255, 0.62);
-        color: var(--ink-dark);
-        cursor: pointer;
-        text-align: left;
-        box-shadow: 0 8px 24px rgba(20, 22, 21, 0.06);
-        transition:
-          transform 160ms ease,
-          border-color 160ms ease,
-          background 160ms ease;
-      }
-
-      .timeline-button:hover,
-      .timeline-button:focus-visible,
-      .timeline-button.is-active {
-        transform: translateX(3px);
-        border-color: rgba(255, 93, 61, 0.52);
-        background: #fff;
-        outline: none;
-      }
-
-      .timeline-button img,
-      .timeline-logo-fallback {
-        width: 42px;
-        height: 42px;
-        object-fit: contain;
-        border: 1px solid var(--line-dark);
-        border-radius: var(--radius);
-        background: #fff;
-      }
-
-      .timeline-logo-fallback {
-        display: grid;
-        place-items: center;
-        color: #b53e2b;
-        font-size: 13px;
-        font-weight: 950;
-      }
-
-      .timeline-button strong,
-      .timeline-button span {
-        display: block;
-      }
-
-      .timeline-button strong {
-        overflow: hidden;
-        color: var(--ink-dark);
-        font-size: 14px;
-        line-height: 1.3;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .timeline-button span {
-        margin-top: 4px;
-        color: var(--muted-dark);
-        font-size: 12px;
-      }
-
-      .focus-panel {
-        position: relative;
-        display: grid;
-        min-height: 500px;
-        grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.62fr);
-        gap: 24px;
-        overflow: hidden;
-        padding: 28px;
-        border-color: var(--line-dark);
-        background:
-          linear-gradient(135deg, rgba(255, 93, 61, 0.13), transparent 42%),
-          linear-gradient(90deg, rgba(54, 214, 200, 0.11), transparent 52%),
-          #fbfaf6;
-        color: var(--ink-dark);
-      }
-
-      .focus-panel::before {
-        position: absolute;
-        inset: 18px;
-        content: "";
-        border: 1px solid rgba(20, 22, 21, 0.1);
-        border-radius: 4px;
-        pointer-events: none;
-      }
-
-      .focus-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 18px;
-      }
-
-      .pill {
-        display: inline-flex;
-        min-height: 30px;
-        align-items: center;
-        padding: 0 10px;
-        border: 1px solid currentColor;
-        border-radius: 999px;
-        color: #a13929;
-        font-size: 12px;
-        font-weight: 900;
-      }
-
-      .focus-panel h3 {
-        max-width: 720px;
-        font-size: 48px;
-        line-height: 1;
-      }
-
-      .focus-panel p {
-        margin-top: 20px;
-        color: var(--muted-dark);
-        font-size: 17px;
-        line-height: 1.72;
-      }
-
-      .focus-image {
-        align-self: stretch;
-        min-height: 340px;
-        overflow: hidden;
-        border: 1px solid var(--line-dark);
-        border-radius: var(--radius);
-        background:
-          linear-gradient(135deg, rgba(54, 214, 200, 0.16), transparent),
-          #fff;
-        box-shadow: inset 0 0 0 8px rgba(20, 22, 21, 0.03);
-      }
-
-      .focus-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        padding: 18px;
-      }
-
-      .paper-toolbar {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 18px;
-      }
-
-      .filter-button {
-        min-height: 40px;
-        padding: 0 13px;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--muted);
-        cursor: pointer;
-        font-weight: 850;
-        box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.04);
-        transition:
-          transform 160ms ease,
-          border-color 160ms ease,
-          color 160ms ease,
-          background 160ms ease;
-      }
-
-      .filter-button:hover,
-      .filter-button:focus-visible,
-      .filter-button.is-active {
-        transform: translateY(-1px);
-        border-color: rgba(54, 214, 200, 0.46);
-        background: rgba(54, 214, 200, 0.1);
-        color: var(--ink);
-        outline: none;
-      }
-
-      .paper-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .paper-card {
-        position: relative;
-        display: grid;
-        min-height: 298px;
-        align-content: space-between;
-        gap: 24px;
-        overflow: hidden;
-        padding: 20px;
-        transition:
-          transform 170ms ease,
-          border-color 170ms ease,
-          background 170ms ease;
-      }
-
-      .paper-card::before {
-        position: absolute;
-        inset: 0;
-        content: "";
-        background:
-          linear-gradient(135deg, rgba(240, 201, 90, 0.08), transparent 36%),
-          linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.12));
-        opacity: 0;
-        transition: opacity 170ms ease;
-        pointer-events: none;
-      }
-
-      .paper-card:hover,
-      .paper-card:focus-within {
-        transform: translateY(-4px);
-        border-color: rgba(240, 201, 90, 0.5);
-        background: rgba(32, 35, 36, 0.92);
-      }
-
-      .paper-card:hover::before,
-      .paper-card:focus-within::before {
-        opacity: 1;
-      }
-
-      .paper-card[hidden] {
-        display: none;
-      }
-
-      .paper-card h3 {
-        font-size: 19px;
-        line-height: 1.28;
-      }
-
-      .paper-card p {
-        margin-top: 14px;
-        color: var(--muted);
-        line-height: 1.65;
-      }
-
-      .paper-status {
-        display: inline-flex;
-        width: fit-content;
-        min-height: 30px;
-        align-items: center;
-        padding: 0 10px;
-        border-radius: 999px;
-        background: rgba(255, 93, 61, 0.14);
-        color: #ffac9b;
-        font-size: 12px;
-        font-weight: 900;
-      }
-
-      .paper-card.accepted .paper-status {
-        background: rgba(128, 217, 119, 0.14);
-        color: #bdf3b6;
-      }
-
-      .practice-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .experience-panel {
-        display: grid;
-        grid-template-columns: minmax(160px, 0.4fr) minmax(0, 0.6fr);
-        overflow: hidden;
-        border-color: var(--line-dark);
-        background: #fff;
-        color: var(--ink-dark);
-        box-shadow: 0 18px 45px rgba(20, 22, 21, 0.12);
-      }
-
-      .experience-media {
-        min-height: 230px;
-        background: #f2f5f1;
-      }
-
-      .experience-media img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        padding: 18px;
-      }
-
-      .experience-body {
-        padding: 22px;
-      }
-
-      .experience-body h3 {
-        margin-top: 14px;
-        font-size: 22px;
-        line-height: 1.25;
-      }
-
-      .experience-body p {
-        margin-top: 14px;
-        color: var(--muted-dark);
-        line-height: 1.68;
-      }
-
-      .project-grid {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 14px;
-      }
-
-      .project-card {
-        padding: 22px;
-      }
-
-      .project-card.featured {
-        position: relative;
-        display: grid;
-        min-height: 410px;
-        align-content: end;
-        overflow: hidden;
-        background:
-          linear-gradient(180deg, rgba(7, 8, 9, 0.04) 0 18%, rgba(7, 8, 9, 0.92) 78%),
-          linear-gradient(135deg, rgba(255, 93, 61, 0.26), transparent 52%),
-          url("robocon.jpg") center 32% / cover;
-      }
-
-      .project-card.featured::before {
-        position: absolute;
-        inset: 16px;
-        content: "";
-        border: 1px solid rgba(245, 241, 232, 0.2);
-        border-radius: 4px;
-        pointer-events: none;
-      }
-
-      .project-card h3 {
-        font-size: 28px;
-        line-height: 1.08;
-      }
-
-      .project-card p {
-        margin-top: 16px;
-        color: var(--muted);
-        line-height: 1.68;
-      }
-
-      .stack {
-        display: grid;
-        gap: 14px;
-      }
-
-      .open-card {
-        position: relative;
-        overflow: hidden;
-        padding: 20px;
-        background:
-          linear-gradient(135deg, rgba(76, 167, 255, 0.09), transparent 48%),
-          var(--panel);
-      }
-
-      .open-card::after {
-        position: absolute;
-        top: 18px;
-        right: 18px;
-        width: 36px;
-        height: 36px;
-        content: "";
-        border-top: 1px solid rgba(54, 214, 200, 0.28);
-        border-right: 1px solid rgba(54, 214, 200, 0.28);
-      }
-
-      .open-card h3 {
-        font-size: 20px;
-      }
-
-      .open-card p {
-        margin-top: 12px;
-        color: var(--muted);
-        line-height: 1.65;
-      }
-
-      .tag-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 18px;
-      }
-
-      .tag {
-        display: inline-flex;
-        min-height: 30px;
-        align-items: center;
-        padding: 0 10px;
-        border: 1px solid rgba(245, 241, 232, 0.14);
-        border-radius: 999px;
-        color: var(--muted);
-        font-size: 12px;
-        font-weight: 800;
-      }
-
-      .contact-panel {
-        position: relative;
-        display: grid;
-        grid-template-columns: minmax(0, 0.8fr) minmax(260px, 0.42fr);
-        gap: 24px;
-        padding: 28px;
-        border-color: var(--line-dark);
-        background: var(--panel-strong);
-        color: var(--ink-dark);
-        overflow: hidden;
-      }
-
-      .contact-panel::before {
-        top: 18px;
-        left: 18px;
-        border-top: 1px solid rgba(255, 93, 61, 0.36);
-        border-left: 1px solid rgba(255, 93, 61, 0.36);
-      }
-
-      .contact-panel h2 {
-        max-width: 760px;
-      }
-
-      .contact-panel p {
-        margin-top: 20px;
-        color: var(--muted-dark);
-        line-height: 1.72;
-      }
-
-      .contact-list {
-        display: grid;
-        gap: 10px;
-        align-content: center;
-      }
-
-      .contact-link {
-        display: flex;
-        min-height: 54px;
-        align-items: center;
-        justify-content: space-between;
         gap: 16px;
-        padding: 0 14px;
-        border: 1px solid var(--line-dark);
-        border-radius: var(--radius);
-        background: #fff;
-        font-weight: 900;
-        transition:
-          transform 160ms ease,
-          border-color 160ms ease;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.55);
       }
 
-      .contact-link:hover,
-      .contact-link:focus-visible {
-        transform: translateX(3px);
-        border-color: rgba(255, 93, 61, 0.5);
-        outline: none;
+      .media {
+        display: grid;
+        min-height: 170px;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid rgba(29, 29, 31, 0.08);
+        border-radius: 18px;
+        background: #fff;
+      }
+
+      .media img {
+        width: 100%;
+        height: 100%;
+        max-height: 210px;
+        object-fit: contain;
+      }
+
+      .subsection + .subsection {
+        margin-top: 26px;
+      }
+
+      .subsection-title {
+        margin-bottom: 14px;
+        font-size: 20px;
+        letter-spacing: -0.02em;
       }
 
       footer {
-        padding: 34px 0 46px;
+        margin-top: 28px;
         color: var(--muted);
         font-size: 13px;
         text-align: center;
       }
 
-      .reveal {
-        transform: translateY(18px);
-        opacity: 0;
-        transition:
-          transform 520ms ease,
-          opacity 520ms ease;
-      }
-
-      .reveal.is-visible {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          scroll-behavior: auto !important;
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-
-        .signal-field {
-          display: none;
-        }
-      }
-
-      @media (max-width: 980px) {
-        h1 {
-          font-size: 84px;
-        }
-
-        h2 {
-          font-size: 46px;
-        }
-
-        .focus-panel h3 {
-          font-size: 40px;
-        }
-
-        .topbar-inner {
-          align-items: flex-start;
-          flex-direction: column;
-          padding: 14px 0;
-        }
-
-        .nav {
-          width: 100%;
-          justify-content: flex-start;
-          overflow-x: auto;
-          padding-bottom: 2px;
-        }
-
-        .toolbar {
-          position: absolute;
-          top: 14px;
-          right: 20px;
-        }
-
-        .hero,
-        .section-head,
-        .experience-stage,
-        .focus-panel,
-        .contact-panel,
-        .project-grid {
+      @media (max-width: 920px) {
+        .app {
           grid-template-columns: 1fr;
+          gap: 18px;
+          width: min(100% - 28px, 1220px);
+          padding: 18px 0 34px;
         }
 
-        .hero {
-          padding-top: 34px;
+        .sidebar {
+          position: static;
+          height: auto;
         }
 
-        .identity-rack {
-          grid-template-columns: 1fr;
-        }
-
-        .portrait-console,
-        .portrait-console img {
-          min-height: 440px;
-        }
-
-        .domain-grid,
-        .paper-grid {
+        .side-nav {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-      }
 
-      @media (max-width: 680px) {
-        h1 {
-          font-size: 58px;
-        }
-
-        h2 {
-          font-size: 36px;
-        }
-
-        .hero-summary {
-          font-size: 17px;
-        }
-
-        .focus-panel h3 {
-          font-size: 30px;
-        }
-
-        .shell,
-        .topbar-inner {
-          width: min(100% - 28px, var(--max));
-        }
-
-        .topbar {
-          position: static;
-        }
-
-        .toolbar {
-          position: static;
+        .sidebar-footer {
+          margin-top: 18px;
         }
 
         .hero {
-          min-height: auto;
-          padding-top: 26px;
-        }
-
-        .hero::before,
-        .hero::after,
-        .section-head::before,
-        .contact-panel::before {
-          display: none;
-        }
-
-        .hero-actions,
-        .stats-strip,
-        .practice-grid,
-        .domain-grid,
-        .paper-grid,
-        .experience-panel {
           grid-template-columns: 1fr;
         }
 
-        .hero-actions {
-          display: grid;
+        .card,
+        .section-card,
+        .profile-card {
+          padding: 24px;
+          border-radius: 22px;
         }
 
-        .cta {
-          justify-content: space-between;
+        .grid.two,
+        .grid.three,
+        .quick-stats {
+          grid-template-columns: 1fr;
         }
 
-        .portrait-console,
-        .portrait-console img {
-          min-height: 360px;
+        .section-head {
+          align-items: flex-start;
+          flex-direction: column;
         }
 
-        .timeline-button strong {
-          white-space: normal;
-        }
-
-        .focus-panel {
-          min-height: auto;
-          padding: 20px;
-        }
-
-        .focus-image {
-          min-height: 260px;
-        }
-
-        .section {
-          padding: 54px 0;
+        .hero-buttons {
+          margin-left: 0;
         }
       }
     </style>
   </head>
   <body>
-    <div class="progress-bar" data-scroll-progress aria-hidden="true"></div>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="topbar">
-      <div class="topbar-inner">
-        <a class="brand-lockup" href="#main" aria-label="Peinan Li home">
-          <span class="brand-mark" aria-hidden="true">PL</span>
-          <span data-text="brand">Peinan Li</span>
-        </a>
-        <nav class="nav" aria-label="Primary navigation">
-          <a href="#domains" data-text="nav.domains">Domains</a>
-          <a href="#timeline" data-text="nav.timeline">Timeline</a>
-          <a href="#research" data-text="nav.research">Research</a>
-          <a href="#practice" data-text="nav.practice">Practice</a>
-          <a href="#portfolio" data-text="nav.portfolio">Portfolio</a>
-          <a href="#contact" data-text="nav.contact">Contact</a>
+    <main class="app">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+          <p class="brand-name">Peinan Li</p>
+          <p class="brand-note" data-en="Robotics, AI, engineering, and entrepreneurship." data-zh="机器人、AI、工程与创业。">
+            Robotics, AI, engineering, and entrepreneurship.
+          </p>
+        </div>
+        <nav class="side-nav">
+          <button class="nav-item is-active" type="button" data-panel-target="home" data-en="Home" data-zh="首页">Home</button>
+          <button class="nav-item" type="button" data-panel-target="timeline" data-en="Timeline" data-zh="时间线">Timeline</button>
+          <button class="nav-item" type="button" data-panel-target="research" data-en="Research" data-zh="科研">Research</button>
+          <button class="nav-item" type="button" data-panel-target="internships" data-en="Internships" data-zh="实习">Internships</button>
+          <button class="nav-item" type="button" data-panel-target="awards" data-en="Awards" data-zh="竞赛获奖">Awards</button>
+          <button class="nav-item" type="button" data-panel-target="patents" data-en="Patents" data-zh="专利">Patents</button>
+          <button class="nav-item" type="button" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
         </nav>
-        <div class="toolbar" aria-label="Page controls">
-          <button class="icon-button" type="button" data-motion-toggle aria-label="Pause motion" title="Pause motion">
-            ▮▮
-          </button>
-          <button class="text-button" type="button" data-language-toggle>中文</button>
+        <div class="sidebar-footer">
+          <button class="language-toggle" type="button" data-language-toggle>中文</button>
+          <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
         </div>
-      </div>
-    </header>
+      </aside>
 
-    <main id="main">
-      <section class="hero shell" id="about">
-        <canvas class="signal-field" data-signal-field aria-hidden="true"></canvas>
-        <div class="hero-copy">
-          <p class="kicker" data-text="hero.kicker">Robotics / Embodied AI / Autonomous Driving</p>
-          <h1 aria-label="Peinan Li">
-            <span class="hero-name-line">Peinan</span>
-            <span class="hero-name-line">Li</span>
-          </h1>
-          <p class="hero-summary" data-html="hero.summary">
-            Undergraduate engineer at <strong>Tongji University</strong>, building intelligent systems that move from papers to machines.
-          </p>
-          <div class="identity-rack" aria-label="Current focus">
-            <div class="identity-chip">
-              <span data-text="identity.roleLabel">Current Role</span>
-              <strong data-text="identity.roleValue">Research Assistant · SJTU AutoLab</strong>
-            </div>
-            <div class="identity-chip">
-              <span data-text="identity.baseLabel">Base</span>
-              <strong data-text="identity.baseValue">Tongji University · Mechatronics</strong>
-            </div>
-            <div class="identity-chip">
-              <span data-text="identity.signalLabel">Signal</span>
-              <strong data-text="identity.signalValue">Robotics x Driving x Multimodal AI</strong>
-            </div>
-          </div>
-          <div class="hero-actions">
-            <a class="cta primary" href="#research">
-              <span data-text="hero.primary">Explore Research</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-            <a class="cta" href="mailto:peinan_li@163.com">
-              <span data-text="hero.email">Email</span>
-              <span aria-hidden="true">→</span>
-            </a>
-            <a class="cta" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">
-              <span>GitHub</span>
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-
-        <aside class="hero-console" aria-label="Profile console">
-          <div class="portrait-console" data-tilt-card>
-            <img src="portrait.jpg" alt="Portrait of Peinan Li" />
-            <span class="portrait-status" data-text="hero.status">Available for research & engineering conversations</span>
-            <span class="scanline" aria-hidden="true"></span>
-            <div class="console-caption">
-              <h2 data-text="hero.consoleTitle">Mechanical Engineering & Robotics</h2>
-              <p data-text="hero.consoleCopy">
-                Connecting mechanics, electronics, algorithms, and AI into systems that can sense, reason, and act.
+      <div class="content">
+        <section class="panel is-active" data-panel="home">
+          <div class="hero">
+            <div class="card">
+              <p class="eyebrow" data-en="Personal Homepage" data-zh="个人主页">Personal Homepage</p>
+              <h1>Peinan Li</h1>
+              <p
+                class="summary"
+                data-en="I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University."
+                data-zh="我是同济大学机械与能源工程学院机械电子工程专业本科生。"
+              >
+                I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University.
               </p>
+              <ul class="highlights">
+                <li>
+                  <span data-en="My research centers on" data-zh="我的研究围绕">My research centers on</span>
+                  <span class="keyword-mark" data-en="robotics" data-zh="机器人">robotics</span>
+                  <span data-en="and" data-zh="与">and</span>
+                  <span class="keyword-mark" data-en="embodied AI" data-zh="具身智能">embodied AI</span>
+                  <span data-en="with extensions to" data-zh="展开，并延伸到">with extensions to</span>
+                  <span class="keyword-mark" data-en="autonomous driving" data-zh="自动驾驶">autonomous driving</span>
+                  <span data-en="and" data-zh="和">and</span>
+                  <span class="keyword-mark" data-en="multimodal large models" data-zh="多模态大模型">multimodal large models</span>
+                  <span data-en="." data-zh="。">.</span>
+                </li>
+                <li>
+                  <span data-en="I work as a" data-zh="我是一名贯穿软硬件的">I work as a</span>
+                  <span class="keyword-mark" data-en="full-stack developer" data-zh="全栈开发">full-stack developer</span>
+                  <span
+                    data-en="across software and hardware, connecting mechanics, electronics, algorithms, and AI."
+                    data-zh="工程实践者，连接机械、电子、算法与 AI。"
+                  >
+                    across software and hardware, connecting mechanics, electronics, algorithms, and AI.
+                  </span>
+                </li>
+                <li>
+                  <span data-en="As a" data-zh="作为">As a</span>
+                  <span class="keyword-mark" data-en="young entrepreneur" data-zh="青年创业者">young entrepreneur</span>
+                  <span
+                    data-en="I like turning unconventional engineering ideas into practical new possibilities."
+                    data-zh="我希望把不循常规的工程想法转化为新的现实可能。"
+                  >
+                    I like turning unconventional engineering ideas into practical new possibilities.
+                  </span>
+                </li>
+              </ul>
+              <div class="actions">
+                <p class="hero-contact">
+                  <span data-en="Email:" data-zh="邮箱：">Email:</span>
+                  <a href="mailto:peinan_li@163.com">peinan_li@163.com</a>
+                  <br />
+                  <span data-en="WeChat:" data-zh="微信：">WeChat:</span>
+                  <span class="wechat-handle">RiseBun</span>
+                </p>
+                <div class="hero-buttons">
+                  <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
+                  <button class="button primary" type="button" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
+                </div>
+              </div>
+              <div class="quick-stats">
+                <div class="stat">
+                  <strong>10+</strong>
+                  <span data-en="professional competitions" data-zh="专业竞赛经历">professional competitions</span>
+                </div>
+                <div class="stat">
+                  <strong>2 + 11</strong>
+                  <span data-en="national and provincial awards" data-zh="国家级与省级奖项">national and provincial awards</span>
+                </div>
+                <div class="stat">
+                  <strong>6</strong>
+                  <span data-en="accepted or submitted papers" data-zh="已接收或在投论文">accepted or submitted papers</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="stats-strip" aria-label="Highlights">
-            <div class="stat">
-              <strong>10+</strong>
-              <span data-text="stats.competitions">professional competitions</span>
-            </div>
-            <div class="stat">
-              <strong>13</strong>
-              <span data-text="stats.awards">national and provincial awards</span>
-            </div>
-            <div class="stat">
-              <strong>6</strong>
-              <span data-text="stats.papers">accepted/submitted papers</span>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section class="section shell" id="domains">
-        <div class="section-head reveal">
-          <div>
-            <span class="section-label" data-text="domains.label">Research Coordinates</span>
-            <h2 data-text="domains.title">Four directions, one engineering spine.</h2>
-          </div>
-          <p class="section-copy" data-text="domains.copy">
-            My work sits at the intersection of robots, driving, multimodal reasoning, and practical product engineering.
-          </p>
-        </div>
-        <div class="domain-grid" data-domain-grid></div>
-      </section>
-
-      <section class="section light" id="timeline">
-        <div class="shell">
-          <div class="section-head reveal">
-            <div>
-              <span class="section-label" data-text="timeline.label">Trajectory</span>
-              <h2 data-text="timeline.title">Click the signal, tune the story.</h2>
-            </div>
-            <p class="section-copy" data-text="timeline.copy">
-              A focused view of my academic, competition, research, and industry path.
-            </p>
-          </div>
-          <div class="experience-stage">
-            <div class="timeline-rail" data-timeline-rail aria-label="Timeline"></div>
-            <article class="focus-panel" data-timeline-focus aria-live="polite"></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section shell" id="research">
-        <div class="section-head reveal">
-          <div>
-            <span class="section-label" data-text="research.label">Research Work</span>
-            <h2 data-text="research.title">Papers as prototypes for interpretable intelligence.</h2>
-          </div>
-          <p class="section-copy" data-text="research.copy">
-            Filter the list to see accepted work or current submissions across driving, mapping, industrial defect explanation, and long-horizon agents.
-          </p>
-        </div>
-        <div class="paper-toolbar" data-filter-toolbar aria-label="Paper filters"></div>
-        <div class="paper-grid" data-paper-grid></div>
-      </section>
-
-      <section class="section light" id="practice">
-        <div class="shell">
-          <div class="section-head reveal">
-            <div>
-              <span class="section-label" data-text="practice.label">Industry Practice</span>
-              <h2 data-text="practice.title">Algorithms tested against messy reality.</h2>
-            </div>
-            <p class="section-copy" data-text="practice.copy">
-              From multi-camera loop closure and LiDAR mapping to end-to-end driving algorithm engineering.
-            </p>
-          </div>
-          <div class="practice-grid" data-practice-grid></div>
-        </div>
-      </section>
-
-      <section class="section shell" id="portfolio">
-        <div class="section-head reveal">
-          <div>
-            <span class="section-label" data-text="portfolio.label">Selected Build Mode</span>
-            <h2 data-text="portfolio.title">Competition leadership, research craft, product instinct.</h2>
-          </div>
-          <p class="section-copy" data-text="portfolio.copy">
-            A portfolio surface for robotics, algorithms, intelligent manufacturing, entrepreneurship, and engineering products.
-          </p>
-        </div>
-        <div class="project-grid">
-          <article class="project-card featured" data-tilt-card>
-            <span class="pill" data-text="portfolio.featuredMeta">Robocon / Team Rebuild</span>
-            <h3 data-text="portfolio.featuredTitle">Rebuilding a robotics team into a technical engine.</h3>
-            <p data-text="portfolio.featuredCopy">
-              Organized mechanical design, electrical control, and algorithm documentation; built competition strategy; trained core members.
-            </p>
-            <div class="tag-row" data-feature-tags></div>
-          </article>
-          <div class="stack">
-            <article class="open-card" data-tilt-card>
-              <span class="pill" data-text="portfolio.ipMeta">Intellectual Property</span>
-              <h3 data-text="portfolio.ipTitle">Patent section ready for launch.</h3>
-              <p data-text="portfolio.ipCopy">
-                The site now has a stronger structure for patents and IP once application details are ready.
+            <aside class="profile-card" aria-label="Profile photo">
+              <div class="profile-photo">
+                <img src="portrait.jpg" alt="Portrait of Peinan Li" />
+              </div>
+              <p
+                class="photo-caption"
+                data-en="Mechanical Engineering & Robotics student exploring how intelligent systems move, sense, and make decisions in the physical world."
+                data-zh="机械工程与机器人方向学生，探索智能系统如何在物理世界中运动、感知和决策。"
+              >
+                Mechanical Engineering & Robotics student exploring how intelligent systems move, sense, and make decisions in the physical world.
               </p>
-            </article>
-            <article class="open-card" data-tilt-card>
-              <span class="pill" data-text="portfolio.awardMeta">Awards</span>
-              <h3 data-text="portfolio.awardTitle">2 national awards and 11 provincial awards.</h3>
-              <p data-text="portfolio.awardCopy">
-                Competition honors are surfaced as a headline achievement instead of a placeholder list.
-              </p>
-            </article>
+            </aside>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section light" id="contact">
-        <div class="shell">
-          <div class="contact-panel">
-            <div>
-              <span class="section-label" data-text="contact.label">Contact</span>
-              <h2 data-text="contact.title">Let’s build systems that leave the screen.</h2>
-              <p data-text="contact.copy">
-                I am open to conversations around robotics, embodied intelligence, autonomous driving, multimodal systems, and ambitious engineering products.
-              </p>
+        <section class="panel" data-panel="timeline">
+          <div class="section-card">
+            <div class="section-head">
+              <h2 data-en="Timeline" data-zh="时间线">Timeline</h2>
+              <p class="section-note" data-en="A concise overview" data-zh="简要经历概览">A concise overview</p>
             </div>
-            <div class="contact-list">
-              <a class="contact-link" href="mailto:peinan_li@163.com">
-                <span>peinan_li@163.com</span>
-                <span aria-hidden="true">→</span>
-              </a>
-              <a class="contact-link" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">
-                <span>github.com/RiseBun</span>
-                <span aria-hidden="true">→</span>
-              </a>
-              <div class="contact-link" aria-label="WeChat RiseBun">
-                <span>WeChat · RiseBun</span>
-                <span aria-hidden="true">◎</span>
+            <div class="grid two">
+              <article class="media-card">
+                <figure class="media"><img src="同济.jpeg" alt="Tongji University" /></figure>
+                <div>
+                  <span class="meta">2023.09 - 2027.07</span>
+                  <h3 data-en="B.Eng. Student at Tongji University" data-zh="同济大学工学本科生">B.Eng. Student at Tongji University</h3>
+                  <p data-en="Undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics." data-zh="就读于同济大学机械与能源工程学院机械电子工程专业。">
+                    Undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics.
+                  </p>
+                </div>
+              </article>
+              <article class="media-card">
+                <figure class="media"><img src="robocon.jpg" alt="Robocon competition" /></figure>
+                <div>
+                  <span class="meta" data-en="2024.03 - Present" data-zh="2024.03 至今">2024.03 - Present</span>
+                  <h3 data-en="Captain of Tongji University Robocon Robotics Team" data-zh="同济大学 Robocon 机器人队队长">Captain of Tongji University Robocon Robotics Team</h3>
+                  <p data-en="Rebuilt the team, organized technical materials, developed competition strategies, and trained core members." data-zh="重建队伍，组织技术资料，制定竞赛策略与技术方案，并培养核心队员。">
+                    Rebuilt the team, organized technical materials, developed competition strategies, and trained core members.
+                  </p>
+                </div>
+              </article>
+              <article class="media-card">
+                <figure class="media"><img src="新国立.jpeg" alt="National University of Singapore collaboration" /></figure>
+                <div>
+                  <span class="meta">2025.08 - 2026.01</span>
+                  <h3 data-en="Algorithm Engineer, Shiwei Data · NUS Collaboration" data-zh="视维数据算法工程师 · 与新加坡国立大学合作">Algorithm Engineer, Shiwei Data · NUS Collaboration</h3>
+                  <p data-en="Led multi-camera loop-closure localization and long-range LiDAR 3D mapping algorithm work." data-zh="主导多相机回环定位和长距离 LiDAR 三维建图算法开发。">
+                    Led multi-camera loop-closure localization and long-range LiDAR 3D mapping algorithm work.
+                  </p>
+                </div>
+              </article>
+              <article class="media-card">
+                <figure class="media"><img src="上海交大.jpg" alt="Shanghai Jiao Tong University" /></figure>
+                <div>
+                  <span class="meta" data-en="2026.01 - Present" data-zh="2026.01 至今">2026.01 - Present</span>
+                  <h3 data-en="Research Assistant, AutoLab, Shanghai Jiao Tong University" data-zh="上海交通大学 AutoLab 科研助理">Research Assistant, AutoLab, Shanghai Jiao Tong University</h3>
+                  <p data-en="Working on intelligent systems and AI-related engineering research." data-zh="开展智能系统和 AI 相关工程研究。">
+                    Working on intelligent systems and AI-related engineering research.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="research">
+          <div class="section-card">
+            <div class="section-head">
+              <h2 data-en="Research" data-zh="科研">Research</h2>
+              <p class="section-note" data-en="Research work and papers" data-zh="科研工作与论文">Research work and papers</p>
+            </div>
+            <div class="subsection">
+              <h3 class="subsection-title" data-en="Research Experience" data-zh="科研经历">Research Experience</h3>
+              <article class="item">
+                <span class="meta" data-en="Research Assistant · 2026.01 - Present" data-zh="科研助理 · 2026.01 至今">Research Assistant · 2026.01 - Present</span>
+                <h3 data-en="AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University" data-zh="上海交通大学人工智能学院 AutoLab">AutoLab, School of Artificial Intelligence, Shanghai Jiao Tong University</h3>
+                <p data-en="Serving as a research assistant, working on autonomous driving, embodied intelligence, multimodal reasoning, and interpretable AI systems." data-zh="担任科研助理，研究方向包括自动驾驶、具身智能、多模态推理和可解释 AI 系统。">
+                  Serving as a research assistant, working on autonomous driving, embodied intelligence, multimodal reasoning, and interpretable AI systems.
+                </p>
+              </article>
+            </div>
+            <div class="subsection">
+              <h3 class="subsection-title" data-en="Published & Submitted Papers" data-zh="发表与在投论文">Published & Submitted Papers</h3>
+              <div class="list">
+                <article class="item">
+                  <span class="meta" data-en="Accepted · IEEE ICME 2026 Oral" data-zh="已接收 · IEEE ICME 2026 Oral">Accepted · IEEE ICME 2026 Oral</span>
+                  <h3>Neuro-Causal Drive: A Neuro-Symbolic Framework for Long-Horizon and Interpretable Traffic Accident Analysis</h3>
+                  <p data-en="Independently written as first author and accepted as an Oral presentation at IEEE ICME 2026." data-zh="以第一作者独立撰写，并被 IEEE ICME 2026 接收为 Oral 报告。">
+                    Independently written as first author and accepted as an Oral presentation at IEEE ICME 2026.
+                  </p>
+                </article>
+                <article class="item">
+                  <span class="meta" data-en="Submitted · IROS 2026" data-zh="已投稿 · IROS 2026">Submitted · IROS 2026</span>
+                  <h3>Evidential-LIO: Uncertainty-Aware Resource Allocation and Information-Theoretic Mapping for Dynamic Environments</h3>
+                  <p data-en="Manuscript submitted to IROS 2026." data-zh="手稿已投稿至 IROS 2026。">Manuscript submitted to IROS 2026.</p>
+                </article>
+                <article class="item">
+                  <span class="meta" data-en="Submitted · ACM MM 2026" data-zh="已投稿 · ACM MM 2026">Submitted · ACM MM 2026</span>
+                  <h3>DriveNarrate: Shared Intervenable Decision Bottlenecks for Faithful Vision-Language-Action Driving</h3>
+                  <p data-en="Manuscript submitted to ACM MM 2026." data-zh="手稿已投稿至 ACM MM 2026。">Manuscript submitted to ACM MM 2026.</p>
+                </article>
+                <article class="item">
+                  <span class="meta" data-en="Submitted · ACM MM 2026" data-zh="已投稿 · ACM MM 2026">Submitted · ACM MM 2026</span>
+                  <h3>Multimodal Consistency Learning for Controlled Grounded Industrial Defect Explanation</h3>
+                  <p data-en="Manuscript submitted to ACM MM 2026." data-zh="手稿已投稿至 ACM MM 2026。">Manuscript submitted to ACM MM 2026.</p>
+                </article>
+                <article class="item">
+                  <span class="meta" data-en="Submitted · COLM 2026" data-zh="已投稿 · COLM 2026">Submitted · COLM 2026</span>
+                  <h3>Beyond Context Length: Utility-Aware Context Paging for Long-Horizon LLM Agents</h3>
+                  <p data-en="Manuscript submitted to COLM 2026." data-zh="手稿已投稿至 COLM 2026。">Manuscript submitted to COLM 2026.</p>
+                </article>
+                <article class="item">
+                  <span class="meta" data-en="Submitted · NeurIPS 2026" data-zh="已投稿 · NeurIPS 2026">Submitted · NeurIPS 2026</span>
+                  <h3>FlexPlanner: Adaptive Planner Selection with Temporal Reward Decomposition for Autonomous Driving</h3>
+                  <p data-en="Manuscript submitted to NeurIPS 2026." data-zh="手稿已投稿至 NeurIPS 2026。">Manuscript submitted to NeurIPS 2026.</p>
+                </article>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="panel" data-panel="internships">
+          <div class="section-card">
+            <div class="section-head">
+              <h2 data-en="Internships" data-zh="实习经历">Internships</h2>
+              <p class="section-note" data-en="Industry practice" data-zh="产业实践">Industry practice</p>
+            </div>
+            <div class="grid two">
+              <article class="media-card">
+                <figure class="media"><img src="新国立.jpeg" alt="National University of Singapore collaboration" /></figure>
+                <div>
+                  <span class="meta">2025.08 - 2026.01</span>
+                  <h3 data-en="Algorithm Engineer, Chongqing Shiwei Data Technology Co., Ltd. · NUS Collaboration" data-zh="重庆视维数据科技有限公司算法工程师 · 与新加坡国立大学合作">Algorithm Engineer, Chongqing Shiwei Data Technology Co., Ltd. · NUS Collaboration</h3>
+                  <p data-en="Led the DP180 multi-camera loop-closure localization algorithm and long-range LiDAR 3D mapping algorithm." data-zh="主导 DP180 多相机回环定位算法和长距离 LiDAR 三维建图算法开发。">
+                    Led the DP180 multi-camera loop-closure localization algorithm and long-range LiDAR 3D mapping algorithm.
+                  </p>
+                </div>
+              </article>
+              <article class="media-card">
+                <figure class="media"><img src="哈啰.jpeg" alt="Hello internship" /></figure>
+                <div>
+                  <span class="meta">2026.02 - 2026.05</span>
+                  <h3 data-en="End-to-End Algorithm Engineer Intern, Hello" data-zh="端到端算法工程师实习生，哈啰">End-to-End Algorithm Engineer Intern, Hello</h3>
+                  <p data-en="Worked on end-to-end algorithm engineering during an internship at Hello." data-zh="在哈啰从事端到端算法工程相关实习工作。">
+                    Worked on end-to-end algorithm engineering during an internship at Hello.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="awards">
+          <div class="section-card">
+            <div class="section-head">
+              <h2 data-en="Competition Awards" data-zh="竞赛获奖">Competition Awards</h2>
+              <p class="section-note" data-en="Competitions and honors" data-zh="竞赛与荣誉">Competitions and honors</p>
+            </div>
+            <article class="item">
+              <span class="meta" data-en="To be added" data-zh="待添加">To be added</span>
+              <h3 data-en="Competition award name to be added" data-zh="待添加竞赛获奖名称">Competition award name to be added</h3>
+              <p data-en="Send the competition name, award level, date, and image file name, and this card can be expanded." data-zh="把竞赛名称、获奖等级、时间和图片文件名发来后，可以继续扩展这个卡片。">
+                Send the competition name, award level, date, and image file name, and this card can be expanded.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="patents">
+          <div class="section-card">
+            <div class="section-head">
+              <h2 data-en="Patents" data-zh="专利">Patents</h2>
+              <p class="section-note" data-en="Intellectual property" data-zh="知识产权">Intellectual property</p>
+            </div>
+            <article class="item">
+              <span class="meta" data-en="To be added" data-zh="待添加">To be added</span>
+              <h3 data-en="Patent title to be added" data-zh="待添加专利标题">Patent title to be added</h3>
+              <p data-en="Send the patent title, status, inventors, application number, and date to fill this section." data-zh="把专利名称、状态、发明人、申请号和日期发来后，可以继续完善这个板块。">
+                Send the patent title, status, inventors, application number, and date to fill this section.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="portfolio">
+          <div class="section-card">
+            <div class="section-head">
+              <h2 data-en="Portfolio" data-zh="作品集">Portfolio</h2>
+              <p class="section-note" data-en="Selected works" data-zh="精选作品">Selected works</p>
+            </div>
+            <div class="grid three">
+              <article class="tile">
+                <h3 data-en="Robotics" data-zh="机器人">Robotics</h3>
+                <p data-en="Robocon team rebuilding, mechanical design, electrical control, algorithms, and competition strategy." data-zh="Robocon 队伍重建、机械设计、电控、算法与竞赛策略。">
+                  Robocon team rebuilding, mechanical design, electrical control, algorithms, and competition strategy.
+                </p>
+              </article>
+              <article class="tile">
+                <h3 data-en="Algorithms" data-zh="算法">Algorithms</h3>
+                <p data-en="Localization, mapping, autonomous driving, multimodal reasoning, and long-horizon agents." data-zh="定位、建图、自动驾驶、多模态推理与长时程智能体。">
+                  Localization, mapping, autonomous driving, multimodal reasoning, and long-horizon agents.
+                </p>
+              </article>
+              <article class="tile">
+                <h3 data-en="Entrepreneurship" data-zh="创业">Entrepreneurship</h3>
+                <p data-en="Research-driven engineering products across robotics, intelligent manufacturing, and AI." data-zh="围绕机器人、智能制造与 AI 的研究驱动型工程产品。">
+                  Research-driven engineering products across robotics, intelligent manufacturing, and AI.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <footer data-en="© 2026 Peinan Li. Built for peinanli.github.io." data-zh="© 2026 李培楠。Built for peinanli.github.io.">
+          © 2026 Peinan Li. Built for peinanli.github.io.
+        </footer>
+      </div>
     </main>
 
-    <footer data-text="footer">© 2026 Peinan Li. Built for peinanli.github.io.</footer>
-
     <script>
-      const content = {
-        en: {
-          text: {
-            brand: "Peinan Li",
-            "nav.domains": "Domains",
-            "nav.timeline": "Timeline",
-            "nav.research": "Research",
-            "nav.practice": "Practice",
-            "nav.portfolio": "Portfolio",
-            "nav.contact": "Contact",
-            "hero.kicker": "Robotics / Embodied AI / Autonomous Driving",
-            "hero.summary":
-              'Undergraduate engineer at <strong>Tongji University</strong>, building intelligent systems that move from papers to machines.',
-            "hero.primary": "Explore Research",
-            "hero.email": "Email",
-            "hero.status": "Available for research & engineering conversations",
-            "hero.consoleTitle": "Mechanical Engineering & Robotics",
-            "hero.consoleCopy":
-              "Connecting mechanics, electronics, algorithms, and AI into systems that can sense, reason, and act.",
-            "identity.roleLabel": "Current Role",
-            "identity.roleValue": "Research Assistant · SJTU AutoLab",
-            "identity.baseLabel": "Base",
-            "identity.baseValue": "Tongji University · Mechatronics",
-            "identity.signalLabel": "Signal",
-            "identity.signalValue": "Robotics x Driving x Multimodal AI",
-            "stats.competitions": "professional competitions",
-            "stats.awards": "national and provincial awards",
-            "stats.papers": "accepted/submitted papers",
-            "domains.label": "Research Coordinates",
-            "domains.title": "Four directions, one engineering spine.",
-            "domains.copy":
-              "My work sits at the intersection of robots, driving, multimodal reasoning, and practical product engineering.",
-            "timeline.label": "Trajectory",
-            "timeline.title": "Click the signal, tune the story.",
-            "timeline.copy":
-              "A focused view of my academic, competition, research, and industry path.",
-            "research.label": "Research Work",
-            "research.title": "Papers as prototypes for interpretable intelligence.",
-            "research.copy":
-              "Filter the list to see accepted work or current submissions across driving, mapping, industrial defect explanation, and long-horizon agents.",
-            "practice.label": "Industry Practice",
-            "practice.title": "Algorithms tested against messy reality.",
-            "practice.copy":
-              "From multi-camera loop closure and LiDAR mapping to end-to-end driving algorithm engineering.",
-            "portfolio.label": "Selected Build Mode",
-            "portfolio.title": "Competition leadership, research craft, product instinct.",
-            "portfolio.copy":
-              "A portfolio surface for robotics, algorithms, intelligent manufacturing, entrepreneurship, and engineering products.",
-            "portfolio.featuredMeta": "Robocon / Team Rebuild",
-            "portfolio.featuredTitle": "Rebuilding a robotics team into a technical engine.",
-            "portfolio.featuredCopy":
-              "Organized mechanical design, electrical control, and algorithm documentation; built competition strategy; trained core members.",
-            "portfolio.ipMeta": "Intellectual Property",
-            "portfolio.ipTitle": "Patent section ready for launch.",
-            "portfolio.ipCopy":
-              "The site now has a stronger structure for patents and IP once application details are ready.",
-            "portfolio.awardMeta": "Awards",
-            "portfolio.awardTitle": "2 national awards and 11 provincial awards.",
-            "portfolio.awardCopy":
-              "Competition honors are surfaced as a headline achievement instead of a placeholder list.",
-            "contact.label": "Contact",
-            "contact.title": "Let’s build systems that leave the screen.",
-            "contact.copy":
-              "I am open to conversations around robotics, embodied intelligence, autonomous driving, multimodal systems, and ambitious engineering products.",
-            footer: "© 2026 Peinan Li. Built for peinanli.github.io."
-          },
-          domains: [
-            {
-              icon: "RB",
-              title: "Robotics",
-              copy: "Competition robots, team systems, mechanism-control-algorithm integration.",
-              accent: "#ff5d3d"
-            },
-            {
-              icon: "EA",
-              title: "Embodied AI",
-              copy: "Physical intelligence: perception, motion, decision, and execution loops.",
-              accent: "#36d6c8"
-            },
-            {
-              icon: "AD",
-              title: "Autonomous Driving",
-              copy: "Interpretable traffic analysis, end-to-end planning, and driving agents.",
-              accent: "#f0c95a"
-            },
-            {
-              icon: "MM",
-              title: "Multimodal Models",
-              copy: "Vision-language-action reasoning for grounded, inspectable AI systems.",
-              accent: "#a386ff"
-            }
-          ],
-          timeline: [
-            {
-              time: "2023.09 - 2027.07",
-              short: "Tongji University",
-              title: "B.Eng. Student at Tongji University",
-              meta: "Mechatronics Engineering",
-              image: "同济.jpeg",
-              copy:
-                "Undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University."
-            },
-            {
-              time: "2024.03 - Present",
-              short: "Robocon",
-              title: "Captain of the Tongji University Robocon Robotics Team",
-              meta: "10+ competitions / team rebuild",
-              image: "robocon.jpg",
-              copy:
-                "Participated in more than ten professional competitions and received 2 national awards and 11 provincial awards across algorithm, mechanical, innovation and entrepreneurship, and electronics categories. Rebuilt the team, wrote technical materials, developed competition strategies, and trained core members."
-            },
-            {
-              time: "2025.08 - 2026.01",
-              short: "Shiwei + NUS",
-              title: "Algorithm Engineer · Chongqing Shiwei Data Technology Co., Ltd.",
-              meta: "Collaboration with the National University of Singapore",
-              image: "新国立.jpeg",
-              copy:
-                "Led the development of the DP180 multi-camera loop-closure localization algorithm and the long-range, long-duration LiDAR 3D mapping algorithm."
-            },
-            {
-              time: "2026.01 - Present",
-              short: "SJTU AutoLab",
-              title: "Research Assistant, AutoLab, School of AI, Shanghai Jiao Tong University",
-              meta: "Intelligent systems research",
-              image: "上海交大.jpg",
-              copy:
-                "Working on research related to autonomous driving, embodied intelligence, multimodal reasoning, and interpretable AI systems."
-            },
-            {
-              time: "2026.02 - 2026.05",
-              short: "Hello",
-              title: "End-to-End Algorithm Engineer Intern, Hello",
-              meta: "Autonomous driving algorithm engineering",
-              image: "哈啰.jpeg",
-              copy: "Worked on end-to-end algorithm engineering during an internship at Hello."
-            }
-          ],
-          filters: [
-            { id: "all", label: "All" },
-            { id: "accepted", label: "Accepted" },
-            { id: "submitted", label: "Submitted" },
-            { id: "driving", label: "Driving" },
-            { id: "agents", label: "Agents" }
-          ],
-          papers: [
-            {
-              status: "Accepted · IEEE ICME 2026 Oral",
-              group: ["accepted", "driving"],
-              title:
-                "Neuro-Causal Drive: A Neuro-Symbolic Framework for Long-Horizon and Interpretable Traffic Accident Analysis",
-              copy:
-                "Independently written as first author and accepted as an Oral presentation at IEEE ICME 2026."
-            },
-            {
-              status: "Submitted · IROS 2026",
-              group: ["submitted"],
-              title:
-                "Evidential-LIO: Uncertainty-Aware Resource Allocation and Information-Theoretic Mapping for Dynamic Environments",
-              copy: "Manuscript submitted to IROS 2026."
-            },
-            {
-              status: "Submitted · ACM MM 2026",
-              group: ["submitted", "driving"],
-              title:
-                "DriveNarrate: Shared Intervenable Decision Bottlenecks for Faithful Vision-Language-Action Driving",
-              copy: "Manuscript submitted to ACM MM 2026."
-            },
-            {
-              status: "Submitted · ACM MM 2026",
-              group: ["submitted"],
-              title:
-                "Multimodal Consistency Learning for Controlled Grounded Industrial Defect Explanation",
-              copy: "Manuscript submitted to ACM MM 2026."
-            },
-            {
-              status: "Submitted · COLM 2026",
-              group: ["submitted", "agents"],
-              title:
-                "Beyond Context Length: Utility-Aware Context Paging for Long-Horizon LLM Agents",
-              copy: "Manuscript submitted to COLM 2026."
-            },
-            {
-              status: "Submitted · NeurIPS 2026",
-              group: ["submitted", "driving"],
-              title:
-                "FlexPlanner: Adaptive Planner Selection with Temporal Reward Decomposition for Autonomous Driving",
-              copy: "Manuscript submitted to NeurIPS 2026."
-            }
-          ],
-          practice: [
-            {
-              image: "新国立.jpeg",
-              meta: "2025.08 - 2026.01",
-              title:
-                "Algorithm Engineer · Chongqing Shiwei Data Technology Co., Ltd. / NUS collaboration",
-              copy:
-                "Led DP180 multi-camera loop-closure localization and long-distance, long-duration LiDAR 3D mapping algorithm development."
-            },
-            {
-              image: "哈啰.jpeg",
-              meta: "2026.02 - 2026.05",
-              title: "End-to-End Algorithm Engineer Intern · Hello",
-              copy: "Worked on end-to-end autonomous driving algorithm engineering."
-            }
-          ],
-          tags: ["Mechanical Design", "Electrical Control", "Algorithms", "Strategy", "Team Training"]
-        },
-        zh: {
-          text: {
-            brand: "李培楠",
-            "nav.domains": "方向",
-            "nav.timeline": "经历",
-            "nav.research": "科研",
-            "nav.practice": "实践",
-            "nav.portfolio": "作品",
-            "nav.contact": "联系",
-            "hero.kicker": "机器人 / 具身智能 / 自动驾驶",
-            "hero.summary":
-              '同济大学机械电子工程本科生，把 <strong>机器人、AI 与工程产品</strong> 从论文推向真实机器。',
-            "hero.primary": "查看科研",
-            "hero.email": "邮箱",
-            "hero.status": "欢迎科研与工程交流",
-            "hero.consoleTitle": "机械工程与机器人",
-            "hero.consoleCopy":
-              "连接机械、电子、算法与 AI，让系统具备感知、推理和行动能力。",
-            "identity.roleLabel": "当前角色",
-            "identity.roleValue": "上海交大 AutoLab 科研助理",
-            "identity.baseLabel": "所在学校",
-            "identity.baseValue": "同济大学 · 机械电子工程",
-            "identity.signalLabel": "核心信号",
-            "identity.signalValue": "机器人 x 自动驾驶 x 多模态 AI",
-            "stats.competitions": "项专业竞赛",
-            "stats.awards": "项国家级与省级奖项",
-            "stats.papers": "篇已接收/在投论文",
-            "domains.label": "研究坐标",
-            "domains.title": "四个方向，一条工程主线。",
-            "domains.copy":
-              "我的工作交汇于机器人、自动驾驶、多模态推理和可落地的工程产品。",
-            "timeline.label": "成长轨迹",
-            "timeline.title": "点击信号，切换故事。",
-            "timeline.copy": "聚焦展示我的学习、竞赛、科研和产业经历。",
-            "research.label": "科研工作",
-            "research.title": "把论文做成可解释智能的原型。",
-            "research.copy":
-              "筛选已接收或在投论文，覆盖自动驾驶、建图、工业缺陷解释和长时程智能体。",
-            "practice.label": "产业实践",
-            "practice.title": "把算法放进真实复杂场景里检验。",
-            "practice.copy": "从多相机回环定位、LiDAR 建图，到端到端自动驾驶算法工程。",
-            "portfolio.label": "精选构建模式",
-            "portfolio.title": "竞赛领导力、科研手艺、产品直觉。",
-            "portfolio.copy":
-              "这里承载机器人、算法、智能制造、创业和工程产品方向的作品集。",
-            "portfolio.featuredMeta": "Robocon / 队伍重建",
-            "portfolio.featuredTitle": "把机器人队重建成一个技术引擎。",
-            "portfolio.featuredCopy":
-              "组织机械设计、电控和算法资料；制定竞赛策略与技术方案；培养核心队员。",
-            "portfolio.ipMeta": "知识产权",
-            "portfolio.ipTitle": "专利板块已经准备好上线。",
-            "portfolio.ipCopy": "等申请号、状态和发明人信息确定后，可以直接补充到当前结构里。",
-            "portfolio.awardMeta": "竞赛获奖",
-            "portfolio.awardTitle": "2 项国家级奖项和 11 项省级奖项。",
-            "portfolio.awardCopy": "竞赛荣誉已作为核心成就展示，而不是停留在占位列表。",
-            "contact.label": "联系",
-            "contact.title": "一起做离开屏幕、进入世界的系统。",
-            "contact.copy":
-              "欢迎围绕机器人、具身智能、自动驾驶、多模态系统和高野心工程产品交流。",
-            footer: "© 2026 李培楠。Built for peinanli.github.io."
-          },
-          domains: [
-            {
-              icon: "RB",
-              title: "机器人",
-              copy: "竞赛机器人、团队系统、机械-控制-算法一体化。",
-              accent: "#ff5d3d"
-            },
-            {
-              icon: "EA",
-              title: "具身智能",
-              copy: "面向物理世界的感知、运动、决策与执行闭环。",
-              accent: "#36d6c8"
-            },
-            {
-              icon: "AD",
-              title: "自动驾驶",
-              copy: "可解释交通事故分析、端到端规划与驾驶智能体。",
-              accent: "#f0c95a"
-            },
-            {
-              icon: "MM",
-              title: "多模态模型",
-              copy: "面向真实场景的视觉-语言-动作推理与可检查 AI 系统。",
-              accent: "#a386ff"
-            }
-          ],
-          timeline: [
-            {
-              time: "2023.09 - 2027.07",
-              short: "同济大学",
-              title: "同济大学工学本科生",
-              meta: "机械电子工程",
-              image: "同济.jpeg",
-              copy: "就读于同济大学机械与能源工程学院机械电子工程专业。"
-            },
-            {
-              time: "2024.03 至今",
-              short: "Robocon",
-              title: "同济大学 Robocon 机器人队队长",
-              meta: "10+ 项竞赛 / 队伍重建",
-              image: "robocon.jpg",
-              copy:
-                "参加十余项专业竞赛，获得 2 项国家级奖项和 11 项省级奖项，覆盖算法、机械、创新创业和电子等方向。重建同济大学 Robocon 机器人队，组织并撰写机械设计、电控和算法技术资料，制定竞赛策略与技术方案，并培养多名核心队员。"
-            },
-            {
-              time: "2025.08 - 2026.01",
-              short: "视维 + NUS",
-              title: "重庆视维数据科技有限公司算法工程师",
-              meta: "与新加坡国立大学合作",
-              image: "新国立.jpeg",
-              copy:
-                "主导 DP180 多相机回环定位算法和长距离、长时程 LiDAR 三维建图算法开发。"
-            },
-            {
-              time: "2026.01 至今",
-              short: "交大 AutoLab",
-              title: "上海交通大学人工智能学院 AutoLab 科研助理",
-              meta: "智能系统科研",
-              image: "上海交大.jpg",
-              copy:
-                "开展自动驾驶、具身智能、多模态推理和可解释 AI 系统相关研究。"
-            },
-            {
-              time: "2026.02 - 2026.05",
-              short: "哈啰",
-              title: "哈啰端到端算法工程师实习生",
-              meta: "自动驾驶算法工程",
-              image: "哈啰.jpeg",
-              copy: "在哈啰从事端到端算法工程相关实习工作。"
-            }
-          ],
-          filters: [
-            { id: "all", label: "全部" },
-            { id: "accepted", label: "已接收" },
-            { id: "submitted", label: "在投" },
-            { id: "driving", label: "自动驾驶" },
-            { id: "agents", label: "智能体" }
-          ],
-          papers: [
-            {
-              status: "已接收 · IEEE ICME 2026 Oral",
-              group: ["accepted", "driving"],
-              title:
-                "Neuro-Causal Drive: A Neuro-Symbolic Framework for Long-Horizon and Interpretable Traffic Accident Analysis",
-              copy: "以第一作者独立撰写，并被 IEEE ICME 2026 接收为 Oral 报告。"
-            },
-            {
-              status: "已投稿 · IROS 2026",
-              group: ["submitted"],
-              title:
-                "Evidential-LIO: Uncertainty-Aware Resource Allocation and Information-Theoretic Mapping for Dynamic Environments",
-              copy: "手稿已投稿至 IROS 2026。"
-            },
-            {
-              status: "已投稿 · ACM MM 2026",
-              group: ["submitted", "driving"],
-              title:
-                "DriveNarrate: Shared Intervenable Decision Bottlenecks for Faithful Vision-Language-Action Driving",
-              copy: "手稿已投稿至 ACM MM 2026。"
-            },
-            {
-              status: "已投稿 · ACM MM 2026",
-              group: ["submitted"],
-              title:
-                "Multimodal Consistency Learning for Controlled Grounded Industrial Defect Explanation",
-              copy: "手稿已投稿至 ACM MM 2026。"
-            },
-            {
-              status: "已投稿 · COLM 2026",
-              group: ["submitted", "agents"],
-              title:
-                "Beyond Context Length: Utility-Aware Context Paging for Long-Horizon LLM Agents",
-              copy: "手稿已投稿至 COLM 2026。"
-            },
-            {
-              status: "已投稿 · NeurIPS 2026",
-              group: ["submitted", "driving"],
-              title:
-                "FlexPlanner: Adaptive Planner Selection with Temporal Reward Decomposition for Autonomous Driving",
-              copy: "手稿已投稿至 NeurIPS 2026。"
-            }
-          ],
-          practice: [
-            {
-              image: "新国立.jpeg",
-              meta: "2025.08 - 2026.01",
-              title: "重庆视维数据科技有限公司算法工程师 / 与新加坡国立大学合作",
-              copy: "主导 DP180 多相机回环定位算法和长距离、长时程 LiDAR 三维建图算法开发。"
-            },
-            {
-              image: "哈啰.jpeg",
-              meta: "2026.02 - 2026.05",
-              title: "哈啰端到端算法工程师实习生",
-              copy: "从事端到端自动驾驶算法工程相关实习工作。"
-            }
-          ],
-          tags: ["机械设计", "电控", "算法", "竞赛策略", "队员培养"]
-        }
-      };
+      const panelButtons = document.querySelectorAll("[data-panel-target]");
+      const panels = document.querySelectorAll("[data-panel]");
+      const languageToggle = document.querySelector("[data-language-toggle]");
+      let currentLanguage = "en";
 
-      const state = {
-        lang: "en",
-        activeTimeline: 0,
-        activeFilter: "all",
-        motion: !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      };
-
-      const $ = (selector, root = document) => root.querySelector(selector);
-      const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-
-      function applyText() {
-        const dictionary = content[state.lang].text;
-        document.documentElement.lang = state.lang === "zh" ? "zh-CN" : "en";
-        document.title = state.lang === "zh" ? "李培楠" : "Peinan Li";
-        $$("[data-text]").forEach((node) => {
-          const value = dictionary[node.dataset.text];
-          if (value) node.textContent = value;
+      function showPanel(panelName) {
+        panels.forEach((panel) => {
+          panel.classList.toggle("is-active", panel.dataset.panel === panelName);
         });
-        $$("[data-html]").forEach((node) => {
-          const value = dictionary[node.dataset.html];
-          if (value) node.innerHTML = value;
-        });
-        $("[data-language-toggle]").textContent = state.lang === "zh" ? "English" : "中文";
-      }
 
-      function renderDomains() {
-        const grid = $("[data-domain-grid]");
-        grid.innerHTML = content[state.lang].domains
-          .map(
-            (item, index) => `
-              <article class="domain-card reveal" style="--accent: ${item.accent}" data-index="${String(index + 1).padStart(2, "0")}" data-tilt-card>
-                <span class="domain-icon">${item.icon}</span>
-                <h3>${item.title}</h3>
-                <p>${item.copy}</p>
-              </article>
-            `
-          )
-          .join("");
-      }
-
-      function renderTimeline() {
-        const rail = $("[data-timeline-rail]");
-        const focus = $("[data-timeline-focus]");
-        const items = content[state.lang].timeline;
-        rail.innerHTML = items
-          .map(
-            (item, index) => `
-              <button class="timeline-button ${index === state.activeTimeline ? "is-active" : ""}" type="button" data-timeline-index="${index}">
-                <img src="${item.image}" alt="" />
-                <span>
-                  <strong>${item.short}</strong>
-                  <span>${item.time}</span>
-                </span>
-              </button>
-            `
-          )
-          .join("");
-
-        const active = items[state.activeTimeline];
-        focus.innerHTML = `
-          <div>
-            <div class="focus-meta">
-              <span class="pill">${active.time}</span>
-              <span class="pill">${active.meta}</span>
-            </div>
-            <h3>${active.title}</h3>
-            <p>${active.copy}</p>
-          </div>
-          <figure class="focus-image">
-            <img src="${active.image}" alt="${active.short}" />
-          </figure>
-        `;
-
-        $$("[data-timeline-index]").forEach((button) => {
-          button.addEventListener("click", () => {
-            state.activeTimeline = Number(button.dataset.timelineIndex);
-            renderTimeline();
-          });
+        panelButtons.forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.panelTarget === panelName);
         });
       }
 
-      function renderFilters() {
-        const toolbar = $("[data-filter-toolbar]");
-        toolbar.innerHTML = content[state.lang].filters
-          .map(
-            (filter) => `
-              <button class="filter-button ${filter.id === state.activeFilter ? "is-active" : ""}" type="button" data-filter="${filter.id}">
-                ${filter.label}
-              </button>
-            `
-          )
-          .join("");
+      function setLanguage(language) {
+        currentLanguage = language;
+        document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+        document.title = language === "zh" ? "李培楠" : "Peinan Li";
 
-        $$("[data-filter]").forEach((button) => {
-          button.addEventListener("click", () => {
-            state.activeFilter = button.dataset.filter;
-            renderFilters();
-            renderPapers();
-          });
+        document.querySelectorAll("[data-en][data-zh]").forEach((element) => {
+          element.textContent = element.dataset[language];
         });
-      }
 
-      function renderPapers() {
-        const grid = $("[data-paper-grid]");
-        grid.innerHTML = content[state.lang].papers
-          .map((paper) => {
-            const visible = state.activeFilter === "all" || paper.group.includes(state.activeFilter);
-            const accepted = paper.group.includes("accepted") ? "accepted" : "";
-            return `
-              <article class="paper-card ${accepted} reveal" ${visible ? "" : "hidden"}>
-                <div>
-                  <span class="paper-status">${paper.status}</span>
-                  <h3>${paper.title}</h3>
-                  <p>${paper.copy}</p>
-                </div>
-                <span aria-hidden="true">↗</span>
-              </article>
-            `;
-          })
-          .join("");
-      }
-
-      function renderPractice() {
-        const grid = $("[data-practice-grid]");
-        grid.innerHTML = content[state.lang].practice
-          .map(
-            (item) => `
-              <article class="experience-panel reveal" data-tilt-card>
-                <figure class="experience-media">
-                  <img src="${item.image}" alt="" />
-                </figure>
-                <div class="experience-body">
-                  <span class="pill">${item.meta}</span>
-                  <h3>${item.title}</h3>
-                  <p>${item.copy}</p>
-                </div>
-              </article>
-            `
-          )
-          .join("");
-      }
-
-      function renderTags() {
-        $("[data-feature-tags]").innerHTML = content[state.lang].tags
-          .map((tag) => `<span class="tag">${tag}</span>`)
-          .join("");
-      }
-
-      function renderAll() {
-        applyText();
-        renderDomains();
-        renderTimeline();
-        renderFilters();
-        renderPapers();
-        renderPractice();
-        renderTags();
-        setupReveals();
-        setupTilt();
-      }
-
-      function setupReveals() {
-        const revealNodes = $$(".reveal");
-        if (!("IntersectionObserver" in window)) {
-          revealNodes.forEach((node) => node.classList.add("is-visible"));
-          return;
-        }
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.14 }
+        languageToggle.textContent = language === "zh" ? "English" : "中文";
+        languageToggle.setAttribute(
+          "aria-label",
+          language === "zh" ? "Switch to English" : "切换到中文"
         );
-        revealNodes.forEach((node) => observer.observe(node));
       }
 
-      function setupTilt() {
-        $$("[data-tilt-card]").forEach((card) => {
-          card.onpointermove = (event) => {
-            if (!state.motion || window.innerWidth < 720) return;
-            const rect = card.getBoundingClientRect();
-            const x = (event.clientX - rect.left) / rect.width - 0.5;
-            const y = (event.clientY - rect.top) / rect.height - 0.5;
-            card.style.transform = `perspective(900px) rotateX(${-y * 4}deg) rotateY(${x * 5}deg) translateY(-2px)`;
-          };
-          card.onpointerleave = () => {
-            card.style.transform = "";
-          };
-        });
-      }
-
-      function setupLanguageToggle() {
-        $("[data-language-toggle]").addEventListener("click", () => {
-          state.lang = state.lang === "en" ? "zh" : "en";
-          renderAll();
-        });
-      }
-
-      function setupMotionToggle() {
-        const button = $("[data-motion-toggle]");
-        const update = () => {
-          button.textContent = state.motion ? "▮▮" : "▶";
-          button.setAttribute("aria-label", state.motion ? "Pause motion" : "Resume motion");
-          button.title = state.motion ? "Pause motion" : "Resume motion";
-          document.body.classList.toggle("motion-paused", !state.motion);
-        };
+      panelButtons.forEach((button) => {
         button.addEventListener("click", () => {
-          state.motion = !state.motion;
-          update();
+          showPanel(button.dataset.panelTarget);
+          window.scrollTo({ top: 0, behavior: "smooth" });
         });
-        update();
-      }
+      });
 
-      function setupScrollProgress() {
-        const bar = $("[data-scroll-progress]");
-        const update = () => {
-          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-          const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
-          bar.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
-        };
-        window.addEventListener("scroll", update, { passive: true });
-        window.addEventListener("resize", update);
-        update();
-      }
+      languageToggle.addEventListener("click", () => {
+        setLanguage(currentLanguage === "en" ? "zh" : "en");
+      });
 
-      function setupSignalField() {
-        const canvas = $("[data-signal-field]");
-        const context = canvas.getContext("2d");
-        const pointer = { x: 0.68, y: 0.32 };
-        let width = 0;
-        let height = 0;
-        let frame = 0;
-        const points = Array.from({ length: 34 }, (_, index) => ({
-          x: (Math.sin(index * 17.17) + 1) / 2,
-          y: (Math.cos(index * 11.31) + 1) / 2,
-          speed: 0.002 + (index % 5) * 0.0003
-        }));
-
-        function resize() {
-          const rect = canvas.getBoundingClientRect();
-          const ratio = window.devicePixelRatio || 1;
-          width = rect.width;
-          height = rect.height;
-          canvas.width = Math.max(1, Math.floor(width * ratio));
-          canvas.height = Math.max(1, Math.floor(height * ratio));
-          context.setTransform(ratio, 0, 0, ratio, 0, 0);
-        }
-
-        function draw() {
-          context.clearRect(0, 0, width, height);
-          if (state.motion) frame += 1;
-          const time = frame * 0.012;
-          const actual = points.map((point, index) => {
-            const drift = state.motion ? time * point.speed * 90 : 0;
-            return {
-              x: (point.x + Math.sin(time + index) * 0.018 + drift) % 1,
-              y: point.y + Math.cos(time * 0.8 + index) * 0.025
-            };
-          });
-
-          actual.push(pointer);
-          context.lineWidth = 1;
-          for (let i = 0; i < actual.length; i += 1) {
-            for (let j = i + 1; j < actual.length; j += 1) {
-              const ax = actual[i].x * width;
-              const ay = actual[i].y * height;
-              const bx = actual[j].x * width;
-              const by = actual[j].y * height;
-              const distance = Math.hypot(ax - bx, ay - by);
-              if (distance < 170) {
-                context.strokeStyle = `rgba(54, 214, 200, ${0.16 * (1 - distance / 170)})`;
-                context.beginPath();
-                context.moveTo(ax, ay);
-                context.lineTo(bx, by);
-                context.stroke();
-              }
-            }
-          }
-
-          actual.forEach((point, index) => {
-            context.fillStyle = index === actual.length - 1 ? "rgba(255, 93, 61, 0.9)" : "rgba(245, 241, 232, 0.42)";
-            context.beginPath();
-            context.arc(point.x * width, point.y * height, index === actual.length - 1 ? 3.8 : 2.2, 0, Math.PI * 2);
-            context.fill();
-          });
-
-          requestAnimationFrame(draw);
-        }
-
-        window.addEventListener("resize", resize);
-        window.addEventListener("pointermove", (event) => {
-          const rect = canvas.getBoundingClientRect();
-          pointer.x = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
-          pointer.y = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
-        });
-        resize();
-        draw();
-      }
-
-      setupLanguageToggle();
-      setupMotionToggle();
-      renderAll();
-      setupScrollProgress();
-      setupSignalField();
+      setLanguage("en");
     </script>
   </body>
 </html>
