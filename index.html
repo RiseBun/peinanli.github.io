@@ -25,6 +25,10 @@
         --shadow: 0 22px 58px rgba(42, 33, 25, 0.1);
         --soft-shadow: 0 14px 34px rgba(42, 33, 25, 0.09);
         --radius: 18px;
+        --sidebar-width: 148px;
+        --page-width: 900px;
+        --layout-gap: 22px;
+        --stage-height: min(640px, calc(100vh - 84px));
       }
 
       * {
@@ -149,18 +153,22 @@
         position: relative;
         z-index: 2;
         display: grid;
-        width: min(1180px, calc(100% - clamp(40px, 8vw, 128px)));
+        width: min(
+          calc(var(--sidebar-width) + var(--layout-gap) + var(--page-width)),
+          calc(100% - clamp(32px, 7vw, 112px))
+        );
         min-height: 100vh;
         margin: 0 auto;
+        align-content: center;
         align-items: center;
-        grid-template-columns: 148px minmax(0, 1fr);
-        gap: 24px;
+        grid-template-columns: var(--sidebar-width) minmax(0, var(--page-width));
+        gap: var(--layout-gap);
         padding: 42px 0;
       }
 
       .sidebar {
         display: flex;
-        min-height: min(680px, calc(100vh - 84px));
+        min-height: var(--stage-height);
         flex-direction: column;
         padding: 14px;
         border: 1px solid var(--line);
@@ -282,11 +290,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 100%;
       }
 
       .panel {
         display: none;
-        width: min(100%, 940px);
+        width: 100%;
       }
 
       .panel.is-active {
@@ -308,8 +317,8 @@
 
       .hero {
         display: grid;
-        min-height: min(680px, calc(100vh - 84px));
-        grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.7fr);
+        min-height: var(--stage-height);
+        grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.72fr);
         gap: 20px;
         align-items: stretch;
       }
@@ -328,7 +337,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: clamp(28px, 4vw, 54px);
+        padding: clamp(26px, 3.6vw, 46px);
       }
 
       .profile-card {
@@ -348,7 +357,7 @@
 
       h1 {
         max-width: 720px;
-        font-size: clamp(56px, 8vw, 112px);
+        font-size: clamp(48px, 7vw, 96px);
         line-height: 0.96;
         letter-spacing: 0;
       }
@@ -383,8 +392,8 @@
 
       .highlights {
         display: grid;
-        gap: 14px;
-        margin: 30px 0 0;
+        gap: 12px;
+        margin: 28px 0 0;
         padding: 0;
         list-style: none;
       }
@@ -455,7 +464,7 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 14px;
-        margin-top: 34px;
+        margin-top: 28px;
       }
 
       .hero-contact {
@@ -500,7 +509,7 @@
 
       .profile-photo img {
         width: 100%;
-        height: min(58vh, 610px);
+        height: clamp(300px, 48vh, 460px);
         object-fit: cover;
         object-position: center top;
       }
@@ -519,20 +528,20 @@
 
       .profile-summary {
         color: var(--text);
-        font-size: 17px;
+        font-size: 16px;
         font-weight: 760;
         line-height: 1.55;
       }
 
       .profile-tagline {
         color: var(--muted);
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.7;
       }
 
       .section-card {
-        min-height: calc(100vh - 44px);
-        padding: clamp(28px, 4vw, 52px);
+        min-height: var(--stage-height);
+        padding: clamp(26px, 3.6vw, 46px);
       }
 
       .section-head {
@@ -811,11 +820,13 @@
           grid-template-columns: 1fr;
           gap: 18px;
           width: min(100% - 28px, 1220px);
+          min-height: auto;
           padding: 18px 0 34px;
         }
 
         .sidebar {
           position: static;
+          min-height: auto;
           height: auto;
         }
 
@@ -843,6 +854,15 @@
         .hero {
           min-height: auto;
           grid-template-columns: 1fr;
+        }
+
+        .profile-photo img {
+          height: auto;
+          max-height: none;
+        }
+
+        .section-card {
+          min-height: auto;
         }
 
         .card,
