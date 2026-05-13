@@ -11,8 +11,8 @@
     <style>
       :root {
         color-scheme: light;
-        --bg: #f6f3ee;
-        --surface: rgba(255, 255, 255, 0.78);
+        --bg: #f7f4ef;
+        --surface: rgba(255, 255, 255, 0.82);
         --surface-strong: #ffffff;
         --text: #1d1d1f;
         --muted: #666a73;
@@ -20,8 +20,11 @@
         --accent: #9a2f3f;
         --accent-dark: #6f1e2c;
         --blue: #1f4e79;
-        --shadow: 0 24px 70px rgba(42, 33, 25, 0.12);
-        --radius: 26px;
+        --green: #2f7d5a;
+        --gold: #bd7f28;
+        --shadow: 0 22px 58px rgba(42, 33, 25, 0.1);
+        --soft-shadow: 0 14px 34px rgba(42, 33, 25, 0.09);
+        --radius: 18px;
       }
 
       * {
@@ -35,10 +38,19 @@
       body {
         margin: 0;
         min-height: 100vh;
+        overflow-x: hidden;
         background:
-          radial-gradient(circle at 0 0, rgba(154, 47, 63, 0.12), transparent 34rem),
-          radial-gradient(circle at 100% 0, rgba(31, 78, 121, 0.12), transparent 32rem),
+          linear-gradient(90deg, rgba(29, 29, 31, 0.035) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(29, 29, 31, 0.03) 1px, transparent 1px),
+          radial-gradient(circle at 8% 0, rgba(154, 47, 63, 0.13), transparent 32rem),
+          radial-gradient(circle at 96% 12%, rgba(31, 78, 121, 0.13), transparent 30rem),
           var(--bg);
+        background-size:
+          54px 54px,
+          54px 54px,
+          auto,
+          auto,
+          auto;
         color: var(--text);
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
@@ -59,14 +71,27 @@
         font: inherit;
       }
 
+      .progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+        background: linear-gradient(90deg, var(--accent), var(--blue), var(--gold));
+        pointer-events: none;
+      }
+
       .app {
         display: grid;
-        width: min(1280px, calc(100% - 40px));
+        width: min(1440px, calc(100% - 32px));
         min-height: 100vh;
         margin: 0 auto;
-        grid-template-columns: 190px minmax(0, 1fr);
-        gap: 22px;
-        padding: 32px 0;
+        grid-template-columns: 152px minmax(0, 1fr);
+        gap: 18px;
+        padding: 22px 0;
       }
 
       .sidebar {
@@ -75,31 +100,32 @@
         display: flex;
         height: calc(100vh - 64px);
         flex-direction: column;
-        padding: 18px;
+        padding: 14px;
         border: 1px solid var(--line);
         border-radius: var(--radius);
         background: var(--surface);
-        box-shadow: var(--shadow);
+        box-shadow: var(--soft-shadow);
         backdrop-filter: blur(18px);
       }
 
       .brand {
-        margin-bottom: 22px;
+        margin-bottom: 18px;
+        padding: 4px 2px 0;
       }
 
       .brand-name {
         margin: 0;
         color: var(--text);
-        font-size: 19px;
+        font-size: 18px;
         font-weight: 800;
-        letter-spacing: -0.04em;
+        letter-spacing: 0;
       }
 
       .brand-note {
         margin: 8px 0 0;
         color: var(--muted);
-        font-size: 12px;
-        line-height: 1.6;
+        font-size: 11px;
+        line-height: 1.55;
       }
 
       .side-nav {
@@ -111,19 +137,35 @@
         display: flex;
         width: 100%;
         align-items: center;
-        justify-content: space-between;
-        padding: 10px 12px;
+        gap: 8px;
+        padding: 9px 10px;
         border: 1px solid transparent;
-        border-radius: 16px;
+        border-radius: 12px;
         background: transparent;
         color: var(--muted);
         cursor: pointer;
+        font-size: 13px;
+        font-weight: 750;
         text-align: left;
         transition:
           background 160ms ease,
           border-color 160ms ease,
           color 160ms ease,
           transform 160ms ease;
+      }
+
+      .nav-item::before {
+        content: attr(data-index);
+        display: grid;
+        width: 22px;
+        height: 22px;
+        flex: 0 0 22px;
+        place-items: center;
+        border-radius: 999px;
+        background: rgba(29, 29, 31, 0.06);
+        color: rgba(29, 29, 31, 0.48);
+        font-size: 10px;
+        font-weight: 900;
       }
 
       .nav-item:hover,
@@ -136,21 +178,22 @@
 
       .sidebar-footer {
         display: grid;
-        gap: 12px;
+        gap: 10px;
         margin-top: auto;
       }
 
       .language-toggle,
       .button {
         display: inline-flex;
-        min-height: 42px;
+        min-height: 38px;
         align-items: center;
         justify-content: center;
-        padding: 0 16px;
+        padding: 0 12px;
         border: 1px solid var(--line);
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.58);
         color: var(--text);
+        font-size: 13px;
         font-weight: 800;
         cursor: pointer;
         transition:
@@ -175,22 +218,36 @@
       .content {
         min-width: 0;
         display: flex;
-        justify-content: center;
+        justify-content: stretch;
       }
 
       .panel {
         display: none;
-        width: min(100%, 980px);
+        width: 100%;
       }
 
       .panel.is-active {
         display: block;
+        animation: panelIn 260ms ease both;
+      }
+
+      @keyframes panelIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .hero {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 330px;
-        gap: 24px;
+        min-height: calc(100vh - 44px);
+        grid-template-columns: minmax(0, 1.15fr) minmax(310px, 0.85fr);
+        gap: 18px;
         align-items: stretch;
       }
 
@@ -205,15 +262,18 @@
       }
 
       .card {
-        padding: 38px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(28px, 4vw, 54px);
       }
 
       .profile-card {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 22px;
-        padding: 22px;
+        gap: 16px;
+        padding: 16px;
       }
 
       h1,
@@ -225,15 +285,15 @@
 
       h1 {
         max-width: 720px;
-        font-size: clamp(48px, 8vw, 86px);
+        font-size: clamp(56px, 8vw, 112px);
         line-height: 0.96;
-        letter-spacing: -0.065em;
+        letter-spacing: 0;
       }
 
       h2 {
-        font-size: clamp(30px, 5vw, 52px);
+        font-size: clamp(34px, 5vw, 62px);
         line-height: 1;
-        letter-spacing: -0.055em;
+        letter-spacing: 0;
       }
 
       h3 {
@@ -251,11 +311,60 @@
       }
 
       .summary {
-        max-width: 680px;
+        max-width: 760px;
         margin-top: 26px;
         color: var(--muted);
-        font-size: 18px;
+        font-size: clamp(17px, 1.5vw, 20px);
         line-height: 1.8;
+      }
+
+      .quick-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .stat-button {
+        min-height: 88px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.58);
+        color: var(--text);
+        cursor: pointer;
+        text-align: left;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          background 160ms ease;
+      }
+
+      .stat-button:hover,
+      .stat-button:focus-visible {
+        transform: translateY(-3px);
+        border-color: rgba(154, 47, 63, 0.28);
+        background: #fff;
+        box-shadow: var(--soft-shadow);
+        outline: none;
+      }
+
+      .stat-number {
+        display: block;
+        color: var(--accent-dark);
+        font-size: 26px;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .stat-label {
+        display: block;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+        line-height: 1.35;
       }
 
       .highlights {
@@ -280,6 +389,16 @@
         color: var(--muted);
         font-size: 16px;
         line-height: 1.7;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          background 160ms ease;
+      }
+
+      .highlights li:hover {
+        transform: translateX(4px);
+        border-color: rgba(154, 47, 63, 0.22);
+        background: #fff;
       }
 
       .highlights li::before {
@@ -304,6 +423,23 @@
         font-size: 12px;
         font-weight: 900;
         white-space: nowrap;
+      }
+
+      button.keyword-mark {
+        border: 0;
+        cursor: pointer;
+        transition:
+          transform 160ms ease,
+          background 160ms ease,
+          color 160ms ease;
+      }
+
+      button.keyword-mark:hover,
+      button.keyword-mark:focus-visible {
+        transform: translateY(-1px);
+        background: var(--accent);
+        color: #fff;
+        outline: none;
       }
 
       .actions {
@@ -339,14 +475,26 @@
       }
 
       .profile-photo {
+        position: relative;
         overflow: hidden;
-        border-radius: 22px;
+        border-radius: 14px;
         background: #eee7df;
+      }
+
+      .profile-photo::after {
+        position: absolute;
+        inset: auto 14px 14px;
+        height: 2px;
+        content: "";
+        background: linear-gradient(90deg, var(--accent), var(--blue), transparent);
+        opacity: 0.76;
       }
 
       .profile-photo img {
         width: 100%;
-        height: auto;
+        height: min(58vh, 610px);
+        object-fit: cover;
+        object-position: center top;
       }
 
       .photo-caption {
@@ -356,7 +504,8 @@
       }
 
       .section-card {
-        padding: 34px;
+        min-height: calc(100vh - 44px);
+        padding: clamp(28px, 4vw, 52px);
       }
 
       .section-head {
@@ -389,6 +538,20 @@
       .item,
       .tile {
         padding: 20px;
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          background 160ms ease;
+      }
+
+      .item:hover,
+      .tile:hover,
+      .media-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(154, 47, 63, 0.22);
+        background: #fff;
+        box-shadow: var(--soft-shadow);
       }
 
       .meta {
@@ -416,8 +579,13 @@
         gap: 16px;
         padding: 20px;
         border: 1px solid var(--line);
-        border-radius: 22px;
+        border-radius: 16px;
         background: rgba(255, 255, 255, 0.55);
+        transition:
+          transform 160ms ease,
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          background 160ms ease;
       }
 
       .media {
@@ -426,7 +594,7 @@
         place-items: center;
         overflow: hidden;
         border: 1px solid rgba(29, 29, 31, 0.08);
-        border-radius: 18px;
+        border-radius: 12px;
         background: #fff;
       }
 
@@ -454,6 +622,16 @@
         text-align: center;
       }
 
+      @media (min-width: 1180px) {
+        .grid.two {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .list {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
       @media (max-width: 920px) {
         .app {
           grid-template-columns: 1fr;
@@ -467,6 +645,19 @@
           height: auto;
         }
 
+        .brand {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 14px;
+        }
+
+        .brand-note {
+          max-width: 280px;
+          text-align: right;
+        }
+
         .side-nav {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -476,6 +667,11 @@
         }
 
         .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+        }
+
+        .quick-stats {
           grid-template-columns: 1fr;
         }
 
@@ -500,9 +696,40 @@
           margin-left: 0;
         }
       }
+
+      @media (max-width: 560px) {
+        .app {
+          width: min(100% - 20px, 1220px);
+          padding-top: 10px;
+        }
+
+        .brand {
+          display: block;
+        }
+
+        .brand-note {
+          max-width: none;
+          text-align: left;
+        }
+
+        .side-nav {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .hero-buttons,
+        .button {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
+    <div class="progress" aria-hidden="true"></div>
     <main class="app">
       <aside class="sidebar" aria-label="Primary navigation">
         <div class="brand">
@@ -512,13 +739,13 @@
           </p>
         </div>
         <nav class="side-nav">
-          <button class="nav-item is-active" type="button" data-panel-target="home" data-en="Home" data-zh="首页">Home</button>
-          <button class="nav-item" type="button" data-panel-target="timeline" data-en="Timeline" data-zh="时间线">Timeline</button>
-          <button class="nav-item" type="button" data-panel-target="research" data-en="Research" data-zh="科研">Research</button>
-          <button class="nav-item" type="button" data-panel-target="internships" data-en="Internships" data-zh="实习">Internships</button>
-          <button class="nav-item" type="button" data-panel-target="awards" data-en="Awards" data-zh="竞赛获奖">Awards</button>
-          <button class="nav-item" type="button" data-panel-target="patents" data-en="Patents" data-zh="专利">Patents</button>
-          <button class="nav-item" type="button" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
+          <button class="nav-item is-active" type="button" data-index="01" data-panel-target="home" data-en="Home" data-zh="首页">Home</button>
+          <button class="nav-item" type="button" data-index="02" data-panel-target="timeline" data-en="Timeline" data-zh="时间线">Timeline</button>
+          <button class="nav-item" type="button" data-index="03" data-panel-target="research" data-en="Research" data-zh="科研">Research</button>
+          <button class="nav-item" type="button" data-index="04" data-panel-target="internships" data-en="Internships" data-zh="实习">Internships</button>
+          <button class="nav-item" type="button" data-index="05" data-panel-target="awards" data-en="Awards" data-zh="竞赛获奖">Awards</button>
+          <button class="nav-item" type="button" data-index="06" data-panel-target="patents" data-en="Patents" data-zh="专利">Patents</button>
+          <button class="nav-item" type="button" data-index="07" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
         </nav>
         <div class="sidebar-footer">
           <button class="language-toggle" type="button" data-language-toggle>中文</button>
@@ -539,21 +766,35 @@
               >
                 I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University.
               </p>
+              <div class="quick-stats" aria-label="Quick navigation">
+                <button class="stat-button" type="button" data-panel-target="research">
+                  <span class="stat-number">6</span>
+                  <span class="stat-label" data-en="papers accepted or submitted" data-zh="篇已接收或在投论文">papers accepted or submitted</span>
+                </button>
+                <button class="stat-button" type="button" data-panel-target="timeline">
+                  <span class="stat-number">4</span>
+                  <span class="stat-label" data-en="research and engineering stages" data-zh="段科研与工程经历">research and engineering stages</span>
+                </button>
+                <button class="stat-button" type="button" data-panel-target="portfolio">
+                  <span class="stat-number">3</span>
+                  <span class="stat-label" data-en="portfolio directions" data-zh="个作品集方向">portfolio directions</span>
+                </button>
+              </div>
               <ul class="highlights">
                 <li>
                   <span data-en="My research centers on" data-zh="我的研究围绕">My research centers on</span>
-                  <span class="keyword-mark" data-en="robotics" data-zh="机器人">robotics</span>
+                  <button class="keyword-mark" type="button" data-panel-target="portfolio" data-en="robotics" data-zh="机器人">robotics</button>
                   <span data-en="and" data-zh="与">and</span>
-                  <span class="keyword-mark" data-en="embodied AI" data-zh="具身智能">embodied AI</span>
+                  <button class="keyword-mark" type="button" data-panel-target="research" data-en="embodied AI" data-zh="具身智能">embodied AI</button>
                   <span data-en="with extensions to" data-zh="展开，并延伸到">with extensions to</span>
-                  <span class="keyword-mark" data-en="autonomous driving" data-zh="自动驾驶">autonomous driving</span>
+                  <button class="keyword-mark" type="button" data-panel-target="research" data-en="autonomous driving" data-zh="自动驾驶">autonomous driving</button>
                   <span data-en="and" data-zh="和">and</span>
-                  <span class="keyword-mark" data-en="multimodal large models" data-zh="多模态大模型">multimodal large models</span>
+                  <button class="keyword-mark" type="button" data-panel-target="research" data-en="multimodal large models" data-zh="多模态大模型">multimodal large models</button>
                   <span data-en="." data-zh="。">.</span>
                 </li>
                 <li>
                   <span data-en="I work as a" data-zh="我是一名贯穿软硬件的">I work as a</span>
-                  <span class="keyword-mark" data-en="full-stack developer" data-zh="全栈开发">full-stack developer</span>
+                  <button class="keyword-mark" type="button" data-panel-target="portfolio" data-en="full-stack developer" data-zh="全栈开发">full-stack developer</button>
                   <span
                     data-en="across software and hardware, connecting mechanics, electronics, algorithms, and AI."
                     data-zh="工程实践者，连接机械、电子、算法与 AI。"
@@ -563,7 +804,7 @@
                 </li>
                 <li>
                   <span data-en="As a" data-zh="作为">As a</span>
-                  <span class="keyword-mark" data-en="young entrepreneur" data-zh="青年创业者">young entrepreneur</span>
+                  <button class="keyword-mark" type="button" data-panel-target="portfolio" data-en="young entrepreneur" data-zh="青年创业者">young entrepreneur</button>
                   <span
                     data-en="I like turning unconventional engineering ideas into practical new possibilities."
                     data-zh="我希望把不循常规的工程想法转化为新的现实可能。"
@@ -808,8 +1049,10 @@
 
     <script>
       const panelButtons = document.querySelectorAll("[data-panel-target]");
+      const navButtons = document.querySelectorAll(".nav-item[data-panel-target]");
       const panels = document.querySelectorAll("[data-panel]");
       const languageToggle = document.querySelector("[data-language-toggle]");
+      const progress = document.querySelector(".progress");
       let currentLanguage = "en";
 
       function showPanel(panelName) {
@@ -817,9 +1060,15 @@
           panel.classList.toggle("is-active", panel.dataset.panel === panelName);
         });
 
-        panelButtons.forEach((button) => {
+        navButtons.forEach((button) => {
           button.classList.toggle("is-active", button.dataset.panelTarget === panelName);
         });
+      }
+
+      function updateProgress() {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const progressValue = scrollable > 0 ? window.scrollY / scrollable : 0;
+        progress.style.transform = `scaleX(${Math.min(Math.max(progressValue, 0), 1)})`;
       }
 
       function setLanguage(language) {
@@ -842,6 +1091,7 @@
         button.addEventListener("click", () => {
           showPanel(button.dataset.panelTarget);
           window.scrollTo({ top: 0, behavior: "smooth" });
+          updateProgress();
         });
       });
 
@@ -849,7 +1099,10 @@
         setLanguage(currentLanguage === "en" ? "zh" : "en");
       });
 
+      window.addEventListener("scroll", updateProgress, { passive: true });
+
       setLanguage("en");
+      updateProgress();
     </script>
   </body>
 </html>
