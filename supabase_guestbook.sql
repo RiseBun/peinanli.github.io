@@ -48,6 +48,10 @@ insert into public.site_metrics (metric_key, metric_value)
 values ('homepage_views', 200)
 on conflict (metric_key) do nothing;
 
+insert into public.site_metrics (metric_key, metric_value)
+values ('homepage_stars', 0)
+on conflict (metric_key) do nothing;
+
 alter table public.site_metrics enable row level security;
 
 drop policy if exists "Anyone can read site metrics"
@@ -81,3 +85,26 @@ $$;
 
 revoke all on function public.increment_site_view() from public;
 grant execute on function public.increment_site_view() to anon;
+
+create or replace function public.increment_site_star()
+returns bigint
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  new_value bigint;
+begin
+  insert into public.site_metrics (metric_key, metric_value, updated_at)
+  values ('homepage_stars', 1, now())
+  on conflict (metric_key) do update
+    set metric_value = public.site_metrics.metric_value + 1,
+        updated_at = now()
+  returning metric_value into new_value;
+
+  return new_value;
+end;
+$$;
+
+revoke all on function public.increment_site_star() from public;
+grant execute on function public.increment_site_star() to anon;

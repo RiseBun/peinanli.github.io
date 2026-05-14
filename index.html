@@ -502,17 +502,23 @@
         top: 16px;
         right: clamp(16px, 3vw, 40px);
         z-index: 15;
-        display: inline-flex;
-        min-height: 36px;
-        align-items: center;
-        gap: 8px;
-        padding: 0 14px;
+        display: grid;
+        gap: 6px;
+        min-width: 130px;
+        padding: 9px 14px;
         border: 1px solid var(--line);
-        border-radius: 999px;
+        border-radius: 18px;
         background: rgba(255, 255, 255, 0.74);
         box-shadow: var(--soft-shadow);
         color: var(--muted);
         backdrop-filter: blur(16px);
+      }
+
+      .site-counter-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
       }
 
       .site-counter span {
@@ -526,6 +532,25 @@
         color: var(--accent-dark);
         font-size: 16px;
         line-height: 1;
+      }
+
+      .star-button {
+        display: inline-flex;
+        min-height: 24px;
+        align-items: center;
+        gap: 5px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--gold);
+        cursor: pointer;
+        font: inherit;
+        font-weight: 900;
+      }
+
+      .star-button[disabled] {
+        cursor: default;
+        opacity: 0.72;
       }
 
       .profile-photo {
@@ -1109,8 +1134,17 @@
     <div class="progress" aria-hidden="true"></div>
     <div class="cursor-light" aria-hidden="true"></div>
     <div class="site-counter" aria-live="polite">
-      <span data-en="Views" data-zh="访问次数">Views</span>
-      <strong data-site-view-count>200</strong>
+      <div class="site-counter-row">
+        <span data-en="Views" data-zh="访问次数">Views</span>
+        <strong data-site-view-count>200</strong>
+      </div>
+      <div class="site-counter-row">
+        <span data-en="Stars" data-zh="星标">Stars</span>
+        <button class="star-button" type="button" data-star-button aria-label="Star this site">
+          <span aria-hidden="true">★</span>
+          <strong data-site-star-count>0</strong>
+        </button>
+      </div>
     </div>
     <div class="greeting" aria-label="Welcome">
       <div class="greeting-panel">
@@ -1651,6 +1685,9 @@
       const guestbookStatus = document.querySelector("[data-guestbook-status]");
       const guestbookList = document.querySelector("[data-guestbook-list]");
       const siteViewCount = document.querySelector("[data-site-view-count]");
+      const siteStarCount = document.querySelector("[data-site-star-count]");
+      const starButton = document.querySelector("[data-star-button]");
+      const starStorageKey = "peinanli-site-starred";
       const guestbookConfig = {
         supabaseUrl: "https://jptzvkscccbjlumseemo.supabase.co",
         supabaseAnonKey: "sb_publishable_frRlFC1cD4FzzHSF1-mayQ_VIeF44TG",
@@ -1701,6 +1738,11 @@
       function getGuestbookEndpoint(query = "") {
         const baseUrl = guestbookConfig.supabaseUrl.replace(/\/$/, "");
         return `${baseUrl}/rest/v1/${guestbookConfig.table}${query}`;
+      }
+
+      function getSupabaseTableEndpoint(tableName, query = "") {
+        const baseUrl = guestbookConfig.supabaseUrl.replace(/\/$/, "");
+        return `${baseUrl}/rest/v1/${tableName}${query}`;
       }
 
       function getSupabaseRpcEndpoint(functionName) {
@@ -1809,6 +1851,62 @@
         }
       }
 
+      function setStarredState(isStarred) {
+        if (!starButton) return;
+        starButton.disabled = isStarred;
+        starButton.setAttribute(
+          "aria-label",
+          isStarred
+            ? localized("You have starred this site", "你已经点过星标")
+            : localized("Star this site", "给这个网站点一颗星")
+        );
+      }
+
+      async function loadSiteStarCount() {
+        if (!siteStarCount || !isGuestbookConnected) return;
+
+        try {
+          const response = await fetch(
+            getSupabaseTableEndpoint("site_metrics", "?select=metric_value&metric_key=eq.homepage_stars"),
+            { headers: getGuestbookHeaders() }
+          );
+
+          if (!response.ok) throw new Error("Failed to load site stars.");
+
+          const [metric] = await response.json();
+          const count = Number(metric?.metric_value ?? 0);
+          siteStarCount.textContent = Number.isFinite(count) ? count.toLocaleString() : "0";
+        } catch (error) {
+          siteStarCount.textContent = "0";
+        }
+      }
+
+      async function starSite() {
+        if (!siteStarCount || !starButton || !isGuestbookConnected) return;
+        if (localStorage.getItem(starStorageKey) === "true") return;
+
+        try {
+          starButton.disabled = true;
+          const response = await fetch(getSupabaseRpcEndpoint("increment_site_star"), {
+            method: "POST",
+            headers: getGuestbookHeaders(),
+            body: "{}",
+          });
+
+          if (!response.ok) throw new Error("Failed to update site stars.");
+
+          const count = await response.json();
+          const numericCount = Number(count);
+          siteStarCount.textContent = Number.isFinite(numericCount)
+            ? numericCount.toLocaleString()
+            : siteStarCount.textContent;
+          localStorage.setItem(starStorageKey, "true");
+          setStarredState(true);
+        } catch (error) {
+          starButton.disabled = false;
+        }
+      }
+
       function setLanguage(language) {
         currentLanguage = language;
         document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
@@ -1825,6 +1923,7 @@
         );
         updateLocalizedAttributes();
         renderGuestbookMessages();
+        setStarredState(localStorage.getItem(starStorageKey) === "true");
         if (!isGuestbookConnected) {
           setGuestbookStatus(
             "Message service is not connected yet. Add Supabase credentials in the script to enable public posting.",
@@ -1881,6 +1980,10 @@
         });
       }
 
+      if (starButton) {
+        starButton.addEventListener("click", starSite);
+      }
+
       window.addEventListener("scroll", updateProgress, { passive: true });
       window.addEventListener("pointermove", (event) => {
         cursorLight.style.opacity = "1";
@@ -1891,6 +1994,8 @@
       setLanguage("en");
       loadGuestbookMessages();
       updateSiteViewCount();
+      loadSiteStarCount();
+      setStarredState(localStorage.getItem(starStorageKey) === "true");
       updateProgress();
       window.setTimeout(closeGreeting, 1000);
     </script>
