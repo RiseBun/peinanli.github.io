@@ -498,16 +498,21 @@
       }
 
       .site-counter {
-        display: inline-grid;
-        min-width: 112px;
-        min-height: 54px;
-        align-content: center;
-        gap: 4px;
-        padding: 8px 14px;
+        position: fixed;
+        top: 16px;
+        right: clamp(16px, 3vw, 40px);
+        z-index: 15;
+        display: inline-flex;
+        min-height: 36px;
+        align-items: center;
+        gap: 8px;
+        padding: 0 14px;
         border: 1px solid var(--line);
-        border-radius: 16px;
-        background: rgba(255, 255, 255, 0.58);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.74);
+        box-shadow: var(--soft-shadow);
         color: var(--muted);
+        backdrop-filter: blur(16px);
       }
 
       .site-counter span {
@@ -519,7 +524,7 @@
 
       .site-counter strong {
         color: var(--accent-dark);
-        font-size: 22px;
+        font-size: 16px;
         line-height: 1;
       }
 
@@ -1012,10 +1017,6 @@
           margin-left: 0;
         }
 
-        .site-counter {
-          width: fit-content;
-        }
-
         .journey-step {
           grid-template-columns: 120px minmax(0, 1fr);
         }
@@ -1068,7 +1069,8 @@
         }
 
         .site-counter {
-          width: 100%;
+          right: 10px;
+          top: 10px;
         }
 
         .journey {
@@ -1088,6 +1090,10 @@
   <body class="greeting-open">
     <div class="progress" aria-hidden="true"></div>
     <div class="cursor-light" aria-hidden="true"></div>
+    <div class="site-counter" aria-live="polite">
+      <span data-en="Views" data-zh="访问次数">Views</span>
+      <strong data-site-view-count>200</strong>
+    </div>
     <div class="greeting" aria-label="Welcome">
       <div class="greeting-panel">
         <div class="greeting-word">Welcome!</div>
@@ -1165,10 +1171,6 @@
                   <span class="wechat-handle">RiseBun</span>
                 </p>
                 <div class="hero-buttons">
-                  <div class="site-counter" aria-live="polite">
-                    <span data-en="Views" data-zh="访问次数">Views</span>
-                    <strong data-site-view-count>200</strong>
-                  </div>
                   <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
                   <button class="button primary" type="button" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
                 </div>
@@ -1780,9 +1782,12 @@
           if (!response.ok) throw new Error("Failed to update site views.");
 
           const count = await response.json();
-          siteViewCount.textContent = Number(count).toLocaleString();
+          const numericCount = Number(count);
+          siteViewCount.textContent = Number.isFinite(numericCount)
+            ? numericCount.toLocaleString()
+            : "200";
         } catch (error) {
-          siteViewCount.textContent = "200+";
+          siteViewCount.textContent = "200";
         }
       }
 
