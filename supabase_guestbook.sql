@@ -37,3 +37,47 @@ create policy "Anyone can publish anonymous guestbook messages"
 
 create index if not exists guestbook_messages_created_at_idx
   on public.guestbook_messages (created_at desc);
+
+create table if not exists public.site_metrics (
+  metric_key text primary key,
+  metric_value bigint not null default 0,
+  updated_at timestamptz not null default now()
+);
+
+insert into public.site_metrics (metric_key, metric_value)
+values ('homepage_views', 200)
+on conflict (metric_key) do nothing;
+
+alter table public.site_metrics enable row level security;
+
+drop policy if exists "Anyone can read site metrics"
+  on public.site_metrics;
+
+create policy "Anyone can read site metrics"
+  on public.site_metrics
+  for select
+  to anon
+  using (true);
+
+create or replace function public.increment_site_view()
+returns bigint
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  new_value bigint;
+begin
+  insert into public.site_metrics (metric_key, metric_value, updated_at)
+  values ('homepage_views', 201, now())
+  on conflict (metric_key) do update
+    set metric_value = public.site_metrics.metric_value + 1,
+        updated_at = now()
+  returning metric_value into new_value;
+
+  return new_value;
+end;
+$$;
+
+revoke all on function public.increment_site_view() from public;
+grant execute on function public.increment_site_view() to anon;

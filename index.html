@@ -497,6 +497,32 @@
         flex-wrap: wrap;
       }
 
+      .site-counter {
+        display: inline-grid;
+        min-width: 112px;
+        min-height: 54px;
+        align-content: center;
+        gap: 4px;
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.58);
+        color: var(--muted);
+      }
+
+      .site-counter span {
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .site-counter strong {
+        color: var(--accent-dark);
+        font-size: 22px;
+        line-height: 1;
+      }
+
       .profile-photo {
         position: relative;
         overflow: hidden;
@@ -986,6 +1012,10 @@
           margin-left: 0;
         }
 
+        .site-counter {
+          width: fit-content;
+        }
+
         .journey-step {
           grid-template-columns: 120px minmax(0, 1fr);
         }
@@ -1034,6 +1064,10 @@
 
         .hero-buttons,
         .button {
+          width: 100%;
+        }
+
+        .site-counter {
           width: 100%;
         }
 
@@ -1131,6 +1165,10 @@
                   <span class="wechat-handle">RiseBun</span>
                 </p>
                 <div class="hero-buttons">
+                  <div class="site-counter" aria-live="polite">
+                    <span data-en="Views" data-zh="访问次数">Views</span>
+                    <strong data-site-view-count>200</strong>
+                  </div>
                   <a class="button" href="https://github.com/RiseBun" target="_blank" rel="noreferrer">GitHub</a>
                   <button class="button primary" type="button" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
                 </div>
@@ -1592,6 +1630,7 @@
       const guestbookSubmit = document.querySelector("[data-guestbook-submit]");
       const guestbookStatus = document.querySelector("[data-guestbook-status]");
       const guestbookList = document.querySelector("[data-guestbook-list]");
+      const siteViewCount = document.querySelector("[data-site-view-count]");
       const guestbookConfig = {
         supabaseUrl: "https://jptzvkscccbjlumseemo.supabase.co",
         supabaseAnonKey: "sb_publishable_frRlFC1cD4FzzHSF1-mayQ_VIeF44TG",
@@ -1642,6 +1681,11 @@
       function getGuestbookEndpoint(query = "") {
         const baseUrl = guestbookConfig.supabaseUrl.replace(/\/$/, "");
         return `${baseUrl}/rest/v1/${guestbookConfig.table}${query}`;
+      }
+
+      function getSupabaseRpcEndpoint(functionName) {
+        const baseUrl = guestbookConfig.supabaseUrl.replace(/\/$/, "");
+        return `${baseUrl}/rest/v1/rpc/${functionName}`;
       }
 
       function getGuestbookHeaders(extraHeaders = {}) {
@@ -1720,6 +1764,25 @@
             "Could not load suggestions right now. Please try again later.",
             "暂时无法加载留言，请稍后再试。"
           );
+        }
+      }
+
+      async function updateSiteViewCount() {
+        if (!siteViewCount || !isGuestbookConnected) return;
+
+        try {
+          const response = await fetch(getSupabaseRpcEndpoint("increment_site_view"), {
+            method: "POST",
+            headers: getGuestbookHeaders(),
+            body: "{}",
+          });
+
+          if (!response.ok) throw new Error("Failed to update site views.");
+
+          const count = await response.json();
+          siteViewCount.textContent = Number(count).toLocaleString();
+        } catch (error) {
+          siteViewCount.textContent = "200+";
         }
       }
 
@@ -1804,6 +1867,7 @@
 
       setLanguage("en");
       loadGuestbookMessages();
+      updateSiteViewCount();
       updateProgress();
       window.setTimeout(closeGreeting, 1000);
     </script>
