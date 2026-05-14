@@ -870,6 +870,15 @@
         gap: 10px;
       }
 
+      .guestbook-list {
+        max-height: 260px;
+        align-content: start;
+        overflow-y: auto;
+        padding-right: 4px;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+      }
+
       .guestbook textarea {
         width: 100%;
         min-height: 82px;
@@ -1016,6 +1025,10 @@
 
         .guestbook-grid {
           grid-template-columns: 1fr;
+        }
+
+        .guestbook-list {
+          max-height: 300px;
         }
 
         .hero-buttons {
