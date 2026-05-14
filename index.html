@@ -631,12 +631,20 @@
         background: #fff;
       }
 
+      .media.document-cover {
+        min-height: 250px;
+      }
+
       .media img,
       .media embed {
         width: 100%;
         height: 100%;
         max-height: 210px;
         object-fit: contain;
+      }
+
+      .media.document-cover img {
+        max-height: 320px;
       }
 
       .journey {
@@ -1390,7 +1398,7 @@
                 </div>
               </article>
               <article class="media-card">
-                <figure class="media"><embed src="三等奖.pdf#toolbar=0&navpanes=0" type="application/pdf" title="China University Student Mechanical Engineering Innovation and Creativity Competition certificate" /></figure>
+                <figure class="media"><img src="三等奖横向.jpg" alt="China University Student Mechanical Engineering Innovation and Creativity Competition certificate" /></figure>
                 <div>
                   <span class="meta" data-en="Third Prize · 2025" data-zh="三等奖 · 2025">Third Prize · 2025</span>
                   <h3
@@ -1489,8 +1497,10 @@
               <h2 data-en="Patents" data-zh="专利">Patents</h2>
               <p class="section-note" data-en="Intellectual property" data-zh="知识产权">Intellectual property</p>
             </div>
-            <div class="list">
-              <article class="item">
+            <div class="grid three">
+              <article class="media-card">
+                <figure class="media document-cover"><img src="专利-力控电推杆.jpg" alt="Patent application acceptance notice for force-controlled electric push rod" /></figure>
+                <div>
                 <span class="meta" data-en="Invention Patent Application Accepted · 2025.07.11" data-zh="发明专利申请已受理 · 2025.07.11">Invention Patent Application Accepted · 2025.07.11</span>
                 <h3 data-en="A force-controlled mechanically lockable electric push rod" data-zh="一种力控可机械锁住的电推杆">A force-controlled mechanically lockable electric push rod</h3>
                 <p
@@ -1499,8 +1509,11 @@
                 >
                   Applicant: Tongji University. Inventors: Peinan Li and Yuantao Sun. Application No. 202510963355.9.
                 </p>
+                </div>
               </article>
-              <article class="item">
+              <article class="media-card">
+                <figure class="media document-cover"><img src="专利-多自由度机械臂.jpg" alt="Patent application acceptance notice for multi-degree-of-freedom robotic arm" /></figure>
+                <div>
                 <span class="meta" data-en="Utility Model Patent Application Accepted · 2025.07.11" data-zh="实用新型专利申请已受理 · 2025.07.11">Utility Model Patent Application Accepted · 2025.07.11</span>
                 <h3 data-en="A parallel end-effector multi-degree-of-freedom robotic arm" data-zh="一种并联末端多自由度机械臂">A parallel end-effector multi-degree-of-freedom robotic arm</h3>
                 <p
@@ -1509,8 +1522,11 @@
                 >
                   Applicant: Tongji University. Inventors: Peinan Li and Yuantao Sun. Application No. 202521461640.2.
                 </p>
+                </div>
               </article>
-              <article class="item">
+              <article class="media-card">
+                <figure class="media document-cover"><img src="专利-智能轮椅.jpg" alt="Patent application acceptance notice for intelligent wheelchair" /></figure>
+                <div>
                 <span class="meta" data-en="Invention Patent Application Accepted · 2025.07.07" data-zh="发明专利申请已受理 · 2025.07.07">Invention Patent Application Accepted · 2025.07.07</span>
                 <h3
                   data-en="Human-assistive robotic arm, control method for assisted human mobility, and intelligent wheelchair"
@@ -1524,6 +1540,7 @@
                 >
                   Applicant: Tongji University. Inventors: Peinan Li and Bo Leng. Application No. 202510931694.9.
                 </p>
+                </div>
               </article>
             </div>
           </div>
