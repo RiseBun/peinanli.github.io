@@ -708,6 +708,20 @@
         max-height: 320px;
       }
 
+      .awards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 14px;
+      }
+
+      .awards-grid .media {
+        min-height: 220px;
+      }
+
+      .awards-grid .media img {
+        max-height: 260px;
+      }
+
       .media.placeholder {
         min-height: 220px;
         border-style: dashed;
@@ -1474,7 +1488,19 @@
               <h2 data-en="Competition Awards" data-zh="竞赛获奖">Competition Awards</h2>
               <p class="section-note" data-en="Competitions and honors" data-zh="竞赛与荣誉">Competitions and honors</p>
             </div>
-            <div class="grid two">
+            <div class="awards-grid">
+              <article class="media-card award-card">
+                <figure class="media">
+                  <img src="国赛数字孪生类二等奖（低空作业关键零部件生产流程设计及数字孪生验证）.jpg" alt="Digital Twin national competition second prize certificate" />
+                </figure>
+                <div>
+                  <span class="meta" data-en="Second Prize · 2025" data-zh="二等奖 · 2025">Second Prize · 2025</span>
+                  <h3 data-en="National Digital Twin Competition" data-zh="国赛数字孪生类">National Digital Twin Competition</h3>
+                  <p data-en="Low-altitude operation key component production process design and digital twin verification." data-zh="低空作业关键零部件生产流程设计及数字孪生验证。">
+                    Low-altitude operation key component production process design and digital twin verification.
+                  </p>
+                </div>
+              </article>
               <article class="media-card">
                 <figure class="media"><img src="工训赛.jpg" alt="Engineering practice and innovation competition certificate" /></figure>
                 <div>
@@ -1599,6 +1625,22 @@
                   >
                     Awarded Third Prize in the ROS Robot Virtual Simulation Competition of the 2024 RAICOM Shanghai Division.
                   </p>
+                </div>
+              </article>
+              <article class="media-card award-card">
+                <figure class="media"><img src="挑战杯.jpg" alt="Challenge Cup certificate" /></figure>
+                <div>
+                  <span class="meta" data-en="Competition Award" data-zh="竞赛获奖">Competition Award</span>
+                  <h3 data-en="Challenge Cup" data-zh="挑战杯">Challenge Cup</h3>
+                </div>
+              </article>
+              <article class="media-card award-card">
+                <figure class="media">
+                  <img src="项目证书-同济大学-智动骨护——智能电驱动外固定骨骼矫形器及其远程医疗云系统.png" alt="Smart electric external fixation orthosis project certificate" />
+                </figure>
+                <div>
+                  <span class="meta" data-en="Project Certificate" data-zh="项目证书">Project Certificate</span>
+                  <h3 data-en="Smart Electric External Fixation Orthosis" data-zh="智动骨护">Smart Electric External Fixation Orthosis</h3>
                 </div>
               </article>
             </div>
