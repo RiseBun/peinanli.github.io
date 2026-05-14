@@ -708,6 +708,19 @@
         max-height: 320px;
       }
 
+      .media.placeholder {
+        min-height: 220px;
+        border-style: dashed;
+        background:
+          linear-gradient(135deg, rgba(154, 47, 63, 0.08), transparent 48%),
+          rgba(255, 255, 255, 0.5);
+        color: rgba(29, 29, 31, 0.42);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
       .journey {
         position: relative;
         display: grid;
@@ -1166,7 +1179,9 @@
           <button class="nav-item" type="button" data-index="04" data-panel-target="internships" data-en="Internships" data-zh="实习">Internships</button>
           <button class="nav-item" type="button" data-index="05" data-panel-target="awards" data-en="Awards" data-zh="竞赛获奖">Awards</button>
           <button class="nav-item" type="button" data-index="06" data-panel-target="patents" data-en="Patents" data-zh="专利">Patents</button>
-          <button class="nav-item" type="button" data-index="07" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
+          <button class="nav-item" type="button" data-index="07" data-panel-target="special" data-en="Special" data-zh="特殊经历">Special</button>
+          <button class="nav-item" type="button" data-index="08" data-panel-target="startup" data-en="Startup" data-zh="创业项目">Startup</button>
+          <button class="nav-item" type="button" data-index="09" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
         </nav>
         <div class="sidebar-footer">
           <button class="language-toggle" type="button" data-language-toggle>中文</button>
@@ -1410,6 +1425,13 @@
                   <h3>FlexPlanner: Adaptive Planner Selection with Temporal Reward Decomposition for Autonomous Driving</h3>
                   <p data-en="Manuscript submitted to NeurIPS 2026." data-zh="手稿已投稿至 NeurIPS 2026。">Manuscript submitted to NeurIPS 2026.</p>
                 </article>
+                <article class="item">
+                  <span class="meta" data-en="Submitted · IEEE TPAMI" data-zh="已投稿 · IEEE TPAMI">Submitted · IEEE TPAMI</span>
+                  <h3>Typed Budgets for Object-Relational Driving World Models</h3>
+                  <p data-en="Manuscript submitted to IEEE Transactions on Pattern Analysis and Machine Intelligence." data-zh="手稿已投稿至 IEEE Transactions on Pattern Analysis and Machine Intelligence。">
+                    Manuscript submitted to IEEE Transactions on Pattern Analysis and Machine Intelligence.
+                  </p>
+                </article>
               </div>
             </div>
           </div>
@@ -1632,6 +1654,83 @@
                 >
                   Applicant: Tongji University. Inventors: Peinan Li and Bo Leng. Application No. 202510931694.9.
                 </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="special">
+          <div class="section-card">
+            <div class="section-head">
+              <h2 data-en="Special Experiences" data-zh="特殊经历">Special Experiences</h2>
+              <p class="section-note" data-en="Selected camps, visits, and exchanges" data-zh="科创营、参访与交流">Selected camps, visits, and exchanges</p>
+            </div>
+            <div class="grid two">
+              <article class="media-card">
+                <figure class="media placeholder" aria-label="Photo placeholder">
+                  <span data-en="Photo pending" data-zh="照片待添加">Photo pending</span>
+                </figure>
+                <div>
+                  <span class="meta" data-en="Spring 2026" data-zh="2026 年春季">Spring 2026</span>
+                  <h3
+                    data-en="XbotPark Ningbo Base x Ningbo Institute of Intelligent Technology Innovation Camp"
+                    data-zh="XbotPark 宁波基地 × 宁波智能研究院科创营"
+                  >
+                    XbotPark Ningbo Base x Ningbo Institute of Intelligent Technology Innovation Camp
+                  </h3>
+                  <p
+                    data-en="Selected as a camp participant, engaging with innovation, robotics, and intelligent technology entrepreneurship practices."
+                    data-zh="作为科创营营员参与，围绕创新、机器人与智能技术创业实践进行学习交流。"
+                  >
+                    Selected as a camp participant, engaging with innovation, robotics, and intelligent technology entrepreneurship practices.
+                  </p>
+                </div>
+              </article>
+              <article class="media-card">
+                <figure class="media placeholder" aria-label="Photo placeholder">
+                  <span data-en="Photo pending" data-zh="照片待添加">Photo pending</span>
+                </figure>
+                <div>
+                  <span class="meta" data-en="May 16" data-zh="5 月 16 日">May 16</span>
+                  <h3
+                    data-en="Huawei Yinwang Autonomous Driving Exchange"
+                    data-zh="华为引望自驾交流会"
+                  >
+                    Huawei Yinwang Autonomous Driving Exchange
+                  </h3>
+                  <p
+                    data-en="Participated in an autonomous driving exchange focused on industry practice, intelligent mobility, and frontier engineering."
+                    data-zh="参与自动驾驶交流活动，关注产业实践、智能出行与前沿工程经验。"
+                  >
+                    Participated in an autonomous driving exchange focused on industry practice, intelligent mobility, and frontier engineering.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="startup">
+          <div class="section-card">
+            <div class="section-head">
+              <h2 data-en="Startup Projects" data-zh="创业项目">Startup Projects</h2>
+              <p class="section-note" data-en="Research-driven products and early ventures" data-zh="研究驱动的产品与早期创业探索">Research-driven products and early ventures</p>
+            </div>
+            <div class="grid two">
+              <article class="media-card">
+                <figure class="media placeholder" aria-label="Project image placeholder">
+                  <span data-en="Project image" data-zh="项目图片">Project image</span>
+                </figure>
+                <div>
+                  <span class="meta" data-en="To be expanded" data-zh="待完善">To be expanded</span>
+                  <h3 data-en="Startup project to be added" data-zh="待添加创业项目">Startup project to be added</h3>
+                  <p
+                    data-en="This section is reserved for startup projects, product prototypes, business plans, demos, and team milestones."
+                    data-zh="该板块预留给创业项目、产品原型、商业计划、演示成果与团队阶段性进展。"
+                  >
+                    This section is reserved for startup projects, product prototypes, business plans, demos, and team milestones.
+                  </p>
                 </div>
               </article>
             </div>
