@@ -99,10 +99,10 @@
         top: 0;
         left: 0;
         z-index: 1;
-        width: 260px;
-        height: 260px;
+        width: 150px;
+        height: 150px;
         border-radius: 999px;
-        background: radial-gradient(circle, rgba(154, 47, 63, 0.16), transparent 68%);
+        background: radial-gradient(circle, rgba(154, 47, 63, 0.1), transparent 62%);
         opacity: 0;
         transform: translate(-50%, -50%);
         transition: opacity 180ms ease;
@@ -301,6 +301,11 @@
       .panel.is-active {
         display: block;
         animation: panelIn 260ms ease both;
+      }
+
+      .home-stack {
+        display: grid;
+        gap: var(--layout-gap);
       }
 
       @keyframes panelIn {
@@ -790,6 +795,73 @@
         letter-spacing: -0.02em;
       }
 
+      .guestbook {
+        min-height: auto;
+      }
+
+      .guestbook-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.55fr);
+        gap: 18px;
+      }
+
+      .guestbook-form,
+      .guestbook-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .guestbook textarea {
+        width: 100%;
+        min-height: 132px;
+        resize: vertical;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.64);
+        color: var(--text);
+        font: inherit;
+        line-height: 1.7;
+        outline: none;
+        transition:
+          border-color 160ms ease,
+          box-shadow 160ms ease,
+          background 160ms ease;
+      }
+
+      .guestbook textarea:focus {
+        border-color: rgba(154, 47, 63, 0.35);
+        background: #fff;
+        box-shadow: 0 12px 30px rgba(154, 47, 63, 0.1);
+      }
+
+      .guestbook-note,
+      .guestbook-status,
+      .guestbook-empty,
+      .guestbook-time {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .guestbook-entry {
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .guestbook-entry p {
+        color: var(--text);
+        line-height: 1.7;
+        white-space: pre-wrap;
+      }
+
+      .guestbook-time {
+        display: block;
+        margin-top: 10px;
+      }
+
       @media (min-width: 1180px) {
         .grid.two {
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -869,6 +941,10 @@
         .section-head {
           align-items: flex-start;
           flex-direction: column;
+        }
+
+        .guestbook-grid {
+          grid-template-columns: 1fr;
         }
 
         .hero-buttons {
@@ -973,8 +1049,9 @@
 
       <div class="content">
         <section class="panel is-active" data-panel="home">
-          <div class="hero">
-            <div class="card">
+          <div class="home-stack">
+            <div class="hero">
+              <div class="card">
               <p class="eyebrow" data-en="Personal Homepage" data-zh="个人主页">Personal Homepage</p>
               <h1>Peinan Li</h1>
               <ul class="highlights">
@@ -1023,28 +1100,74 @@
                   <button class="button primary" type="button" data-panel-target="portfolio" data-en="Portfolio" data-zh="作品集">Portfolio</button>
                 </div>
               </div>
+              </div>
+              <aside class="profile-card" aria-label="Profile photo">
+                <div class="profile-photo">
+                  <img src="portrait.jpg" alt="Portrait of Peinan Li" />
+                </div>
+                <div class="profile-intro">
+                  <p
+                    class="profile-summary"
+                    data-en="I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University."
+                    data-zh="我是同济大学机械与能源工程学院机械电子工程专业本科生。"
+                  >
+                    I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University.
+                  </p>
+                  <p
+                    class="profile-tagline"
+                    data-en="Exploring how intelligent systems move, sense, and make decisions in the physical world."
+                    data-zh="探索智能系统如何在物理世界中运动、感知和决策。"
+                  >
+                    Exploring how intelligent systems move, sense, and make decisions in the physical world.
+                  </p>
+                </div>
+              </aside>
             </div>
-            <aside class="profile-card" aria-label="Profile photo">
-              <div class="profile-photo">
-                <img src="portrait.jpg" alt="Portrait of Peinan Li" />
-              </div>
-              <div class="profile-intro">
+
+            <section class="section-card guestbook" aria-labelledby="guestbook-title">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow" data-en="Open Guestbook" data-zh="公开留言">Open Guestbook</p>
+                  <h2 id="guestbook-title" data-en="Leave an anonymous suggestion" data-zh="匿名留下建议">Leave an anonymous suggestion</h2>
+                </div>
                 <p
-                  class="profile-summary"
-                  data-en="I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University."
-                  data-zh="我是同济大学机械与能源工程学院机械电子工程专业本科生。"
+                  class="section-note"
+                  data-en="Messages are intended to be public for me and future visitors."
+                  data-zh="留言将面向我和之后访问网站的人公开。"
                 >
-                  I am an undergraduate student in Mechatronics Engineering at the School of Mechanical Engineering and Robotics, Tongji University.
-                </p>
-                <p
-                  class="profile-tagline"
-                  data-en="Exploring how intelligent systems move, sense, and make decisions in the physical world."
-                  data-zh="探索智能系统如何在物理世界中运动、感知和决策。"
-                >
-                  Exploring how intelligent systems move, sense, and make decisions in the physical world.
+                  Messages are intended to be public for me and future visitors.
                 </p>
               </div>
-            </aside>
+              <div class="guestbook-grid">
+                <form class="guestbook-form" data-guestbook-form>
+                  <textarea
+                    data-guestbook-input
+                    data-placeholder-en="Share a suggestion, question, or idea anonymously..."
+                    data-placeholder-zh="匿名写下建议、问题或想法..."
+                    maxlength="800"
+                    required
+                  ></textarea>
+                  <button class="button primary" type="submit" data-guestbook-submit data-en="Publish suggestion" data-zh="公开留言">Publish suggestion</button>
+                  <p
+                    class="guestbook-note"
+                    data-en="No name is required. Please avoid private or sensitive information because published messages are public."
+                    data-zh="无需填写姓名。留言公开展示，请不要留下隐私或敏感信息。"
+                  >
+                    No name is required. Please avoid private or sensitive information because published messages are public.
+                  </p>
+                  <p class="guestbook-status" data-guestbook-status></p>
+                </form>
+                <div class="guestbook-list" data-guestbook-list aria-live="polite">
+                  <p
+                    class="guestbook-empty"
+                    data-en="Public suggestions will appear here after the message service is connected."
+                    data-zh="接入留言服务后，公开建议会显示在这里。"
+                  >
+                    Public suggestions will appear here after the message service is connected.
+                  </p>
+                </div>
+              </div>
+            </section>
           </div>
         </section>
 
@@ -1269,6 +1392,20 @@
       const progress = document.querySelector(".progress");
       const greeting = document.querySelector(".greeting");
       const cursorLight = document.querySelector(".cursor-light");
+      const guestbookForm = document.querySelector("[data-guestbook-form]");
+      const guestbookInput = document.querySelector("[data-guestbook-input]");
+      const guestbookSubmit = document.querySelector("[data-guestbook-submit]");
+      const guestbookStatus = document.querySelector("[data-guestbook-status]");
+      const guestbookList = document.querySelector("[data-guestbook-list]");
+      const guestbookConfig = {
+        supabaseUrl: "https://jptzvkscccbjlumseemo.supabase.co",
+        supabaseAnonKey: "sb_publishable_frRlFC1cD4FzzHSF1-mayQ_VIeF44TG",
+        table: "guestbook_messages",
+      };
+      const isGuestbookConnected = Boolean(
+        guestbookConfig.supabaseUrl && guestbookConfig.supabaseAnonKey
+      );
+      let guestbookMessages = [];
       let currentLanguage = "en";
 
       function showPanel(panelName) {
@@ -1292,6 +1429,105 @@
         document.body.classList.remove("greeting-open");
       }
 
+      function localized(en, zh) {
+        return currentLanguage === "zh" ? zh : en;
+      }
+
+      function setGuestbookStatus(en, zh) {
+        if (!guestbookStatus) return;
+        guestbookStatus.textContent = localized(en, zh);
+      }
+
+      function updateLocalizedAttributes() {
+        document.querySelectorAll("[data-placeholder-en][data-placeholder-zh]").forEach((element) => {
+          element.placeholder = element.dataset[`placeholder${currentLanguage === "zh" ? "Zh" : "En"}`];
+        });
+      }
+
+      function getGuestbookEndpoint(query = "") {
+        const baseUrl = guestbookConfig.supabaseUrl.replace(/\/$/, "");
+        return `${baseUrl}/rest/v1/${guestbookConfig.table}${query}`;
+      }
+
+      function getGuestbookHeaders(extraHeaders = {}) {
+        return {
+          apikey: guestbookConfig.supabaseAnonKey,
+          Authorization: `Bearer ${guestbookConfig.supabaseAnonKey}`,
+          "Content-Type": "application/json",
+          ...extraHeaders,
+        };
+      }
+
+      function renderGuestbookMessages() {
+        if (!guestbookList) return;
+
+        guestbookList.innerHTML = "";
+
+        if (!guestbookMessages.length) {
+          const empty = document.createElement("p");
+          empty.className = "guestbook-empty";
+          empty.textContent = isGuestbookConnected
+            ? localized("No suggestions yet. Be the first to leave one.", "暂时还没有留言，欢迎留下第一条建议。")
+            : localized(
+                "Public suggestions will appear here after the message service is connected.",
+                "接入留言服务后，公开建议会显示在这里。"
+              );
+          guestbookList.append(empty);
+          return;
+        }
+
+        guestbookMessages.forEach((message) => {
+          const entry = document.createElement("article");
+          entry.className = "guestbook-entry";
+
+          const content = document.createElement("p");
+          content.textContent = message.content;
+
+          const time = document.createElement("time");
+          time.className = "guestbook-time";
+          time.dateTime = message.created_at;
+          time.textContent = new Date(message.created_at).toLocaleString(
+            currentLanguage === "zh" ? "zh-CN" : "en",
+            { dateStyle: "medium", timeStyle: "short" }
+          );
+
+          entry.append(content, time);
+          guestbookList.append(entry);
+        });
+      }
+
+      async function loadGuestbookMessages() {
+        if (!isGuestbookConnected) {
+          if (guestbookInput) guestbookInput.disabled = true;
+          if (guestbookSubmit) guestbookSubmit.disabled = true;
+          setGuestbookStatus(
+            "Message service is not connected yet. Add Supabase credentials in the script to enable public posting.",
+            "留言服务尚未接入。在脚本中填入 Supabase 配置后，即可开启公开留言。"
+          );
+          renderGuestbookMessages();
+          return;
+        }
+
+        try {
+          setGuestbookStatus("Loading public suggestions...", "正在加载公开建议...");
+          const response = await fetch(
+            getGuestbookEndpoint("?select=id,content,created_at&order=created_at.desc&limit=20"),
+            { headers: getGuestbookHeaders() }
+          );
+
+          if (!response.ok) throw new Error("Failed to load guestbook messages.");
+
+          guestbookMessages = await response.json();
+          renderGuestbookMessages();
+          setGuestbookStatus("Suggestions are public and anonymous.", "留言会匿名公开展示。");
+        } catch (error) {
+          setGuestbookStatus(
+            "Could not load suggestions right now. Please try again later.",
+            "暂时无法加载留言，请稍后再试。"
+          );
+        }
+      }
+
       function setLanguage(language) {
         currentLanguage = language;
         document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
@@ -1306,6 +1542,14 @@
           "aria-label",
           language === "zh" ? "Switch to English" : "切换到中文"
         );
+        updateLocalizedAttributes();
+        renderGuestbookMessages();
+        if (!isGuestbookConnected) {
+          setGuestbookStatus(
+            "Message service is not connected yet. Add Supabase credentials in the script to enable public posting.",
+            "留言服务尚未接入。在脚本中填入 Supabase 配置后，即可开启公开留言。"
+          );
+        }
       }
 
       panelButtons.forEach((button) => {
@@ -1320,6 +1564,42 @@
         setLanguage(currentLanguage === "en" ? "zh" : "en");
       });
 
+      if (guestbookForm) {
+        guestbookForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          if (!isGuestbookConnected || !guestbookInput) return;
+
+          const content = guestbookInput.value.trim();
+          if (!content) return;
+
+          try {
+            guestbookSubmit.disabled = true;
+            setGuestbookStatus("Publishing suggestion...", "正在发布留言...");
+
+            const response = await fetch(getGuestbookEndpoint(), {
+              method: "POST",
+              headers: getGuestbookHeaders({ Prefer: "return=representation" }),
+              body: JSON.stringify({ content }),
+            });
+
+            if (!response.ok) throw new Error("Failed to publish guestbook message.");
+
+            const [createdMessage] = await response.json();
+            guestbookMessages = [createdMessage, ...guestbookMessages].slice(0, 20);
+            guestbookInput.value = "";
+            renderGuestbookMessages();
+            setGuestbookStatus("Published. Thank you for the suggestion.", "已发布，感谢你的建议。");
+          } catch (error) {
+            setGuestbookStatus(
+              "Could not publish the suggestion right now. Please try again later.",
+              "暂时无法发布留言，请稍后再试。"
+            );
+          } finally {
+            guestbookSubmit.disabled = false;
+          }
+        });
+      }
+
       window.addEventListener("scroll", updateProgress, { passive: true });
       window.addEventListener("pointermove", (event) => {
         cursorLight.style.opacity = "1";
@@ -1328,6 +1608,7 @@
       });
 
       setLanguage("en");
+      loadGuestbookMessages();
       updateProgress();
       window.setTimeout(closeGreeting, 1000);
     </script>
