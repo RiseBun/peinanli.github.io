@@ -797,31 +797,46 @@
 
       .guestbook {
         min-height: auto;
+        padding: clamp(18px, 2.4vw, 30px);
+      }
+
+      .guestbook .section-head {
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .guestbook h2 {
+        font-size: clamp(24px, 2.6vw, 38px);
+      }
+
+      .guestbook .eyebrow {
+        margin-bottom: 8px;
       }
 
       .guestbook-grid {
         display: grid;
-        grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.55fr);
-        gap: 18px;
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 0.72fr);
+        gap: 12px;
       }
 
       .guestbook-form,
       .guestbook-list {
         display: grid;
-        gap: 12px;
+        gap: 10px;
       }
 
       .guestbook textarea {
         width: 100%;
-        min-height: 132px;
+        min-height: 82px;
         resize: vertical;
-        padding: 14px 16px;
+        padding: 12px 14px;
         border: 1px solid var(--line);
-        border-radius: 16px;
+        border-radius: 14px;
         background: rgba(255, 255, 255, 0.64);
         color: var(--text);
         font: inherit;
-        line-height: 1.7;
+        font-size: 14px;
+        line-height: 1.6;
         outline: none;
         transition:
           border-color 160ms ease,
@@ -832,7 +847,13 @@
       .guestbook textarea:focus {
         border-color: rgba(154, 47, 63, 0.35);
         background: #fff;
-        box-shadow: 0 12px 30px rgba(154, 47, 63, 0.1);
+        box-shadow: 0 8px 22px rgba(154, 47, 63, 0.08);
+      }
+
+      .guestbook .button {
+        width: fit-content;
+        min-height: 34px;
+        padding: 0 14px;
       }
 
       .guestbook-note,
@@ -840,26 +861,31 @@
       .guestbook-empty,
       .guestbook-time {
         color: var(--muted);
-        font-size: 13px;
-        line-height: 1.7;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .guestbook-note {
+        margin-top: -2px;
       }
 
       .guestbook-entry {
-        padding: 16px;
+        padding: 12px 14px;
         border: 1px solid var(--line);
-        border-radius: 16px;
+        border-radius: 14px;
         background: rgba(255, 255, 255, 0.55);
       }
 
       .guestbook-entry p {
         color: var(--text);
-        line-height: 1.7;
+        font-size: 14px;
+        line-height: 1.6;
         white-space: pre-wrap;
       }
 
       .guestbook-time {
         display: block;
-        margin-top: 10px;
+        margin-top: 6px;
       }
 
       @media (min-width: 1180px) {
