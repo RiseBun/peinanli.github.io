@@ -722,6 +722,27 @@
         max-height: 320px;
       }
 
+      .photo-collage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .photo-collage img {
+        width: 100%;
+        height: 128px;
+        object-fit: cover;
+      }
+
+      .photo-collage img:first-child {
+        grid-column: 1 / -1;
+        height: 180px;
+      }
+
+      .photo-collage img:last-child {
+        object-position: center top;
+      }
+
       .media.placeholder {
         min-height: 220px;
         border-style: dashed;
@@ -1717,11 +1738,15 @@
             </div>
             <div class="grid two">
               <article class="media-card">
-                <figure class="media placeholder" aria-label="Photo placeholder">
-                  <span data-en="Photo pending" data-zh="照片待添加">Photo pending</span>
+                <figure class="media">
+                  <div class="photo-collage">
+                    <img src="xbotpark1.jpg" alt="XbotPark Ningbo innovation camp presentation" />
+                    <img src="xbotpark.jpg" alt="Peinan Li presenting at XbotPark Ningbo" />
+                    <img src="xbotpark2.jpg" alt="Peinan Li at XbotPark Ningbo innovation camp" />
+                  </div>
                 </figure>
                 <div>
-                  <span class="meta" data-en="Spring 2026" data-zh="2026 年春季">Spring 2026</span>
+                  <span class="meta" data-en="Winter Camp · Ningbo" data-zh="冬令营 · 宁波">Winter Camp · Ningbo</span>
                   <h3
                     data-en="XbotPark Ningbo Base x Ningbo Institute of Intelligent Technology Innovation Camp"
                     data-zh="XbotPark 宁波基地 × 宁波智能研究院科创营"
@@ -1729,10 +1754,10 @@
                     XbotPark Ningbo Base x Ningbo Institute of Intelligent Technology Innovation Camp
                   </h3>
                   <p
-                    data-en="Selected as a camp participant, engaging with innovation, robotics, and intelligent technology entrepreneurship practices."
-                    data-zh="作为科创营营员参与，围绕创新、机器人与智能技术创业实践进行学习交流。"
+                    data-en="Joined the XbotPark Ningbo winter camp as a participant, sharing and presenting project ideas while engaging with robotics, intelligent technology, and entrepreneurship practices."
+                    data-zh="作为 XbotPark 宁波站冬令营营员参与，进行项目分享与展示，并围绕机器人、智能技术和创业实践开展学习交流。"
                   >
-                    Selected as a camp participant, engaging with innovation, robotics, and intelligent technology entrepreneurship practices.
+                    Joined the XbotPark Ningbo winter camp as a participant, sharing and presenting project ideas while engaging with robotics, intelligent technology, and entrepreneurship practices.
                   </p>
                 </div>
               </article>
