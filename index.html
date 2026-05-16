@@ -1185,7 +1185,7 @@
     <div class="site-counter" aria-live="polite">
       <div class="site-counter-row">
         <span data-en="Views" data-zh="访问次数">Views</span>
-        <strong data-site-view-count>200</strong>
+        <strong data-site-view-count>0</strong>
       </div>
       <div class="site-counter-row">
         <span data-en="Stars" data-zh="星标">Stars</span>
@@ -2028,9 +2028,9 @@
           const numericCount = Number(count);
           siteViewCount.textContent = Number.isFinite(numericCount)
             ? numericCount.toLocaleString()
-            : "200";
+            : "0";
         } catch (error) {
-          siteViewCount.textContent = "200";
+          siteViewCount.textContent = "0";
         }
       }
 

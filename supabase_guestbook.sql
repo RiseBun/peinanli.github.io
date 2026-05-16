@@ -45,7 +45,7 @@ create table if not exists public.site_metrics (
 );
 
 insert into public.site_metrics (metric_key, metric_value)
-values ('homepage_views', 200)
+values ('homepage_views', 0)
 on conflict (metric_key) do nothing;
 
 insert into public.site_metrics (metric_key, metric_value)
@@ -73,7 +73,7 @@ declare
   new_value bigint;
 begin
   insert into public.site_metrics (metric_key, metric_value, updated_at)
-  values ('homepage_views', 201, now())
+  values ('homepage_views', 1, now())
   on conflict (metric_key) do update
     set metric_value = public.site_metrics.metric_value + 1,
         updated_at = now()
