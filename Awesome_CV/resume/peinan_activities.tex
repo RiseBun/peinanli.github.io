@@ -1,0 +1,86 @@
+%-------------------------------------------------------------------------------
+%	SECTION TITLE
+%-------------------------------------------------------------------------------
+\cvsection{特殊经历与能力}
+
+%-------------------------------------------------------------------------------
+%	CONTENT
+%-------------------------------------------------------------------------------
+\begingroup
+\renewcommand{\acvSectionContentTopSkip}{.2mm}
+\renewcommand*{\descriptionstyle}[1]{{\fontsize{8.8pt}{1.18em}\cvCJK\color{text} #1}}
+\renewenvironment{cvitems}{%
+  \vspace{-1.7mm}
+  \begin{justify}
+  \begin{itemize}[leftmargin=0pt, label={}, itemindent=0pt, itemsep=.08mm, topsep=0pt, parsep=0pt, partopsep=0pt]
+    \setlength{\parskip}{0pt}
+}{%
+  \end{itemize}
+  \end{justify}
+  \vspace{-1.55mm}
+}
+\renewcommand*{\cventry}[5]{%
+  \vspace{.55mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{.15mm}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 8.9cm} C{3.8cm} R{5.1cm}}
+    \entrytitlestyle{#2} & \entrydatestyle{#4} & \entrypositionstyle{#1} \\
+    \multicolumn{3}{L{\textwidth}}{\descriptionstyle{#5}}
+  \end{tabular*}%
+}
+\begin{cventries}
+
+%---------------------------------------------------------
+  \cventry
+    {队长}
+    {同济大学 Robocon 机器人队}
+    {}
+    {2024.03 - 至今}
+    {
+      \begin{cvitems}
+        \item {重建队伍并组织技术资料、竞赛策略、技术方案和成员训练体系。}
+        \item {贯通机械设计、电控、算法与竞赛执行，参与十余项机器人和工程创新竞赛。}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {冬令营营员}
+    {XbotPark 宁波基地 × 宁波智能研究院科创营}
+    {}
+    {冬令营}
+    {
+      \begin{cvitems}
+        \item {参与项目分享与展示，围绕机器人、智能技术和创业实践开展学习交流。}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {AutoLab 实验室代表}
+    {CGIS 专家进引望专场活动}
+    {}
+    {5 月 16 日}
+    {
+      \begin{cvitems}
+        \item {代表 AutoLab 实验室出席活动，参与智能出行、自动驾驶和前沿工程实践交流。}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+  \cventry
+    {综合能力}
+    {机器人、算法与全栈工程}
+    {}
+    {持续积累}
+    {
+      \begin{cvitems}
+        \item {机器人：机械设计、电控系统、Robocon 竞赛策略、队伍建设与成员培养。}
+        \item {算法：定位建图、长距离 LiDAR 三维建图、多相机回环定位、自动驾驶与多模态推理。}
+        \item {工程：全栈开发、AI 应用、科研原型实现与早期产品技术路线规划。}
+      \end{cvitems}
+    }
+
+%---------------------------------------------------------
+\end{cventries}
+\endgroup
