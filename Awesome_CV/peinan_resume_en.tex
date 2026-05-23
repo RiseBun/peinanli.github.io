@@ -1,0 +1,99 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[10pt, a4paper]{awesome-cv}
+
+\geometry{left=1.25cm, top=.65cm, right=1.25cm, bottom=1.05cm, footskip=.35cm}
+
+\colorlet{awesome}{awesome-red}
+\setbool{acvSectionColorHighlight}{true}
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+\renewcommand{\acvHeaderNameDelim}{\space}
+\renewcommand{\acvHeaderAfterNameSkip}{1.3mm}
+\renewcommand{\acvHeaderAfterSocialSkip}{1.0mm}
+\renewcommand{\acvHeaderAfterQuoteSkip}{.7mm}
+\renewcommand{\acvSectionTopSkip}{1.0mm}
+\renewcommand{\acvSectionContentTopSkip}{.55mm}
+
+\name{Peinan}{Li}
+
+\extrainfo{
+  \href{http://peinanli.com}{\faHome\acvHeaderIconSep Website: peinanli.com}
+  \acvHeaderSocialSep
+  \href{mailto:peinan_li@163.com}{\faEnvelope\acvHeaderIconSep peinan\_li@163.com}
+  \acvHeaderSocialSep
+  \href{https://github.com/RiseBun}{\faGithubSquare\acvHeaderIconSep RiseBun}
+  \acvHeaderSocialSep
+  WeChat: RiseBun
+}
+
+\quote{Robotics, embodied intelligence, autonomous driving, multimodal AI, and full-stack engineering across mechanics, electronics, algorithms, and AI.}
+
+\makeatletter
+\renewcommand*{\entrypositionstyle}[1]{{\fontsize{8.4pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\descriptionstyle}[1]{{\fontsize{8.35pt}{1.08em}\bodyfontlight\color{text} #1}}
+\renewcommand*{\honortitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\color{graytext} #1}}
+\renewcommand*{\honorpositionstyle}[1]{{\fontsize{8.15pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\honorlocationstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\honordatestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\color{graytext} #1}}
+\renewenvironment{cvparagraph}{%
+  \vspace{.3mm}
+  \paragraphstyle
+}{%
+  \par
+  \vspace{.1mm}
+}
+\renewenvironment{cvitems}{%
+  \vspace{-1.65mm}
+  \begin{justify}
+  \begin{itemize}[leftmargin=0pt, label={}, itemindent=0pt, itemsep=.05mm, topsep=0pt, parsep=0pt, partopsep=0pt]
+    \setlength{\parskip}{0pt}
+}{%
+  \end{itemize}
+  \end{justify}
+  \vspace{-1.45mm}
+}
+\renewcommand*{\cventry}[5]{%
+  \vspace{.55mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{.3mm}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 8.9cm} C{3.8cm} R{5.1cm}}
+    \entrytitlestyle{#2} & \entrydatestyle{#4} & \entrypositionstyle{#1} \\
+    \multicolumn{3}{L{\textwidth}}{\descriptionstyle{#5}}
+  \end{tabular*}%
+}
+\renewenvironment{cvhonors}{%
+  \vspace{.4mm}
+  \begin{center}
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{.05mm}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 8.0cm} C{2.0cm} R{6.0cm}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+\renewcommand*{\cvhonor}[4]{%
+  \honorpositionstyle{#2} & \honordatestyle{#4} & \honorlocationstyle{#1} \\
+}
+\makeatother
+
+\begin{document}
+
+\makecvheader[C]
+
+\makecvfooter
+  {\today}
+  {Peinan Li~~~·~~~Resume}
+  {\thepage}
+
+\input{resume/peinan_en_summary.tex}
+\input{resume/peinan_en_education.tex}
+\input{resume/peinan_en_experience.tex}
+\input{resume/peinan_en_research.tex}
+\input{resume/peinan_en_projects.tex}
+\input{resume/peinan_en_honors.tex}
+\input{resume/peinan_en_patents.tex}
+\input{resume/peinan_en_activities.tex}
+
+\end{document}
