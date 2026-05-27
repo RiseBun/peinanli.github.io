@@ -55,10 +55,10 @@
 \renewcommand*{\entrylocationstyle}[1]{{\fontsize{8.5pt}{1em}\cvCJK\color{graytext} #1}}
 \renewcommand*{\entrydatestyle}[1]{{\fontsize{8.55pt}{1em}\cvCJK\color{graytext} #1}}
 \renewcommand*{\descriptionstyle}[1]{{\fontsize{9.2pt}{1.18em}\cvCJK\color{text} #1}}
-\renewcommand*{\honortitlestyle}[1]{{\fontsize{8.55pt}{1em}\cvCJK\color{graytext} #1}}
-\renewcommand*{\honorpositionstyle}[1]{{\fontsize{8.7pt}{1em}\cvCJK\bfseries\color{darktext} #1}}
-\renewcommand*{\honorlocationstyle}[1]{{\fontsize{8.55pt}{1em}\cvCJK\bfseries\color{darktext} #1}}
-\renewcommand*{\honordatestyle}[1]{{\fontsize{8.55pt}{1em}\cvCJK\color{graytext} #1}}
+\renewcommand*{\honortitlestyle}[1]{{\fontsize{8.35pt}{.95em}\cvCJK\color{graytext} #1}}
+\renewcommand*{\honorpositionstyle}[1]{{\fontsize{8.5pt}{.95em}\cvCJK\bfseries\color{darktext} #1}}
+\renewcommand*{\honorlocationstyle}[1]{{\fontsize{8.35pt}{.95em}\cvCJK\bfseries\color{darktext} #1}}
+\renewcommand*{\honordatestyle}[1]{{\fontsize{8.35pt}{.95em}\cvCJK\color{graytext} #1}}
 \renewenvironment{cvparagraph}{%
   \vspace{.3mm}
   \paragraphstyle
@@ -86,17 +86,17 @@
   \end{tabular*}%
 }
 \renewenvironment{cvhonors}{%
-  \vspace{.4mm}
+  \vspace{-.2mm}
   \begin{center}
     \setlength\tabcolsep{0pt}
-    \setlength{\extrarowheight}{.25mm}
+    \setlength{\extrarowheight}{0mm}
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 8.0cm} C{2.0cm} R{6.0cm}}
 }{%
     \end{tabular*}
   \end{center}
 }
 \renewcommand*{\cvhonor}[4]{%
-  \honorpositionstyle{#2} & \honordatestyle{#4} & \honorlocationstyle{#1} \\
+  \honorpositionstyle{#2} & \honordatestyle{#4} & \honorlocationstyle{#1} \\[-.15mm]
 }
 \makeatother
 
