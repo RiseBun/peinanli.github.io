@@ -75,11 +75,8 @@
 % Needed to use icons from font-awesome
 % (https://github.com/posquit0/latex-fontawesome)
 \RequirePackage{fontawesome}
-\RequirePackage[default,opentype]{sourcesanspro}
 % Needed for the photo ID
-\RequirePackage[skins]{tcolorbox}
-% Needed to deal a paragraphs
-\RequirePackage{parskip}
+\RequirePackage{tcolorbox}
 % Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode]{hyperref}
 \hypersetup{%
@@ -179,9 +176,9 @@
   BoldItalicFont=*-MediumItalic,
 ]{Roboto}
 
-\newcommand*{\footerfont}{\sourcesanspro}
-\newcommand*{\bodyfont}{\sourcesanspro}
-\newcommand*{\bodyfontlight}{\sourcesansprolight}
+\newcommand*{\footerfont}{\headerfont}
+\newcommand*{\bodyfont}{\headerfont}
+\newcommand*{\bodyfontlight}{\headerfontlight}
 
 %-------------------------------------------------------------------------------
 %                Configuration for styles
