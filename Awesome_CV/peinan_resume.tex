@@ -3,7 +3,7 @@
 
 \documentclass[11pt, a4paper]{awesome-cv}
 
-\geometry{left=1.35cm, top=.8cm, right=1.35cm, bottom=1.45cm, footskip=.5cm}
+\geometry{left=1.3cm, top=.78cm, right=1.3cm, bottom=1.22cm, footskip=.5cm}
 \usepackage{xeCJK}
 \IfFontExistsTF{DengXian}
   {
@@ -19,11 +19,11 @@
 \setbool{acvSectionColorHighlight}{true}
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 \renewcommand{\acvHeaderNameDelim}{}
-\renewcommand{\acvHeaderAfterNameSkip}{1.7mm}
-\renewcommand{\acvHeaderAfterSocialSkip}{1.4mm}
-\renewcommand{\acvHeaderAfterQuoteSkip}{1.0mm}
-\renewcommand{\acvSectionTopSkip}{1.45mm}
-\renewcommand{\acvSectionContentTopSkip}{.9mm}
+\renewcommand{\acvHeaderAfterNameSkip}{1.3mm}
+\renewcommand{\acvHeaderAfterSocialSkip}{1.0mm}
+\renewcommand{\acvHeaderAfterQuoteSkip}{.7mm}
+\renewcommand{\acvSectionTopSkip}{1.0mm}
+\renewcommand{\acvSectionContentTopSkip}{.35mm}
 
 % The original template separates first name and last name; keep Chinese name intact.
 \name{李培楠}{}
@@ -38,7 +38,7 @@
   微信：RiseBun
 }
 
-\quote{专注机器人、具身智能、自动驾驶与多模态大模型，连接机械、电子、算法与 AI 的工程实践。}
+\quote{机器人、自动驾驶与多模态 AI 研究及工程实践；从机械、电控、算法到产品原型的跨栈落地。}
 
 % Chinese-oriented typography overrides for Awesome CV.
 \makeatletter
@@ -49,54 +49,55 @@
 \renewcommand*{\headersocialstyle}[1]{{\fontsize{7.6pt}{1.25em}\cvCJK\color{text} #1}}
 \renewcommand*{\headerquotestyle}[1]{{\fontsize{9.35pt}{1.25em}\cvCJK\color{darktext} #1}}
 \renewcommand*{\sectionstyle}[1]{{\fontsize{15pt}{1em}\cvCJK\bfseries\color{text}\@sectioncolor #1}}
-\renewcommand*{\paragraphstyle}{\fontsize{9.35pt}{1.38em}\cvCJK\color{text}}
-\renewcommand*{\entrytitlestyle}[1]{{\fontsize{10.55pt}{1.18em}\cvCJK\bfseries\color{darktext} #1}}
-\renewcommand*{\entrypositionstyle}[1]{{\fontsize{9.05pt}{1em}\cvCJK\bfseries\color{darktext} #1}}
+\renewcommand*{\paragraphstyle}{\fontsize{9.2pt}{1.18em}\cvCJK\color{text}}
+\renewcommand*{\entrytitlestyle}[1]{{\fontsize{10.55pt}{1.15em}\cvCJK\bfseries\color{darktext} #1}}
+\renewcommand*{\entrypositionstyle}[1]{{\fontsize{9.05pt}{1.05em}\cvCJK\bfseries\color{graytext} #1}}
 \renewcommand*{\entrylocationstyle}[1]{{\fontsize{8.5pt}{1em}\cvCJK\color{graytext} #1}}
 \renewcommand*{\entrydatestyle}[1]{{\fontsize{8.55pt}{1em}\cvCJK\color{graytext} #1}}
-\renewcommand*{\descriptionstyle}[1]{{\fontsize{9.2pt}{1.18em}\cvCJK\color{text} #1}}
-\renewcommand*{\honortitlestyle}[1]{{\fontsize{8.35pt}{.95em}\cvCJK\color{graytext} #1}}
-\renewcommand*{\honorpositionstyle}[1]{{\fontsize{8.5pt}{.95em}\cvCJK\bfseries\color{darktext} #1}}
-\renewcommand*{\honorlocationstyle}[1]{{\fontsize{8.35pt}{.95em}\cvCJK\bfseries\color{darktext} #1}}
-\renewcommand*{\honordatestyle}[1]{{\fontsize{8.35pt}{.95em}\cvCJK\color{graytext} #1}}
+\renewcommand*{\descriptionstyle}[1]{{\fontsize{8.95pt}{1.08em}\cvCJK\color{text} #1}}
+\renewcommand*{\honortitlestyle}[1]{{\fontsize{8.1pt}{.98em}\cvCJK\color{text} #1}}
+\renewcommand*{\honorpositionstyle}[1]{{\fontsize{8.1pt}{.98em}\cvCJK\bfseries\color{darktext} #1}}
+\renewcommand*{\honorlocationstyle}[1]{{\fontsize{8pt}{.98em}\cvCJK\bfseries\color{darktext} #1}}
+\renewcommand*{\honordatestyle}[1]{{\fontsize{8pt}{.98em}\cvCJK\color{graytext} #1}}
 \renewenvironment{cvparagraph}{%
-  \vspace{.3mm}
+  \vspace{.1mm}
   \paragraphstyle
 }{%
   \par
-  \vspace{.1mm}
+  \vspace{0pt}
 }
 \renewenvironment{cvitems}{%
-  \vspace{-1.45mm}
+  \vspace{-1.6mm}
   \begin{justify}
-  \begin{itemize}[leftmargin=0pt, label={}, itemindent=0pt, itemsep=.2mm, topsep=.1mm, parsep=0pt, partopsep=0pt]
+  \begin{itemize}[leftmargin=1.0em, label=\textcolor{awesome}{\scriptsize\textbullet}, itemsep=0pt, topsep=0pt, parsep=0pt, partopsep=0pt]
     \setlength{\parskip}{0pt}
 }{%
   \end{itemize}
   \end{justify}
-  \vspace{-1.2mm}
+  \vspace{-1.35mm}
 }
 \renewcommand*{\cventry}[5]{%
-  \vspace{.95mm}
+  \vspace{.35mm}
   \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{.3mm}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 8.9cm} C{3.8cm} R{5.1cm}}
-    \entrytitlestyle{#2} & \entrydatestyle{#4} & \entrypositionstyle{#1} \\
-    \multicolumn{3}{L{\textwidth}}{\descriptionstyle{#5}}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 3.55cm} R{3.55cm}}
+    \entrytitlestyle{#2} & \entrydatestyle{#4} \\
+    \ifempty{#1#3}{}{\entrypositionstyle{#1} & \entrylocationstyle{#3} \\[-.1mm]}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
   \end{tabular*}%
 }
 \renewenvironment{cvhonors}{%
-  \vspace{-.2mm}
+  \vspace{-.7mm}
   \begin{center}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0mm}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 8.0cm} C{2.0cm} R{6.0cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{3.05cm} L{\textwidth - 5.45cm} R{2.4cm}}
 }{%
     \end{tabular*}
   \end{center}
 }
 \renewcommand*{\cvhonor}[4]{%
-  \honorpositionstyle{#2} & \honordatestyle{#4} & \honorlocationstyle{#1} \\[-.15mm]
+  \honorpositionstyle{#1} & \honortitlestyle{#2} & \honordatestyle{#4} \\[-.25mm]
 }
 \makeatother
 
@@ -106,7 +107,7 @@
 
 \makecvfooter
   {\today}
-  {李培楠~~~·~~~简历}
+  {李培楠}
   {\thepage}
 
 \input{resume/peinan_summary.tex}
@@ -116,6 +117,6 @@
 \input{resume/peinan_projects.tex}
 \input{resume/peinan_honors.tex}
 \input{resume/peinan_patents.tex}
-\input{resume/peinan_activities.tex}
+\input{resume/peinan_special.tex}
 
 \end{document}

@@ -3,7 +3,7 @@
 
 \documentclass[10pt, a4paper]{awesome-cv}
 
-\geometry{left=1.22cm, top=.6cm, right=1.22cm, bottom=.9cm, footskip=.32cm}
+\geometry{left=1.25cm, top=.68cm, right=1.25cm, bottom=.9cm, footskip=.5cm}
 
 \colorlet{awesome}{awesome-red}
 \setbool{acvSectionColorHighlight}{true}
@@ -11,9 +11,9 @@
 \renewcommand{\acvHeaderNameDelim}{\space}
 \renewcommand{\acvHeaderAfterNameSkip}{1.3mm}
 \renewcommand{\acvHeaderAfterSocialSkip}{1.0mm}
-\renewcommand{\acvHeaderAfterQuoteSkip}{.7mm}
-\renewcommand{\acvSectionTopSkip}{1.0mm}
-\renewcommand{\acvSectionContentTopSkip}{.55mm}
+\renewcommand{\acvHeaderAfterQuoteSkip}{.85mm}
+\renewcommand{\acvSectionTopSkip}{1.15mm}
+\renewcommand{\acvSectionContentTopSkip}{.65mm}
 
 \name{Peinan}{Li}
 
@@ -27,18 +27,19 @@
   WeChat: RiseBun
 }
 
-\quote{Robotics, embodied intelligence, autonomous driving, multimodal AI, and full-stack engineering across mechanics, electronics, algorithms, and AI.}
+\quote{Robotics, autonomous driving, and multimodal AI; cross-stack engineering from mechanics and control to algorithms and prototypes.}
 
 \makeatletter
-\renewcommand*{\headersocialstyle}[1]{{\fontsize{10.8pt}{1.25em}\bodyfont\bfseries\color{text} #1}}
+\renewcommand*{\headersocialstyle}[1]{{\fontsize{9.8pt}{1.25em}\bodyfont\color{text} #1}}
 \renewcommand*{\headerquotestyle}[1]{{\fontsize{9.25pt}{1.25em}\bodyfont\itshape\color{darktext} #1}}
 \renewcommand*{\paragraphstyle}{\fontsize{8.9pt}{1.16em}\bodyfontlight\color{text}}
 \renewcommand*{\entrytitlestyle}[1]{{\fontsize{9.45pt}{1.08em}\bodyfont\bfseries\color{darktext} #1}}
-\renewcommand*{\entrypositionstyle}[1]{{\fontsize{8.65pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\entrypositionstyle}[1]{{\fontsize{8.65pt}{1em}\bodyfont\bfseries\color{graytext} #1}}
+\renewcommand*{\entrylocationstyle}[1]{{\fontsize{8.15pt}{1em}\bodyfont\color{graytext} #1}}
 \renewcommand*{\entrydatestyle}[1]{{\fontsize{8.25pt}{1em}\bodyfont\color{graytext} #1}}
-\renewcommand*{\descriptionstyle}[1]{{\fontsize{8.6pt}{1.08em}\bodyfontlight\color{text} #1}}
-\renewcommand*{\honortitlestyle}[1]{{\fontsize{8.2pt}{1em}\bodyfontlight\color{graytext} #1}}
-\renewcommand*{\honorpositionstyle}[1]{{\fontsize{8.35pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\descriptionstyle}[1]{{\fontsize{8.6pt}{1.14em}\bodyfontlight\color{text} #1}}
+\renewcommand*{\honortitlestyle}[1]{{\fontsize{8.15pt}{1.02em}\bodyfontlight\color{text} #1}}
+\renewcommand*{\honorpositionstyle}[1]{{\fontsize{8.25pt}{1.02em}\bodyfont\bfseries\color{darktext} #1}}
 \renewcommand*{\honorlocationstyle}[1]{{\fontsize{8.2pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \renewcommand*{\honordatestyle}[1]{{\fontsize{8.2pt}{1em}\bodyfont\color{graytext} #1}}
 \renewenvironment{cvparagraph}{%
@@ -49,36 +50,37 @@
   \vspace{.1mm}
 }
 \renewenvironment{cvitems}{%
-  \vspace{-1.65mm}
+  \vspace{-1.15mm}
   \begin{justify}
-  \begin{itemize}[leftmargin=0pt, label={}, itemindent=0pt, itemsep=.05mm, topsep=0pt, parsep=0pt, partopsep=0pt]
+  \begin{itemize}[leftmargin=1.05em, label=\textcolor{awesome}{\scriptsize\textbullet}, itemsep=.08mm, topsep=0pt, parsep=0pt, partopsep=0pt]
     \setlength{\parskip}{0pt}
 }{%
   \end{itemize}
   \end{justify}
-  \vspace{-1.45mm}
+  \vspace{-1.1mm}
 }
 \renewcommand*{\cventry}[5]{%
-  \vspace{.55mm}
+  \vspace{.65mm}
   \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{.3mm}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 8.9cm} C{3.8cm} R{5.1cm}}
-    \entrytitlestyle{#2} & \entrydatestyle{#4} & \entrypositionstyle{#1} \\
-    \multicolumn{3}{L{\textwidth}}{\descriptionstyle{#5}}
+  \setlength{\extrarowheight}{.2mm}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 3.6cm} R{3.6cm}}
+    \entrytitlestyle{#2} & \entrydatestyle{#4} \\
+    \ifempty{#1#3}{}{\entrypositionstyle{#1} & \entrylocationstyle{#3} \\[-.1mm]}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
   \end{tabular*}%
 }
 \renewenvironment{cvhonors}{%
-  \vspace{.4mm}
+  \vspace{.15mm}
   \begin{center}
     \setlength\tabcolsep{0pt}
-    \setlength{\extrarowheight}{.05mm}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 8.0cm} C{2.0cm} R{6.0cm}}
+    \setlength{\extrarowheight}{.02mm}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{3.1cm} L{\textwidth - 5.55cm} R{2.45cm}}
 }{%
     \end{tabular*}
   \end{center}
 }
 \renewcommand*{\cvhonor}[4]{%
-  \honorpositionstyle{#2} & \honordatestyle{#4} & \honorlocationstyle{#1} \\
+  \honorpositionstyle{#1} & \honortitlestyle{#2} & \honordatestyle{#4} \\[.03mm]
 }
 \makeatother
 
@@ -88,7 +90,7 @@
 
 \makecvfooter
   {\today}
-  {Peinan Li~~~·~~~Resume}
+  {Peinan Li}
   {\thepage}
 
 \input{resume/peinan_en_summary.tex}
@@ -98,6 +100,6 @@
 \input{resume/peinan_en_projects.tex}
 \input{resume/peinan_en_honors.tex}
 \input{resume/peinan_en_patents.tex}
-\input{resume/peinan_en_activities.tex}
+\input{resume/peinan_en_special.tex}
 
 \end{document}

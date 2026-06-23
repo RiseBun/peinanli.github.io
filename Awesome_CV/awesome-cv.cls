@@ -558,8 +558,8 @@
 % Define a section for CV
 % Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{%
-  \vspace{\acvSectionTopSkip}
-  \sectionstyle{#1}
+  \par\addvspace{\acvSectionTopSkip}%
+  \noindent\sectionstyle{#1}
   \phantomsection
   \color{gray}\vhrulefill{0.9pt}
 }
@@ -567,9 +567,9 @@
 % Define a subsection for CV
 % Usage: \cvsubsection{<subsection-title>}
 \newcommand{\cvsubsection}[1]{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
-  \subsectionstyle{#1}
+  \par\addvspace{\acvSectionContentTopSkip}%
+  \vspace{-3mm}%
+  \noindent\subsectionstyle{#1}
   \phantomsection
 }
 
@@ -691,9 +691,9 @@
 % Define a section for the cover letter
 % Usage: \lettersection{<section-title>}
 \newcommand{\lettersection}[1]{%
-  \par\addvspace{2.5ex}
+  \par\addvspace{2.5ex}%
   \phantomsection{}
-  \lettersectionstyle{#1}
+  \noindent\lettersectionstyle{#1}
   \color{gray}\vhrulefill{0.9pt}
   \par\nobreak\addvspace{0.4ex}
 }
